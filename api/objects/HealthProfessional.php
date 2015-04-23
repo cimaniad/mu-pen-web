@@ -9,20 +9,18 @@ require_once dirname(__FILE__) . '/../db/DbConn.php';
  * @return type
  */
 function saveEditHealthProfessional($params) {
+    $idHealthProfessional = $params['idHealthProfessional'];
     $name = $params['name'];
     $lastName = $params['lastName'];
     $numCC = $params['numCC'];
-
     if (isset($params['adress'])) {
         $adress = $params['adress'];
     } else {
         $adress = null;
     }
-
     $numTel = $params['numTel'];
     $nif = $params['nif'];
     $email = $params['email'];
-
     if (isset($params['maritalState'])) {
         $maritalState = $params['maritalState'];
     } else {
@@ -38,44 +36,37 @@ function saveEditHealthProfessional($params) {
     } else {
         $bloodGroup = null;
     }
-
     $nacionality = $params['nacionality'];
     $gender = $params['gender'];
     $password = $params['password'];
-    $profile = $params['profile'];
     $picture = $params['picture'];
-
     if (isset($params['institution'])) {
         $institution = $params['institution'];
     } else {
         $institution = null;
     }
-
     $developmentProfessional = $params['developmentProfessional'];
 
     $conn = dbConnect();
     $response = array();
 
-    
-    if (isset($params['idHealthProfessional'])) {
+    if ($idHealthProfessional !== "0") {
 
-        $idHealthProfessional = $params['idHealthProfessional'];
-        echo $idHealthProfessional;
         $query = "UPDATE `dainamic_db`.`HealthProfessional` SET `name`='$name', "
                 . "`lastName`='$lastName', `numCC`=$numCC, `adress`='$adress',"
                 . " `numTel`=$numTel, `nif`=$nif, `email`='$email',  `maritalState`='$maritalState',"
                 . " `birthDate`='$birthDate',`bloodGroup`='$bloodGroup', `nacionality`='$nacionality',"
-                . " `gender`='$gender', `password`='$password', `profile`='$profile',`picture`='$picture',"
+                . " `gender`='$gender', `password`='$password',`picture`='$picture',"
                 . "`institution`='$institution', `developmentProfessional`=$developmentProfessional "
                 . "WHERE `idHealthProfessional`=$idHealthProfessional;";
     } else {
         $query = "INSERT INTO `dainamic_db`.`HealthProfessional` (`name`, `lastName`, `numCC`,"
                 . " `adress`, `numTel`, `nif`, `email`, `maritalState`,"
-                . " `birthDate`, `bloodGroup`, `nacionality`, `gender`, `password`, `profile`,"
+                . " `birthDate`, `bloodGroup`, `nacionality`, `gender`, `password`,"
                 . " `picture`, `institution`, `developmentProfessional`) VALUES"
                 . " ('$name ', '$lastName', $numCC, '$adress', $numTel, $nif, '$email',"
                 . " '$maritalState', '$birthDate', '$bloodGroup', '$nacionality', '$gender', '$password',"
-                . " '$profile', '$picture', '$institution', $developmentProfessional);";
+                . "  '$picture', '$institution', $developmentProfessional)";
     }
 
     $result = mysql_query($query, $conn);
@@ -83,7 +74,7 @@ function saveEditHealthProfessional($params) {
     if ($result) {
         $response['cod'] = 201;
         $response['error'] = FALSE;
-        $response['msg'] = "Health Professional saved with sucess";
+        $response['msg'] = mysql_error($conn);
     } else {
         $response['cod'] = 500;
         $response['error'] = TRUE;
@@ -95,37 +86,65 @@ function saveEditHealthProfessional($params) {
     return $response;
 }
 
-function get_terapeuta_by_id($parametros) {
-    $conexao = ligar_base_dados();
+function getHealthProfessionalById($params) {
+    $id = $params['idHealthProfessional'];
 
-    $id = $parametros['idTerapeuta'];
-    $query = "select * from terapeuta where id_terapeuta=$id";
+    $conn = dbConnect();
+    $query = "SELECT * FROM HealthProfessional WHERE idHealthProfessional=$id";
+    $result = mysql_query($query, $conn);
+    $response = array();
 
-    $resultado = mysql_query($query, $conexao) or die(mysql_error());
-    $validacao = validar($resultado);
-    if (!$terapeuta = mysql_fetch_array($resultado)) {
-
-        return null;
+    if ($result) {
+        $response = mysql_fetch_array($result);
+        $response['cod'] = 200;
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($conn);
     }
 
-
-    return $terapeuta;
+    return $response;
 }
 
-function get_all_terapeutas($parametros) {
+function getAllHealthProfessionals($params) {
+    $conn = dbConnect();
+    $query = "SELECT * FROM HealthProfessional";
+    $result = mysql_query($query, $conn);
+    $response = array();
 
-    $conexao = ligar_base_dados();
-    $query = "select * from terapeuta";
-
-    $resultado = mysql_query($query, $conexao) or die(mysql_error());
-
-    $terapeutas = array();
-    while ($terapeuta = mysql_fetch_array($resultado)) {
-
-        $terapeutas[] = $terapeuta;
+    if ($result) {
+        while ($healthPro = mysql_fetch_array($result)) {
+            $response[] = $healthPro;
+        }
+        $response['cod'] = 200;
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($conn);
     }
 
-    return $terapeutas;
+    return $response;
+}
+
+function deleteHealthProfessional($params) {
+    $id = $params['idHealthProfessional'];
+
+    $conn = dbConnect();
+    $query = "DELETE FROM HealthProfessional WHERE idHealthProfessional=$id";
+    $result = mysql_query($query, $conn);
+    $response = array();
+
+    if ($result) {
+        $response['cod'] = 200;
+        $response['error'] = TRUE;
+        $response['msg'] = "HealthProfessional deleted with sucess";
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($conn);
+    }
+
+    return $response;
 }
 
 //$terapeuta['nome']=$resultado['nome'];

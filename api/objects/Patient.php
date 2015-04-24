@@ -22,7 +22,7 @@ function getPatient($params){
 }
 
 function getPatientsByHealthProfessional($params){
-    $id = $params['idProfessionalHealth'];
+    $id = $params['idHealthProfessional'];
     $connection = dbConnect();
     $query = "Select * From Patient Where idHealthProfessional='$id'";
     $result = mysql_query($query, $connection);
@@ -30,8 +30,8 @@ function getPatientsByHealthProfessional($params){
     if($result){
       while($patients = mysql_fetch_array($result)){
       $response[] = $patients;
+            }
       $response['cod'] = 200;
-      }
      }else {
       $response['msg'] = "Health Professional does not have Patients";
       $response['error'] = TRUE;

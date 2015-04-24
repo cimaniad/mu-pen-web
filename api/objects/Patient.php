@@ -100,3 +100,7 @@ function saveEditPatient($params){
 
     return $response;
 }
+
+function teste(){
+    
+}

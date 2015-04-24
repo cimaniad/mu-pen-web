@@ -1,24 +1,34 @@
 <?php
 include 'header.php';
+require_once 'sessao.php';
+
+ require_once dirname(__FILE__) . '/ApiCaller.php';
+    $params = array(
+        'object' => 'Patient',
+        'function' => 'getPatient',
+        'idPatient' => '2'
+    );
+
+    $responseJson = send_request($params);
+    $response = json_decode($responseJson, TRUE);
+    
+
 ?>
 <h1 style="color: #A30000;"><b> Perfil Pessoal</b></h1>
 
-<p><span>Nome do Cliente: </span>Joaquim Manuel da Silva</p><img src="./imagens/perfil.jpeg" alt="Erro" class="merp" width="125px" height="100px">
-
-<p><span>Data de Nascimento:</span> 01/11/1980</p>
-<p><span>Sexo:</span> Masculino </p>
-<p><span>NIF: </span> 1234568</p>
-<p><span>Morada:</span> Rua da Redundância nº 56789 Freixo de Espada à Cinta</p>
-<p><span>Email: </span> joaquim@yahoo.com</p>
-<p><span>Nº Telefone: </span> 256547896</p>
-<p><span>NºCC:</span> 6546546123</p>
+<p><span>Nome do Cliente: </span><?= $response['name'].' '.$response['lastName']?></p><img src="./imagens/perfil.jpeg" alt="Erro" class="merp" width="125px" height="100px">
+<p><span>Data de Nascimento: </span><?= $response['birthDate']?></p>
+<p><span>Sexo: </span> <?=$response['gender']?> </p>
+<p><span>NIF: </span> <?=$response['nif']?></p>
+<p><span>Morada:</span> <?=$response['adress']?></p>
+<p><span>Email: </span> <?=$response['email']?></p>
+<p><span>Nº Telefone: </span> <?=$response['numTel']?></p>
+<p><span>NºCC: </span> <?=$response['numCc']?></p>
 <p><span>NºUtente: </span> 6465</p>
-<p><span>Estado Civil: </span> Casado</p>
-<p><span>Nacionalidade:</span> Portuguesa</p>
-<p><span>Grupo Sanguineo: </span> A+</p>
-<p><span>Patologia: </span> Esquizofrenia</p>
-
-    
+<p><span>Estado Civil: </span> <?=$response['maritalState']?></p>
+<p><span>Nacionalidade:</span> <?=$response['nationality']?></p>
+<p><span>Grupo Sanguineo: </span> <?=$response['bloodGroup']?></p>
+<p><span>Patologia: </span> <?=$response['pathology']?></p>
 
           
   </div>

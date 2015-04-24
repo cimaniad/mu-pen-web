@@ -1,7 +1,7 @@
 <?php
 
     function send_request(array $post = array()){
-        $api_url="http://dainamic.dsi.uminho.pt/api/";
+        $api_url="http://localhost/nep-um-web/api/";
         if(!function_exists("curl_init")){
             die('Can´t find Curl');
         }

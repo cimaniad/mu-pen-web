@@ -46,7 +46,7 @@ function saveEditPatient($params){
     $idHealthProfessional = $params['idHealthProfessional'];
     $name = $params['name'];
     $lastName = $params['lastName'];
-    $numCc = $params['numCC'];
+    $numCc = $params['numCc'];
     $adress = $params['adress'];
     $numTel = $params['numTel'];
     $nif = $params['nif'];
@@ -70,7 +70,8 @@ function saveEditPatient($params){
     }else {
         $picture = null;
     }
-    
+     $connection = dbConnect();
+     $response = array();
     if($idPatient !== "0"){
     $query = "UPDATE `dainamic_db`.`Patient` "
             . "SET `name`='$name', `lastName`='$lastName', `numCc`='$numCc', `adress`='$adress', `numTel`='$numTel', "
@@ -85,7 +86,7 @@ function saveEditPatient($params){
             . "'$bloodGroup', '$nationality', '$gender', '$password', '$pathology', '$description', '$picture', '$idHealthProfessional');";
     }
     $result = mysql_query($query, $connection);
-   
+
      if ($result) {
         $response['cod'] = 201;
         $response['error'] = FALSE;

@@ -21,16 +21,13 @@ function saveEditHealthProfessional($params) {
     $numTel = $params['numTel'];
     $nif = $params['nif'];
     $email = $params['email'];
+    $birthDate = $params['birthDate'];
     if (isset($params['maritalState'])) {
         $maritalState = $params['maritalState'];
     } else {
         $maritalState = null;
     }
-    if (isset($params['birthDate'])) {
-        $birthDate = $params['birthDate'];
-    } else {
-        $birthDate = null;
-    }
+
     if (isset($params['bloodGroup'])) {
         $bloodGroup = $params['bloodGroup'];
     } else {
@@ -39,7 +36,12 @@ function saveEditHealthProfessional($params) {
     $nacionality = $params['nacionality'];
     $gender = $params['gender'];
     $password = $params['password'];
-    $picture = $params['picture'];
+    if (isset($params['picture'])) {
+        $picture = $params['picture'];
+    } else {
+        $picture = null;
+    }
+
     if (isset($params['institution'])) {
         $institution = $params['institution'];
     } else {
@@ -96,6 +98,27 @@ function getHealthProfessionalById($params) {
 
     if ($result) {
         $response = mysql_fetch_array($result);
+        $response['cod'] = 200;
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($conn);
+    }
+
+    return $response;
+}
+
+function getHealthProfessionalByName($params) {
+    $name = $params['name'];
+    $conn = dbConnect();
+    $query = "SELECT * FROM HealthProfessional where name like '%$name%' or lastName like '%$name%'";
+    $result = mysql_query($query, $conn);
+    $response = array();
+
+    if ($result) {
+        while ($healthPro = mysql_fetch_array($result)) {
+            $response[] = $healthPro;
+        }
         $response['cod'] = 200;
     } else {
         $response['cod'] = 500;

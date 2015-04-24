@@ -6,7 +6,7 @@ require_once 'sessao.php';
     $params = array(
         'object' => 'Patient',
         'function' => 'getPatient',
-        'idPatient' => '2'
+        'idPatient' => '1'
     );
 
     $responseJson = send_request($params);

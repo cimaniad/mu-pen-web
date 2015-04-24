@@ -91,7 +91,7 @@ function saveEditPatient($params){
         $response['error'] = FALSE;
         $response['msg'] = mysql_error($connection);
     } else {
-        $response['cod'] = 500;
+        $response['cod'] = 300;
         $response['error'] = TRUE;
         $response['msg'] = mysql_error($connection);
     }
@@ -101,6 +101,3 @@ function saveEditPatient($params){
     return $response;
 }
 
-function teste(){
-    
-}

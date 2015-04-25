@@ -75,9 +75,9 @@ function getAppointmentById($params){
     return $response;  
 }
 
-function getAppointmentByData($params){
+function getAppointmentByIdDate($params){
     $idHealth = $params['idHealthProfessional'];
-    $date = $params['date'];
+    $date = $params['dateAppointment'];
     $connection = dbConnect();
     $query = "Select * From Appointment Where idHealthProfessional='$idHealth' and date='$date'";
     $result = mysql_query($query, $connection);

@@ -3,7 +3,7 @@
 require_once dirname(__FILE__) . '/../db/DbConn.php';
 
 
-function getPatient($params){
+function getPatientById($params){
     $id = $params['idPatient'];
     $connection = dbConnect();
     $query = "Select * From Patient Where idPatient='$id'";

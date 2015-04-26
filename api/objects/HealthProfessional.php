@@ -1,7 +1,6 @@
 <?php
 
 require_once dirname(__FILE__) . '/../db/DbConn.php';
-
 /**
  * Method to save the HealthProfessional in the database
  * 
@@ -36,12 +35,6 @@ function saveEditHealthProfessional($params) {
     $nacionality = $params['nacionality'];
     $gender = $params['gender'];
     $password = $params['password'];
-    if (isset($params['picture'])) {
-        $picture = $params['picture'];
-    } else {
-        $picture = null;
-    }
-
     if (isset($params['institution'])) {
         $institution = $params['institution'];
     } else {
@@ -49,6 +42,19 @@ function saveEditHealthProfessional($params) {
     }
     $developmentProfessional = $params['developmentProfessional'];
 
+    if (isset($params['picture'])) {
+        $picture = $params['picture'];
+        $pictureName = $numCC.".jpg";
+        $filePath = dirname(__FILE__)."/../../imagens/HealthProfessionals/".$pictureName;
+        if(file_exists($filePath)){
+            unlink($filePath);
+        }
+        $file = fopen($filePath, "w");
+        file_put_contents($filePath, base64_decode($picture));
+    } else {
+        $pictureName = "profile";
+    }
+    
     $conn = dbConnect();
     $response = array();
 
@@ -58,7 +64,7 @@ function saveEditHealthProfessional($params) {
                 . "`lastName`='$lastName', `numCC`=$numCC, `adress`='$adress',"
                 . " `numTel`=$numTel, `nif`=$nif, `email`='$email',  `maritalState`='$maritalState',"
                 . " `birthDate`='$birthDate',`bloodGroup`='$bloodGroup', `nacionality`='$nacionality',"
-                . " `gender`='$gender', `password`='$password',`picture`='$picture',"
+                . " `gender`='$gender', `password`='$password',`picture`='$pictureName',"
                 . "`institution`='$institution', `developmentProfessional`=$developmentProfessional "
                 . "WHERE `idHealthProfessional`=$idHealthProfessional;";
     } else {
@@ -68,7 +74,7 @@ function saveEditHealthProfessional($params) {
                 . " `picture`, `institution`, `developmentProfessional`) VALUES"
                 . " ('$name ', '$lastName', $numCC, '$adress', $numTel, $nif, '$email',"
                 . " '$maritalState', '$birthDate', '$bloodGroup', '$nacionality', '$gender', '$password',"
-                . "  '$picture', '$institution', $developmentProfessional)";
+                . "  '$pictureName', '$institution', $developmentProfessional)";
     }
 
     $result = mysql_query($query, $conn);

@@ -1,6 +1,7 @@
 <?php
 
 require_once dirname(__FILE__) . '/../db/DbConn.php';
+
 /**
  * Method to save the HealthProfessional in the database
  * 
@@ -42,19 +43,19 @@ function saveEditHealthProfessional($params) {
     }
     $developmentProfessional = $params['developmentProfessional'];
 
-    if (isset($params['picture'])) {
+    if ($parms['picture'] != "profile") {
         $picture = $params['picture'];
-        $pictureName = $numCC.".jpg";
-        $filePath = dirname(__FILE__)."/../../imagens/HealthProfessionals/".$pictureName;
-        if(file_exists($filePath)){
+        $pictureName = $numCC . ".jpg";
+        $filePath = dirname(__FILE__) . "/../../imagens/HealthProfessionals/" . $pictureName;
+        if (file_exists($filePath)) {
             unlink($filePath);
         }
         $file = fopen($filePath, "w");
         file_put_contents($filePath, base64_decode($picture));
     } else {
-        $pictureName = "profile";
+        $pictureName = $parms['picture'];
     }
-    
+
     $conn = dbConnect();
     $response = array();
 
@@ -176,21 +177,3 @@ function deleteHealthProfessional($params) {
     return $response;
 }
 
-//$terapeuta['nome']=$resultado['nome'];
-//$terapeuta['apelido']=$resultado['apelido'];
-//$terapeuta['numCC']=$resultado['num_cc'];
-//$terapeuta['morada']=$resultado['morada'];
-//$terapeuta['numTel']=$resultado['num_tel'];
-//$terapeuta['nif']=$resultado['nif'];
-//$terapeuta['email']=$resultado['email'];
-//$terapeuta['numUtente']=$resultado['num_utente'];
-//$terapeuta['estadoCivil']=$resultado['estado_civil'];
-//$terapeuta['dataNasc']=$resultado['data_nasc'];
-//$terapeuta['grupoSang']=$resultado['grupo_sang'];
-//$terapeuta['nacionalidade']=$resultado['nacionalidade'];
-//$terapeuta['sexo']=$resultado['sexo'];
-//$terapeuta['password']=$resultado['password'];
-//$terapeuta['perfil']=$resultado['perfil'];
-//$terapeuta['foto']=$resultado['foto'];
-//$terapeuta['instituicao']=$resultado['instituicao'];
-//$terapeuta['profissionalDesenvolvimento']=$resultado['profissionais_de_desenvolvimento'];

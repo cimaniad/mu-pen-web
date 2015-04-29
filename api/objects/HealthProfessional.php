@@ -22,7 +22,7 @@ function saveEditHealthProfessional($params) {
     $nif = $params['nif'];
     $email = $params['email'];
     $birthDate = $params['birthDate'];
-    if (isset($params['maritalState'])) {
+    if (isset($params['maritalStatus'])) {
         $maritalStatus = $params['maritalStatus'];
     } else {
         $maritalStatus = null;

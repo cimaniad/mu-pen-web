@@ -23,9 +23,9 @@ function saveEditHealthProfessional($params) {
     $email = $params['email'];
     $birthDate = $params['birthDate'];
     if (isset($params['maritalState'])) {
-        $maritalState = $params['maritalState'];
+        $maritalStatus = $params['maritalStatus'];
     } else {
-        $maritalState = null;
+        $maritalStatus = null;
     }
 
     if (isset($params['bloodGroup'])) {
@@ -43,7 +43,7 @@ function saveEditHealthProfessional($params) {
     }
     $developmentProfessional = $params['developmentProfessional'];
 
-    if ($parms['picture'] != "profile") {
+    if ($params['picture'] != "profile") {
         $picture = $params['picture'];
         $pictureName = $numCC . ".jpg";
         $filePath = dirname(__FILE__) . "/../../imagens/HealthProfessionals/" . $pictureName;
@@ -53,7 +53,7 @@ function saveEditHealthProfessional($params) {
         $file = fopen($filePath, "w");
         file_put_contents($filePath, base64_decode($picture));
     } else {
-        $pictureName = $parms['picture'];
+        $pictureName = $params['picture'];
     }
 
     $conn = dbConnect();
@@ -63,18 +63,18 @@ function saveEditHealthProfessional($params) {
 
         $query = "UPDATE `dainamic_db`.`HealthProfessional` SET `name`='$name', "
                 . "`lastName`='$lastName', `numCC`=$numCC, `adress`='$adress',"
-                . " `numTel`=$numTel, `nif`=$nif, `email`='$email',  `maritalState`='$maritalState',"
+                . " `numTel`=$numTel, `nif`=$nif, `email`='$email',  `maritalStatus`='$maritalStatus',"
                 . " `birthDate`='$birthDate',`bloodGroup`='$bloodGroup', `nacionality`='$nacionality',"
                 . " `gender`='$gender', `password`='$password',`picture`='$pictureName',"
                 . "`institution`='$institution', `developmentProfessional`=$developmentProfessional "
                 . "WHERE `idHealthProfessional`=$idHealthProfessional;";
     } else {
         $query = "INSERT INTO `dainamic_db`.`HealthProfessional` (`name`, `lastName`, `numCC`,"
-                . " `adress`, `numTel`, `nif`, `email`, `maritalState`,"
+                . " `adress`, `numTel`, `nif`, `email`, `maritalStatus`,"
                 . " `birthDate`, `bloodGroup`, `nacionality`, `gender`, `password`,"
                 . " `picture`, `institution`, `developmentProfessional`) VALUES"
                 . " ('$name ', '$lastName', $numCC, '$adress', $numTel, $nif, '$email',"
-                . " '$maritalState', '$birthDate', '$bloodGroup', '$nacionality', '$gender', '$password',"
+                . " '$maritalStatus', '$birthDate', '$bloodGroup', '$nacionality', '$gender', '$password',"
                 . "  '$pictureName', '$institution', $developmentProfessional)";
     }
 

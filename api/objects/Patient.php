@@ -93,7 +93,7 @@ function saveEditPatient($params) {
     $numTel = $params['numTel'];
     $nif = $params['nif'];
     $email = $params['email'];
-    $maritalState = $params['maritalState'];
+    $maritalStatus = $params['maritalStatus'];
     $birthDate = $params['birthDate'];
     $bloodGroup = $params['bloodGroup'];
     $nationality = $params['nationality'];
@@ -117,14 +117,14 @@ function saveEditPatient($params) {
     if ($idPatient !== "0") {
         $query = "UPDATE `dainamic_db`.`Patient` "
                 . "SET `name`='$name', `lastName`='$lastName', `numCc`='$numCc', `adress`='$adress', `numTel`='$numTel', "
-                . " `nif`='$nif', `email`='$email', `maritalState`='$maritalState', `birthDate`='$birthDate', `bloodGroup`='$bloodGroup',"
+                . " `nif`='$nif', `email`='$email', `maritalStatus`='$maritalStatus', `birthDate`='$birthDate', `bloodGroup`='$bloodGroup',"
                 . " `nationality`='$nationality', `gender`='$gender', `password`='$password', `pathology`='$pathology',"
                 . " `description`='$description', `picture`='$picture' WHERE `idPatient`='$idPatient'";
     } else {
         $query = "INSERT INTO `Patient` (`name`, `lastName`, `numCc`, `adress`, `numTel`, `nif`, `email`, "
-                . "`maritalState`, `birthDate`, `bloodGroup`, `nationality`, `gender`, `password`, `pathology`, `description`,"
+                . "`maritalStatus`, `birthDate`, `bloodGroup`, `nationality`, `gender`, `password`, `pathology`, `description`,"
                 . " `picture`, `idHealthProfessional`) "
-                . "VALUES ('$name', '$lastName', '$numCc', '$adress', '$numTel', '$nif', '$email', '$maritalState', '$birthDate', "
+                . "VALUES ('$name', '$lastName', '$numCc', '$adress', '$numTel', '$nif', '$email', '$maritalStatus', '$birthDate', "
                 . "'$bloodGroup', '$nationality', '$gender', '$password', '$pathology', '$description', '$picture', '$idHealthProfessional');";
     }
     $result = mysql_query($query, $connection);

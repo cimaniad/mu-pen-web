@@ -139,7 +139,7 @@ function saveEditPatient($params) {
     if ($result) {
         $response['cod'] = 201;
         $response['error'] = FALSE;
-        $response['msg'] = mysql_error($connection);
+        $response['msg'] = "Pacient saved with success";
     } else {
         $response['cod'] = 500;
         $response['error'] = TRUE;

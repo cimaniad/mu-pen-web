@@ -107,7 +107,7 @@ function saveEditPatient($params) {
         $description = null;
     }
 
-    if ($parms['picture'] != "profile") {
+    if ($params['picture'] != "profile") {
         $picture = $params['picture'];
         $pictureName = $numCc . ".jpg";
         $filePath = dirname(__FILE__) . "/../../imagens/Patients/" . $pictureName;
@@ -117,7 +117,7 @@ function saveEditPatient($params) {
         $file = fopen($filePath, "w");
         file_put_contents($filePath, base64_decode($picture));
     } else {
-        $pictureName = $parms['picture'];
+        $pictureName = $params['picture'];
     }
     $connection = dbConnect();
     $response = array();

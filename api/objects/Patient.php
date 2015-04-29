@@ -101,13 +101,13 @@ function saveEditPatient($params) {
     $password = $params['password'];
     $pathology = $params['pathology'];
 
-    if (isset($params['picture'])) {
+    if (isset($params['description'])) {
         $description = $params['description'];
     } else {
         $description = null;
     }
 
-    if (isset($params['picture'])) {
+    if ($parms['picture'] != "profile") {
         $picture = $params['picture'];
         $pictureName = $numCc . ".jpg";
         $filePath = dirname(__FILE__) . "/../../imagens/Patients/" . $pictureName;

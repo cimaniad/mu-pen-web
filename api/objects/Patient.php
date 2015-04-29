@@ -109,8 +109,15 @@ function saveEditPatient($params) {
 
     if (isset($params['picture'])) {
         $picture = $params['picture'];
+        $pictureName = $numCc . ".jpg";
+        $filePath = dirname(__FILE__) . "/../../imagens/Patients/" . $pictureName;
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+        $file = fopen($filePath, "w");
+        file_put_contents($filePath, base64_decode($picture));
     } else {
-        $picture = null;
+        $pictureName = $parms['picture'];
     }
     $connection = dbConnect();
     $response = array();
@@ -119,13 +126,13 @@ function saveEditPatient($params) {
                 . "SET `name`='$name', `lastName`='$lastName', `numCc`='$numCc', `adress`='$adress', `numTel`='$numTel', "
                 . " `nif`='$nif', `email`='$email', `maritalStatus`='$maritalStatus', `birthDate`='$birthDate', `bloodGroup`='$bloodGroup',"
                 . " `nationality`='$nationality', `gender`='$gender', `password`='$password', `pathology`='$pathology',"
-                . " `description`='$description', `picture`='$picture' WHERE `idPatient`='$idPatient'";
+                . " `description`='$description', `picture`='$pictureName' WHERE `idPatient`='$idPatient'";
     } else {
         $query = "INSERT INTO `Patient` (`name`, `lastName`, `numCc`, `adress`, `numTel`, `nif`, `email`, "
                 . "`maritalStatus`, `birthDate`, `bloodGroup`, `nationality`, `gender`, `password`, `pathology`, `description`,"
                 . " `picture`, `idHealthProfessional`) "
                 . "VALUES ('$name', '$lastName', '$numCc', '$adress', '$numTel', '$nif', '$email', '$maritalStatus', '$birthDate', "
-                . "'$bloodGroup', '$nationality', '$gender', '$password', '$pathology', '$description', '$picture', '$idHealthProfessional');";
+                . "'$bloodGroup', '$nationality', '$gender', '$password', '$pathology', '$description', '$pictureName', '$idHealthProfessional');";
     }
     $result = mysql_query($query, $connection);
 

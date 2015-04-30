@@ -5,7 +5,7 @@ require_once 'header.php';
 <p class='config_p'>Seleccione a questão que pretende fazer, e de seguida em cada caixa de texto coloque as opções que pretende que sejam mostradas,
 seleccione também o circulo que corresponde à resposta correta.</p>
     <form method="post" enctype="multipart/form-data">
-<div class="pergunta_exer">
+<div class="perguntaExer">
     <label>
          Questão:
          <input type="text" name="pergunta" class="caixa_config">
@@ -16,14 +16,14 @@ seleccione também o circulo que corresponde à resposta correta.</p>
         </br>
         <div class="config_exercicio">
 <?php
-    if($_GET['nivel']==1){
-        $contador=0;
-            while($contador !=3){
-                $contador++;
+    if($_GET['level']==1){
+        $count=0;
+            while($count !=3){
+                $count++;
                ?> 
-            <label>Resposta <?=$contador?>:</label>                
-    <input type="text" class="caixa_config" name="resp<?=$contador?>">  
-    <input type="radio" name="correcto" value="<?=$contador?>">
+            <label>Resposta <?=$count?>:</label>                
+    <input type="text" class="caixa_config" name="response<?=$count?>">  
+    <input type="radio" name="correct" value="<?=$count?>">
  
     </br>
     <?php

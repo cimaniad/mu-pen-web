@@ -1,5 +1,5 @@
 <?php
-require_once 'sessao.php';
+require_once 'session.php';
 confirm_admin();
 ?>
 <!DOCTYPE html>

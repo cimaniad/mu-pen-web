@@ -8,7 +8,7 @@ require_once 'header.php';
 <div id="dom">
     <label>
         Escolher Dominio: 
-        <select class="box_exerc" name="dom">
+        <select class="boxExerc" name="domain">
             <option>Reconhecimeto Emocional</option>
             <option>Visão</option>
             <option>Memória</option>
@@ -20,7 +20,7 @@ require_once 'header.php';
 <div class="sub-dom">
     <label>
         Escolher Sub-Dominio:
-        <select class="box_exerc" name="sub_dom"> 
+        <select class="boxExerc" name="subDomain"> 
             <option>TA</option>
             <option>TB</option>
             <option>TC</option>
@@ -30,7 +30,7 @@ require_once 'header.php';
     </br>
 <div class="nome_exerc">
     <label>
-         Nome: <input type="text" name="nome" class="caixa_exerc"/>
+         Nome: <input type="text" name="name" class="caixa_exerc"/>
     </label>
 </div>
     </br>
@@ -38,14 +38,14 @@ require_once 'header.php';
 <div class="descricao">
     <label class="lab">
         Descrição:    </label>
-            <textarea type="text" name="descricao" rows="5" cols="21" class="area_exer"></textarea>
+            <textarea type="text" name="description" rows="5" cols="21" class="area_exer"></textarea>
       
 </div>    
 </br>
 <div class="estrut">
     <label>
         Escolher Estrutura:
-        <select class="box_exerc" name="estrutura">
+        <select class="box_exerc" name="structure">
              <option>Escolha Múltipla</option>
              <option>Sequenciação</option>
              <option>Queda de Objetos</option>
@@ -56,7 +56,7 @@ require_once 'header.php';
 <div class="nivel_exer">
     <label>
         Nível de Dificuldade:
-        <select class="box_exerc" name="nivel">
+        <select class="boxExerc" name="level">
              <option value="1">1 - Nível de Dificuldade Baixo</option>
              <option value="2">2 - Nível de Dificuldade Médio-Baixo</option>
              <option value="3">3 - Nível de Dificuldade Médio</option>
@@ -69,17 +69,17 @@ require_once 'header.php';
 <div class="tempo_exer">
     <label>
         Tempo(hh:mm:ss):
-         <input type="text" name="temp" class="box_exerc">
+         <input type="text" name="time" class="box_exerc">
     </label>
     </br>
 </div>
 <div class="rad">
-    <input type="radio" name="tempo" value="pad"> Tempo Padrão
-    <input type="radio" name="tempo" value="lim">  Tempo Limite 
+    <input type="radio" name="timeStyle" value="pad"> Tempo Padrão
+    <input type="radio" name="timeStyle" value="lim">  Tempo Limite 
 </div>
 </br>
 
-        <input type="submit" class="submit1" value="Configurar Exercício" formaction="configurar_exercicio.php"/>
+        <input type="submit" class="submit1" value="Configurar Exercício" formaction="configExercise.php"/>
         <input type="submit" class="submit2" value="Cancelar"/>
     </form>
 

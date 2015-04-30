@@ -1,6 +1,12 @@
 <?php
-require_once 'sessao.php';
-confirm_admin();
+require_once 'session.php';
+
+
+    
+if(!isset($_SESSION['email'])){
+      $url = 'index.php';
+      header("Location: $url");
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +24,7 @@ confirm_admin();
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
           <a href="index.php"><img src="imagens/nep_logo.jpg" alt="Erro"></a> 
-          <img src="./Imagens/terapeutas.jpgalt="Erro" class="derp">
+          <img src="./Imagens/terapeutas.jpg" alt="Erro" class="derp">
              </div>
           
         </div>

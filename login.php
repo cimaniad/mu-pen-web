@@ -1,12 +1,7 @@
 <?php
 include 'header.php';
-include 'sessao.php';
+include 'session.php';
 
-if (isset($_POST['email'], $_POST['password'])) {   
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-	validateLogin($email, $password);
-}
 
 ?>
 
@@ -17,15 +12,15 @@ if (isset($_POST['email'], $_POST['password'])) {
         <h1> Login</h1>
         </br>
         <form method="POST">
-            <label> Endereço de Email: <input type="text" name="email" class="txt" required /> </label>
+            <label> Endereço de Email: <input type="text" id="email" name="email" class="txt" required /> </label>
             </br>
-            <label> Palavra Passe: <input type="password" name="password" class="txt" required/> </label>
-            <input type="submit" value="Submeter" class="orange"/>
+            <label> Palavra Passe: <input type="password" id="password" name="password" class="txt" required/> </label>
+            <input type="button" value="Submeter" id="login" class="orange"/>
             <p> <a href="#">Esqueceu-se da password?</p>
-            
-        </form>
+        </form>     
     </div>
 </div>
+
 </div>
 </div>
 <?php

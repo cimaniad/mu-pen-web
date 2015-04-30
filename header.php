@@ -6,6 +6,9 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/nep.css" title="style" />
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src='js/libs/jquery/jquery.js' type='text/javascript'></script>
+  <script src='js/caller.js' type='text/javascript'></script>
+
 </head>
 
 <body>
@@ -33,7 +36,7 @@
               <li><a href="#">Exercícios</a></li>
           <li><a href="#">Artigos</a> 
           </li>
-          <li><a href="#">Fale Connosco</a></li>
+          <li><a href="contacts.php">Fale Connosco</a></li>
           <li><a href="login.php">Login</a></li>
         </ul>
       </div>

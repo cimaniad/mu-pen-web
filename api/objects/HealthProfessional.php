@@ -22,10 +22,10 @@ function saveEditHealthProfessional($params) {
     $nif = $params['nif'];
     $email = $params['email'];
     $birthDate = $params['birthDate'];
-    if (isset($params['maritalState'])) {
-        $maritalState = $params['maritalState'];
+    if (isset($params['maritalStatus'])) {
+        $maritalStatus = $params['maritalStatus'];
     } else {
-        $maritalState = null;
+        $maritalStatus = null;
     }
 
     if (isset($params['bloodGroup'])) {
@@ -36,18 +36,25 @@ function saveEditHealthProfessional($params) {
     $nacionality = $params['nacionality'];
     $gender = $params['gender'];
     $password = $params['password'];
-    if (isset($params['picture'])) {
-        $picture = $params['picture'];
-    } else {
-        $picture = null;
-    }
-
     if (isset($params['institution'])) {
         $institution = $params['institution'];
     } else {
         $institution = null;
     }
     $developmentProfessional = $params['developmentProfessional'];
+
+    if ($params['picture'] != "profile") {
+        $picture = $params['picture'];
+        $pictureName = $numCC . ".jpg";
+        $filePath = dirname(__FILE__) . "/../../imagens/HealthProfessionals/" . $pictureName;
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+        $file = fopen($filePath, "w");
+        file_put_contents($filePath, base64_decode($picture));
+    } else {
+        $pictureName = $params['picture'];
+    }
 
     $conn = dbConnect();
     $response = array();
@@ -56,19 +63,19 @@ function saveEditHealthProfessional($params) {
 
         $query = "UPDATE `dainamic_db`.`HealthProfessional` SET `name`='$name', "
                 . "`lastName`='$lastName', `numCC`=$numCC, `adress`='$adress',"
-                . " `numTel`=$numTel, `nif`=$nif, `email`='$email',  `maritalState`='$maritalState',"
+                . " `numTel`=$numTel, `nif`=$nif, `email`='$email',  `maritalStatus`='$maritalStatus',"
                 . " `birthDate`='$birthDate',`bloodGroup`='$bloodGroup', `nacionality`='$nacionality',"
-                . " `gender`='$gender', `password`='$password',`picture`='$picture',"
+                . " `gender`='$gender', `password`='$password',`picture`='$pictureName',"
                 . "`institution`='$institution', `developmentProfessional`=$developmentProfessional "
                 . "WHERE `idHealthProfessional`=$idHealthProfessional;";
     } else {
         $query = "INSERT INTO `dainamic_db`.`HealthProfessional` (`name`, `lastName`, `numCC`,"
-                . " `adress`, `numTel`, `nif`, `email`, `maritalState`,"
+                . " `adress`, `numTel`, `nif`, `email`, `maritalStatus`,"
                 . " `birthDate`, `bloodGroup`, `nacionality`, `gender`, `password`,"
                 . " `picture`, `institution`, `developmentProfessional`) VALUES"
                 . " ('$name ', '$lastName', $numCC, '$adress', $numTel, $nif, '$email',"
-                . " '$maritalState', '$birthDate', '$bloodGroup', '$nacionality', '$gender', '$password',"
-                . "  '$picture', '$institution', $developmentProfessional)";
+                . " '$maritalStatus', '$birthDate', '$bloodGroup', '$nacionality', '$gender', '$password',"
+                . "  '$pictureName', '$institution', $developmentProfessional)";
     }
 
     $result = mysql_query($query, $conn);
@@ -170,21 +177,3 @@ function deleteHealthProfessional($params) {
     return $response;
 }
 
-//$terapeuta['nome']=$resultado['nome'];
-//$terapeuta['apelido']=$resultado['apelido'];
-//$terapeuta['numCC']=$resultado['num_cc'];
-//$terapeuta['morada']=$resultado['morada'];
-//$terapeuta['numTel']=$resultado['num_tel'];
-//$terapeuta['nif']=$resultado['nif'];
-//$terapeuta['email']=$resultado['email'];
-//$terapeuta['numUtente']=$resultado['num_utente'];
-//$terapeuta['estadoCivil']=$resultado['estado_civil'];
-//$terapeuta['dataNasc']=$resultado['data_nasc'];
-//$terapeuta['grupoSang']=$resultado['grupo_sang'];
-//$terapeuta['nacionalidade']=$resultado['nacionalidade'];
-//$terapeuta['sexo']=$resultado['sexo'];
-//$terapeuta['password']=$resultado['password'];
-//$terapeuta['perfil']=$resultado['perfil'];
-//$terapeuta['foto']=$resultado['foto'];
-//$terapeuta['instituicao']=$resultado['instituicao'];
-//$terapeuta['profissionalDesenvolvimento']=$resultado['profissionais_de_desenvolvimento'];

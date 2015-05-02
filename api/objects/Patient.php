@@ -42,8 +42,9 @@ function getPatientsByHealthProfessional($params) {
 
 function getPatientByName($parms) {
     $name = $params['name'];
+    $idHealthProfessional = $params['idHealthProfessional'];
     $conn = dbConnect();
-    $query = "SELECT * FROM Patient where name like '%$name%' or lastName like '%$name%'";
+    $query = "SELECT * FROM Patient where idHealthProfessional=$idHealthProfessional and name like '%$name%' or lastName like '%$name%'";
     $result = mysql_query($query, $conn);
     $response = array();
 

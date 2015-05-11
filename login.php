@@ -1,13 +1,8 @@
 <?php
 
 include 'header.php';
-include 'sessao.php';
+include 'session.php';
 
-//if (isset($_POST['email'], $_POST['password'])) {
-//    $email = $_POST['email'];
-//    $password = $_POST['password'];
-//    validateLogin($email, $password);
-//}
 ?>
 <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
 <script>
@@ -58,24 +53,22 @@ include 'sessao.php';
         event.preventDefault();
     });
 </script>
-<div id="banner" align="center"  style=" height: 351px;">
-    <div class="login-card">     
-
-
-        <h1> Login</h1>
-        </br>
-        <form id="foo" >
-            <label> Endereço de Email: <input type="text" name="email" class="txt" required /> </label>
+    <div id="banner" align="center"  style=" height: 351px;">
+        <div class="login-card">
+            <h1> Login</h1>
             </br>
-            <label> Palavra Passe: <input type="password" name="password" class="txt" required/> </label>
-            <input type="submit" value="Submeter" class="orange"/>
-            <p> <a href="#">Esqueceu-se da password?</p>
-            <p id="p"><p>
-            <p id="p1"><p>
-        </form>
+            <form id="foo" >
+                <label> Endereço de Email: <input type="text" name="email" class="txt" required /> </label>
+                </br>
+                <label> Palavra Passe: <input type="password" id="password" name="password" class="txt" required/> </label>
+                <input type="button" value="Submeter" id="login" class="orange"/>
+                <p> <a href="#">Esqueceu-se da password?</p>
+                <p id="p"><p>
+                <p id="p1"><p>
+            </form>
+        </div>
     </div>
-</div>
-</div>
+  </div>
 </div>
 <?php
 

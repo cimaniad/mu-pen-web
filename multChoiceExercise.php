@@ -32,15 +32,15 @@ $(document).ready(function(){
 
 <div class='estrutura_em'>
     <div class='est_em'>
-        <input type='radio' name='opcao' value='1' class='yourmother'> 
+        <input type='radio' name='option' value='1' > 
          <label>Nojo </label>
     </div></br>
     <div class='est_em'>
-    <input type='radio' name='opcao' value='2' class='yourmother'> 
+    <input type='radio' name='option' value='2'> 
     <label> Medo </label>
     </div></br>
     <div class='est_em'>
-   <input type='radio' name='opcao' value='3' class='yourmother'> 
+   <input type='radio' name='option' value='3'> 
      <label> Alegria </label>
     </div></br>
 </div>

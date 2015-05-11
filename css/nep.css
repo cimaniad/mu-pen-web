@@ -603,13 +603,16 @@ table tr td
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
 }
 
-p span
+#normal
 { font: normal 100% 'century gothic', arial, sans-serif;
   margin: 0 0 15px 0;
   padding: 15px 0 5px 0;
   font-weight: bold;
   color: #262626;
   opacity:0.9;
+}
+
+#name{
   
 }
 .derp {
@@ -665,7 +668,7 @@ p span
      padding: 0 0 0 9.75em;
 }
 
-.box_exerc{
+.boxExerc{
     width: 12.5em;
 }
 
@@ -746,19 +749,19 @@ a {
     margin: -1em 0 0 0;
 }
 
-.nome_dom{
+.nameDom{
     padding: 2.5em 0 0 12.5em;
 }
 
-.descricao_dom{
+.descriptionDom{
     padding: 0 0 0 15.80em;
     margin: -1em 0 0 0;
 }
-.lado{
+.side{
     padding: 0 0 0 10.8em;
 }
 
-.dom_subdom{
+.domSubdom{
     padding: 1.5em 0 0 11.5em;
 }
 
@@ -776,7 +779,7 @@ a {
 }
 
 
-.pergunta_exer{
+.perguntaExer{
     padding: 1em 0 0 10.5em;
     font-weight: bold;
 }

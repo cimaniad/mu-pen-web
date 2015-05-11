@@ -3,15 +3,15 @@ require_once 'header.php';
 ?>
 <h1 class="help">Adicionar Sub-Domínio</h1>
 <form method="post">
-<div class="nome_dom">
+<div class="nameDom">
     <label>
         Nome: <input type="text" class="caixa_exerc"/>
     </label>
 </div>
-<div class="dom_subdom">
+<div class="domSubdom">
     <label>
         Dominio:
-        <select class="box_exerc">
+        <select class="boxExerc">
             <option>Visão</option>
             <option>Memória</option>
             <option>Atenção</option>

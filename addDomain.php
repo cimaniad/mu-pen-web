@@ -3,16 +3,16 @@ require_once 'header.php';
 ?>
 <h1 class="help">Adicionar Domínio</h1>
 <form method="post">
-<div class="nome_dom">
+<div class="nameDom">
     <label>
-        Nome: <input type="text" class="box_exerc"/>
+        Nome: <input type="text" class="boxExerc"/>
     </label>
 </div>
 </br>
-<label class="lado">
+<label class="side">
         Descrição: 
     </label>
-<div class="descricao_dom">
+<div class="descriptionDom">
     
         <textarea cols="22" rows="6"> </textarea>
 </div>

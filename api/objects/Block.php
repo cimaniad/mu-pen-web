@@ -44,3 +44,24 @@ function getBlockByName($params){
 
     return $response;
 }
+
+function getAllBlocks($params){
+    $connection = dbConnect();
+    $response = array();
+    
+    $query = "Select * From Block";
+    $result = mysql_query($query, $connection);
+    if($result){
+        while($blocks = mysql_fetch_array($result)){
+            $response[] = $blocks;
+        }
+            $response['cod'] = 200;
+         
+     } else {
+        $response['msg'] =  mysql_error($connection);
+        $response['error'] = TRUE;
+        $response['cod'] = 404;
+    }
+    mysql_close($connection);
+    return $response;
+}

@@ -108,6 +108,27 @@ function getDomains($params){
     return $response;
 }
 
+function getSubDomains($params){
+    $connection = dbConnect();
+    $response = array();
+    
+    $query = "Select * From subDomain";
+    $result = mysql_query($query, $connection);
+    if($result){
+        while($subDomains = mysql_fetch_array($result)){
+            $response[] = $subDomains;
+        }
+            $response['cod'] = 200;
+         
+     } else {
+        $response['msg'] =  mysql_error($connection);
+        $response['error'] = TRUE;
+        $response['cod'] = 404;
+    }
+    mysql_close($connection);
+    return $response;
+}
+
 function getSubDomainByDomain($params){
     $idDomain = $params['idDomain'];
     
@@ -127,6 +148,119 @@ function getSubDomainByDomain($params){
            $response['cod'] = 404;
            $response['error'] = TRUE;
            $response['msg'] = 'No SubDomains with that idDomain';
+        }
+           
+    mysql_close($connection);
+    return $response;
+}
+
+function getDomainById($params){
+    $idDomain = $params['idDomain'];
+    
+    $connection = dbConnect();
+   
+    $query = "Select * From Domain Where idDomain='$idDomain'";
+    $result = mysql_query($query, $connection);
+    $response = array();
+    
+    if(mysql_num_rows($result) === 1){
+       $response = mysql_fetch_array($result);
+       $response['cod'] = 200;
+      
+        }else {
+           $response['cod'] = 404;
+           $response['error'] = TRUE;
+           $response['msg'] = 'No Domain with id given';
+        }
+           
+    mysql_close($connection);
+    return $response;
+}
+
+function getSubDomainById($params){
+    $idSubDomain = $params['idSubDomain'];
+    
+    $connection = dbConnect();
+   
+    $query = "Select * From subDomain Where idSubDomain='$idSubDomain'";
+    $result = mysql_query($query, $connection);
+    $response = array();
+    
+    if(mysql_num_rows($result) === 1){
+       $response = mysql_fetch_array($result);
+       $response['cod'] = 200;
+      
+        }else {
+           $response['cod'] = 404;
+           $response['error'] = TRUE;
+           $response['msg'] = 'No Domain with id given';
+        }
+           
+    mysql_close($connection);
+    return $response;
+}
+
+function deleteDomain($params){
+    $idDomain = $params['idDomain'];
+    
+    $conn = dbConnect();
+    $query = "DELETE FROM Domain WHERE idDomain=$idDomain";
+    $result = mysql_query($query, $conn);
+    $response = array();
+    
+    if ($result) {
+        $response['cod'] = 200;
+        $response['error'] = FALSE;
+        $response['msg'] = "Domain successfully deleted";
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($conn);
+    }
+
+    return $response;
+}
+
+function deleteSubDomain($params){
+    $idSubDomain = $params['idSubDomain'];
+    
+    $conn = dbConnect();
+    $query = "DELETE FROM subDomain WHERE idSubDomain=$idSubDomain";
+    $result = mysql_query($query, $conn);
+    $response = array();
+    
+    if ($result) {
+        $response['cod'] = 200;
+        $response['error'] = FALSE;
+        $response['msg'] = "Sub-Domain successfully deleted";
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($conn);
+    }
+
+    return $response;
+}
+
+function getSubDomainsByIdDomain($params){
+    $idDomain = $params['idDomain'];
+    
+    $connection = dbConnect();
+   
+    $query = "Select * From subdomain Where idDomain in (Select idDomain From domain where idDomain = '$idDomain')";
+    $result = mysql_query($query, $connection);
+    $response = array();
+    
+    if($result){
+       while($domains = mysql_fetch_array($result)){
+           $response[] = $domains;
+       }
+       $response['cod'] = 200;
+      
+        }else {
+           $response['cod'] = 404;
+           $response['error'] = TRUE;
+           $response['msg'] = '';
         }
            
     mysql_close($connection);

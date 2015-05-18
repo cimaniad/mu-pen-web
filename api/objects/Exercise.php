@@ -19,7 +19,7 @@ function getExerciseBySubDomain($params){
         }else {
            $response['cod'] = 404;
            $response['error'] = TRUE;
-           $response['msg'] = 'No SubDomains with that idDomain';
+           $response['msg'] = 'No Exercises with that subDomain';
         }
            
     mysql_close($conn);

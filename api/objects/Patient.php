@@ -150,3 +150,25 @@ function saveEditPatient($params) {
 
     return $response;
 }
+
+function deletePatient($params){
+    $idPatient = $params['idPatient'];
+    
+    $conn = dbConnect();
+    $query = "DELETE FROM Patient WHERE idPatient=$idPatient";
+    $result = mysql_query($query, $conn);
+    $response = array();
+    
+    if ($result) {
+        $response['cod'] = 204;
+        $response['error'] = FALSE;
+        $response['msg'] = "Patient successfully deleted";
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($conn);
+    }
+
+    return $response;
+}
+

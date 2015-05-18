@@ -45,18 +45,18 @@ function getBlockByName($params){
     return $response;
 }
 
-function getAllBlocks($params){
+function getAllBlocksByHealthProfessional($params){
+    $idHealthProfessional = $params['idHealthProfessional'];
     $connection = dbConnect();
     $response = array();
     
-    $query = "Select * From Block";
+    $query = "Select * From Block Where idHealthProfessional='$idHealthProfessional'";
     $result = mysql_query($query, $connection);
-    if($result){
+    if(mysql_num_rows($result) > 0){
         while($blocks = mysql_fetch_array($result)){
             $response[] = $blocks;
         }
             $response['cod'] = 200;
-         
      } else {
         $response['msg'] =  mysql_error($connection);
         $response['error'] = TRUE;

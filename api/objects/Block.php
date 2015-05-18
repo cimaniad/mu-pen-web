@@ -52,7 +52,7 @@ function getAllBlocksByHealthProfessional($params){
     
     $query = "Select * From Block Where idHealthProfessional='$idHealthProfessional'";
     $result = mysql_query($query, $connection);
-    if(mysql_num_rows($result) > 0){
+    if($result){
         while($blocks = mysql_fetch_array($result)){
             $response[] = $blocks;
         }

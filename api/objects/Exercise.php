@@ -25,3 +25,28 @@ function getExerciseBySubDomain($params){
     mysql_close($conn);
     return $response;
 }
+
+function saveAssignExercise($params){
+    $idBlock = $params['idBlock'];
+    $idExercise = $params['idExercise'];
+    
+    $connection = dbConnect();
+    $response = array();
+    $query = "INSERT INTO `AssignExercise` (`idBlock`, `idExercise`) VALUES ('$idBlock', '$idExercise')";
+    $result = mysql_query($query, $connection);
+
+    if ($result) {
+        $response['cod'] = 201;
+        $response['error'] = FALSE;
+        $response['msg'] = mysql_error($connection);
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($connection);
+    }
+
+    mysql_close($connection);
+
+    return $response;       
+    
+}

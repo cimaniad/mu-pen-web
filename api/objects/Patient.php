@@ -160,7 +160,7 @@ function deletePatient($params){
     $response = array();
     
     if ($result) {
-        $response['cod'] = 204;
+        $response['cod'] = 200;
         $response['error'] = FALSE;
         $response['msg'] = "Patient successfully deleted";
     } else {

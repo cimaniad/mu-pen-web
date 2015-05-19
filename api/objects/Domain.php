@@ -209,7 +209,7 @@ function deleteDomain($params){
     $response = array();
     
     if ($result) {
-        $response['cod'] = 204;
+        $response['cod'] = 200;
         $response['error'] = FALSE;
         $response['msg'] = "Domain successfully deleted";
     } else {
@@ -230,7 +230,7 @@ function deleteSubDomain($params){
     $response = array();
     
     if ($result) {
-        $response['cod'] = 204;
+        $response['cod'] = 200;
         $response['error'] = FALSE;
         $response['msg'] = "Sub-Domain successfully deleted";
     } else {

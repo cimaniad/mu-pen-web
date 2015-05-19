@@ -165,7 +165,7 @@ function deleteHealthProfessional($params) {
     $response = array();
 
     if ($result) {
-        $response['cod'] = 204;
+        $response['cod'] = 200;
         $response['error'] = TRUE;
         $response['msg'] = "HealthProfessional deleted with sucess";
     } else {

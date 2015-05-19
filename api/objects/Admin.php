@@ -24,9 +24,8 @@ function getAdminById($params) {
         $response['cod'] = 404;
     }
     mysql_close($conn);
-
-require_once dirname(__FILE__) . '/../db/DbConn.php';
-
+    return $response;
+}
 function editAdmin($params){
     $idAdmin = $params['idAdmin'];
     $name = $params['name'];

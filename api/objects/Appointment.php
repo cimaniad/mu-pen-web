@@ -98,3 +98,23 @@ function getAppointmentByIdDate($params) {
     mysql_close($connection);
     return $response;
 }
+
+function getAllAppointmentsByPatient($params) {
+    $patient = $params['idPatient'];
+    $connection = dbConnect();
+    $query = "Select * From Appointment Where idPatient='$patient'";
+    $result = mysql_query($query, $connection);
+    $response = array();
+    if ($result) {
+        while ($appointments = mysql_fetch_array($result)) {
+            $response[] = $appointments;
+        }
+        $response['cod'] = 200;
+    } else {
+        $response['msg'] = "Error";
+        $response['error'] = TRUE;
+        $response['cod'] = 404;
+    }
+    mysql_close($connection);
+    return $response;
+}

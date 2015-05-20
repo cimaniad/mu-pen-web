@@ -87,7 +87,7 @@ function addEditSubDomain($params){
     return $response;    
 }
 
-function getDomains($params){
+function getAllDomains($params){
     $connection = dbConnect();
     $response = array();
     

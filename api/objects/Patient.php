@@ -40,7 +40,7 @@ function getPatientsByHealthProfessional($params) {
     return $response;
 }
 
-function getPatientByName($parms) {
+function getPatientByName($params) {
     $name = $params['name'];
     $idHealthProfessional = $params['idHealthProfessional'];
     $conn = dbConnect();

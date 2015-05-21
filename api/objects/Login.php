@@ -119,7 +119,6 @@ function validateLogin($params) {
      }else {
         $response['msg'] = "User does not exist";
         $response['error'] = TRUE;
-        $response['lines'] = mysql_num_rows($result);
         $response['cod'] = 404;
         }
     

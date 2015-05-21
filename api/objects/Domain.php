@@ -147,7 +147,7 @@ function getSubDomainByDomain($params){
         }else {
            $response['cod'] = 404;
            $response['error'] = TRUE;
-           $response['msg'] = 'No SubDomains with that idDomain';
+           $response['msg'] = mysql_error($connection);
         }
            
     mysql_close($connection);
@@ -170,7 +170,7 @@ function getDomainById($params){
         }else {
            $response['cod'] = 404;
            $response['error'] = TRUE;
-           $response['msg'] = 'No Domain with id given';
+           $response['msg'] = mysql_error($connection);
         }
            
     mysql_close($connection);

@@ -120,3 +120,27 @@ function getCorrectOption($params){
     mysql_close($conn);
     return $response;
 }
+
+function getExerciseById($params){
+    $idExercise = $params['idExercise'];
+    
+    $connection = dbConnect();
+   
+    $query = "Select * From Exercise Where idExercise='$idExercise'";
+    $result = mysql_query($query, $connection);
+    $response = array();
+    
+    if(mysql_num_rows($result) === 1){
+        $response = mysql_fetch_array($result);
+        $response['error'] = FALSE;
+        $response['cod'] = 200;
+        }else {
+           $response['cod'] = 404;
+           $response['error'] = TRUE;
+           $response['msg'] = mysql_error($connection);
+        }
+           
+    mysql_close($connection);
+    return $response;
+}
+

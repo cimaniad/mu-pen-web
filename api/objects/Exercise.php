@@ -50,3 +50,73 @@ function saveAssignExercise($params){
     return $response;       
     
 }
+
+function getOptions($params){
+    $idExercise = $params['idExercise'];
+    
+    $conn = dbConnect();
+    $query = "Select * From `Option` Where idOption in (Select idOption From HighlightedOptions "
+            . "Where idExercise = '$idExercise')";
+    $result = mysql_query($query, $conn);
+    $response = array();
+    
+    if(mysql_num_rows($result) !== 0){
+      while($exercises = mysql_fetch_array($result)){
+           $response[] = $exercises;
+        }
+       $response['cod'] = 200;
+      
+        }else {
+           $response['cod'] = 404;
+           $response['error'] = TRUE;
+           $response['msg'] = mysql_error($conn);
+        }
+           
+    mysql_close($conn);
+    return $response;
+}
+
+function getIdOptionByDescription($params){
+    $descriptionOption = $params['descriptionOption'];
+    
+    $conn = dbConnect();
+    $query = "Select * From `Option` Where description = '$descriptionOption'";
+    $result = mysql_query($query, $conn);
+    $response = array();
+    
+    if(mysql_num_rows($result) === 1){
+       $response = mysql_fetch_array($result);
+       $response['cod'] = 200;
+      
+        }else {
+           $response['cod'] = 404;
+           $response['error'] = TRUE;
+           $response['msg'] = mysql_error($conn);
+        }
+           
+    mysql_close($conn);
+    return $response;
+}
+
+function getCorrectOption($params){
+    $idOption = $params['idOption'];
+    $idExercise = $params['idExercise'];
+    
+    $conn = dbConnect();
+    $query = "Select * From HighlightedOptions Where idOption = '$idOption' and idExercise='$idExercise'";
+    $result = mysql_query($query, $conn);
+    $response = array();
+    
+    if(mysql_num_rows($result) === 1){
+      $response = mysql_fetch_array($result);
+       $response['cod'] = 200;
+      
+        }else {
+           $response['cod'] = 404;
+           $response['error'] = TRUE;
+           $response['msg'] = mysql_error($conn);
+        }
+           
+    mysql_close($conn);
+    return $response;
+}

@@ -24,7 +24,7 @@ confirm_admin();
     ?>
 <h1 class="help">Editar exercício</h1>
 <p>Escolha o número de imagens que o exercício deve possuir, assim como o tempo que as imagens demoram a desaparecer</p>
-<form method="get" action="Pares.php">
+<form method="get" action="Pairs.php">
      Número de Imagens: 
      <select name="image_number">
         <option value="3">3</option>

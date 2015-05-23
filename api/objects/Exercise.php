@@ -76,28 +76,6 @@ function getOptions($params){
     return $response;
 }
 
-function getIdOptionByDescription($params){
-    $descriptionOption = $params['descriptionOption'];
-    
-    $conn = dbConnect();
-    $query = "Select * From `Option` Where description = '$descriptionOption'";
-    $result = mysql_query($query, $conn);
-    $response = array();
-    
-    if(mysql_num_rows($result) === 1){
-       $response = mysql_fetch_array($result);
-       $response['cod'] = 200;
-      
-        }else {
-           $response['cod'] = 404;
-           $response['error'] = TRUE;
-           $response['msg'] = mysql_error($conn);
-        }
-           
-    mysql_close($conn);
-    return $response;
-}
-
 function getCorrectOption($params){
     $idOption = $params['idOption'];
     $idExercise = $params['idExercise'];
@@ -144,3 +122,27 @@ function getExerciseById($params){
     return $response;
 }
 
+function getAssignExercisesByIdBlock($params){
+    $idBlock = $params['idBlock'];
+    
+    $conn = dbConnect();
+    $query = "Select * From AssignExercise Where idBlock='$idBlock'";
+    $result = mysql_query($query, $conn);
+    $response = array();
+    
+    if(mysql_num_rows($result) !== 0){
+      while($exercises = mysql_fetch_array($result)){
+           $response[] = $exercises;
+        }
+       $response['cod'] = 200;
+      
+        }else {
+           $response['cod'] = 404;
+           $response['error'] = TRUE;
+           $response['msg'] = mysql_error($conn);
+        }
+           
+    mysql_close($conn);
+    return $response;   
+    
+}

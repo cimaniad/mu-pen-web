@@ -36,8 +36,8 @@ confirmPatient();
           <li><a href="headerPatient.php">Home</a></li>
           <li><a href="#">Perfil Pessoal</a>
           <ul>
-              <li><a href="profile.php">Consultar</a></li>
-               <li><a href="#">Editar</a></li>
+              <li><a href="profile.php?id=1">Consultar</a></li>
+               <li><a href="profile.php?id=2">Editar</a></li>
           </ul>
               </li>
               <li><a href="#">Consultas</a>

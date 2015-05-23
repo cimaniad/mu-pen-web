@@ -2,7 +2,11 @@
 include 'headerPatient.php';
 
 confirmPatient();
+if(!isset($_GET['id'])){
+    redirect('../redirectUser.php');
+}
 
+if($_GET['id'] == 1){
 ?>
 <script>getPatientProfile()</script>
 <h1 style="color: #A30000;"><b> Perfil Pessoal</b></h1>
@@ -18,9 +22,18 @@ confirmPatient();
 <p><span id='normal'>Nacionalidade:</span>  <span id='nationalityProfile'></span></p>
 <p><span id='normal'>Grupo Sanguineo: </span>  <span id='bloodGroupProfile'></span></p>
 <p><span id='normal'>Patologia: </span>  <span id='pathologyProfile'></span></p>
-<input type="hidden" id='idPatientProfile' value="<?=$_SESSION['idPatient']?>"/>    
+<input type="hidden" id='idPatientProfile' value="<?=$_SESSION['idPatient']?>"/>
+<?php
+}else if($_GET['id'] == 2){
+    ?>
+
+<?php
+}
+?>
   </div>
 </div>
+
+
 <?php
 include '../footer.php';
 

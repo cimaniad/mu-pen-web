@@ -47,7 +47,7 @@ function editAdmin($params){
     $response = array();
 
     $query = "UPDATE `Admin` SET `name`='$name', `password`='$password', `email`='$email', `numCC`='$numCC', "
-            . "`birthDate`='$birthDate', `nacionality`='$nationality', `adress`='$address', `numTel`='$numTel', "
+            . "`birthDate`='$birthDate', `nationality`='$nationality', `adress`='$address', `numTel`='$numTel', "
             . "`bloodGroup`='$bloodGroup', `picture`='$picture' WHERE `idAdmin`='$idAdmin'";
 
      $result = mysql_query($query, $conn);

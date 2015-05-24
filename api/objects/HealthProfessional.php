@@ -4,7 +4,7 @@ require_once dirname(__FILE__) . '/../db/DbConn.php';
 
 /**
  * Method to save the HealthProfessional in the database
- * 
+ *
  * @param type $params
  * @return type
  */
@@ -33,7 +33,7 @@ function saveEditHealthProfessional($params) {
     } else {
         $bloodGroup = null;
     }
-    $nacionality = $params['nacionality'];
+    $nationality = $params['nationality'];
     $gender = $params['gender'];
     $password = $params['password'];
     if (isset($params['institution'])) {
@@ -46,12 +46,13 @@ function saveEditHealthProfessional($params) {
     if ($params['picture'] != "profile") {
         $picture = $params['picture'];
         $pictureName = $numCC . ".jpg";
-        $filePath = dirname(__FILE__) . "/../../imagens/HealthProfessionals/" . $pictureName;
+        $filePath = dirname(__FILE__) . "/../images/HealthProfessionals/" . $pictureName;
         if (file_exists($filePath)) {
             unlink($filePath);
         }
         $file = fopen($filePath, "w");
         file_put_contents($filePath, base64_decode($picture));
+        $pictureName = "http://dainamic.dsi.uminho.pt/api/images/HealthProfessionals/".$pictureName;
     } else {
         $pictureName = $params['picture'];
     }
@@ -64,17 +65,17 @@ function saveEditHealthProfessional($params) {
         $query = "UPDATE `dainamic_db`.`HealthProfessional` SET `name`='$name', "
                 . "`lastName`='$lastName', `numCC`=$numCC, `adress`='$adress',"
                 . " `numTel`=$numTel, `nif`=$nif, `email`='$email',  `maritalStatus`='$maritalStatus',"
-                . " `birthDate`='$birthDate',`bloodGroup`='$bloodGroup', `nacionality`='$nacionality',"
+                . " `birthDate`='$birthDate',`bloodGroup`='$bloodGroup', `nationality`='$nationality',"
                 . " `gender`='$gender', `password`='$password',`picture`='$pictureName',"
                 . "`institution`='$institution', `developmentProfessional`=$developmentProfessional "
                 . "WHERE `idHealthProfessional`=$idHealthProfessional;";
     } else {
         $query = "INSERT INTO `dainamic_db`.`HealthProfessional` (`name`, `lastName`, `numCC`,"
                 . " `adress`, `numTel`, `nif`, `email`, `maritalStatus`,"
-                . " `birthDate`, `bloodGroup`, `nacionality`, `gender`, `password`,"
+                . " `birthDate`, `bloodGroup`, `nationality`, `gender`, `password`,"
                 . " `picture`, `institution`, `developmentProfessional`) VALUES"
                 . " ('$name ', '$lastName', $numCC, '$adress', $numTel, $nif, '$email',"
-                . " '$maritalStatus', '$birthDate', '$bloodGroup', '$nacionality', '$gender', '$password',"
+                . " '$maritalStatus', '$birthDate', '$bloodGroup', '$nationality', '$gender', '$password',"
                 . "  '$pictureName', '$institution', $developmentProfessional)";
     }
 
@@ -176,4 +177,3 @@ function deleteHealthProfessional($params) {
 
     return $response;
 }
-

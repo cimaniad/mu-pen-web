@@ -12,7 +12,7 @@ function saveEditAppointment($params) {
     $patientApproval = $params['patientApproval'];
     $healthProfessionalApproval = $params['healthProfessionalApproval'];
     $description = $params['description'];
-    
+
     $connection = dbConnect();
     $response = array();
     if ($id !== "0") {
@@ -41,7 +41,7 @@ function saveEditAppointment($params) {
     return $response;
 }
 
-function getAllAppointments($params) {
+function getHPAppointments($params) {
     $idHealth = $params['idHealthProfessional'];
     $connection = dbConnect();
     $query = "Select * From Appointment Where idHealthProfessional='$idHealth'";
@@ -79,7 +79,7 @@ function getAppointmentById($params) {
     return $response;
 }
 
-function getAppointmentByIdDate($params) {
+function getAppointmentByIdHPDate($params) {
     $idHealth = $params['idHealthProfessional'];
     $date = $params['dateAppointment'];
     $connection = dbConnect();

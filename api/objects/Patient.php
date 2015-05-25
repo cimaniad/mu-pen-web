@@ -127,7 +127,7 @@ function saveEditPatient($params) {
     if ($params['picture'] != "profile") {
         $picture = $params['picture'];
         $pictureName = $numCC . ".jpg";
-        $filePath = dirname(__FILE__) . "/../../imagens/Patients/" . $pictureName;
+        $filePath = dirname(__FILE__) . "/../images/Patients/" . $pictureName;
         if (file_exists($filePath)) {
             unlink($filePath);
         }

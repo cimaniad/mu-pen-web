@@ -37,10 +37,18 @@ function editAdmin($params){
     $address = $params['address'];
     $numTel = $params['numTel'];
     $bloodGroup = $params['bloodGroup'];
-     if (isset($params['picture'])) {
+
+    if ($params['picture'] != "profile") {
         $picture = $params['picture'];
+        $pictureName = $numCC . ".jpg";
+        $filePath = dirname(__FILE__) . "/../../imagens/Admins/" . $pictureName;
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+        $file = fopen($filePath, "w");
+        file_put_contents($filePath, base64_decode($picture));
     } else {
-        $picture = null;
+        $pictureName = $params['picture'];
     }
 
     $conn = dbConnect();
@@ -55,7 +63,7 @@ function editAdmin($params){
     if ($result) {
         $response['cod'] = 200;
         $response['error'] = FALSE;
-        $response['msg'] = mysql_error($conn);
+        $response['msg'] = "Admin edited with success";
     } else {
         $response['cod'] = 500;
         $response['error'] = TRUE;

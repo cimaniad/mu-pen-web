@@ -116,10 +116,24 @@ function getHealthProfessionalById($params) {
     return $response;
 }
 
-function getHealthProfessionalByName($params) {
-    $name = $params['name'];
+function searchHealthProfessional($params) {
+    if (isset($params['name'])) {
+      $name = $params['name'];
+      $splitedName=explode(" ", $name);
+
+      if(count($splitedName)===1){
+        $query = "SELECT * FROM HealthProfessional where name like '%$name%' or lastName like '%$name%'";
+      }else{
+        $firstName=$splitedName[0];
+        $lastName=$splitedName[1];
+        $query = "SELECT * FROM HealthProfessional where name like '%$firstName%' or lastName like '%$lastName%'";
+      }
+    }else{
+      $numTel=$params['numTel'];
+      $query="SELECT * FROM HealthProfessional where numTel=$numTel";
+    }
+
     $conn = dbConnect();
-    $query = "SELECT * FROM HealthProfessional where name like '%$name%' or lastName like '%$name%'";
     $result = mysql_query($query, $conn);
     $response = array();
 

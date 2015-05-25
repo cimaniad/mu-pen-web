@@ -2,11 +2,11 @@
 require_once 'session.php';
 
 if(isset($_SESSION['idAdmin'])){
-    redirect('headerAdmin.php');
+    redirect('Admin/headerAdmin.php');
 }elseif (isset($_SESSION['idPatient'])){
-    redirect('headerPatient.php');
+    redirect('Patient/headerPatient.php');
 }elseif (isset($_SESSION['idHealthProfessional'])){
-    redirect('headerDP.php');
+    redirect('HealthProfessional/headerDP.php');
 }else {
     redirect('login.php');
 }

@@ -102,13 +102,15 @@ function validateLogin($params) {
        $dbPass = $fetch['password'];
        $idHealthProfessional = $fetch['idHealthProfessional'];
        $name = $fetch['name'];
-       $email = $fetch['email'];  
+       $email = $fetch['email'];
+       $developmentProfessional = $fetch['developmentProfessional'];
          if ($dbPass == $pass) {
             $response['msg'] = "validation success";
             $response['error'] = FALSE;
             $response['idHealthProfessional'] = $idHealthProfessional;
             $response['name'] = $name;
             $response['email'] = $email;
+            $response['developmentProfessional'] = $developmentProfessional;
             $response['cod'] = 200;
         } else {
             $response['msg'] = "validation fail";

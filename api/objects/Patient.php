@@ -20,6 +20,10 @@ function getPatientById($params) {
     return $response;
 }
 
+function getPatient($params){
+
+}
+
 function getPatientsByHealthProfessional($params) {
     $id = $params['idHealthProfessional'];
     $connection = dbConnect();
@@ -48,16 +52,16 @@ function searchPatient($params) {
       $splitedName=explode(" ", $name);
 
       if(count($splitedName)===1){
-        $query = "SELECT * FROM Patient where name like '%$name%' or lastName like '%$name%'";
+        $query = "SELECT * FROM Patient where idHelthProfessional=$idHelthProfessional and name like '%$name%' or lastName like '%$name%'";
       }else{
         $firstName=$splitedName[0];
         $lastName=$splitedName[1];
-        $query = "SELECT * FROM Patient where name like '%$firstName%' or lastName like '%$lastName%'";
+        $query = "SELECT * FROM Patient where idHelthProfessional=$idHelthProfessional and  name like '%$firstName%' or lastName like '%$lastName%'";
       }
 
     }else{
       $numTel=$params['numTel'];
-      $query="SELECT * FROM Patient where numTel=$numTel";
+      $query="SELECT * FROM Patient where idHelthProfessional=$idHelthProfessional and numTel=$numTel ";
     }
 
     $conn = dbConnect();

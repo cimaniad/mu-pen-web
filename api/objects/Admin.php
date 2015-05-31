@@ -41,12 +41,13 @@ function editAdmin($params){
     if ($params['picture'] != "profile") {
         $picture = $params['picture'];
         $pictureName = $numCC . ".jpg";
-        $filePath = dirname(__FILE__) . "/../../imagens/Admins/" . $pictureName;
+        $filePath = dirname(__FILE__) . "/../images/Admins/" . $pictureName;
         if (file_exists($filePath)) {
             unlink($filePath);
         }
         $file = fopen($filePath, "w");
         file_put_contents($filePath, base64_decode($picture));
+        $pictureName = "http://dainamic.dsi.uminho.pt/api/images/Admins/".$pictureName;
     } else {
         $pictureName = $params['picture'];
     }
@@ -56,7 +57,7 @@ function editAdmin($params){
 
     $query = "UPDATE `Admin` SET `name`='$name', `password`='$password', `email`='$email', `numCC`='$numCC', "
             . "`birthDate`='$birthDate', `nationality`='$nationality', `adress`='$address', `numTel`='$numTel', "
-            . "`bloodGroup`='$bloodGroup', `picture`='$picture' WHERE `idAdmin`='$idAdmin'";
+            . "`bloodGroup`='$bloodGroup', `picture`='$pictureName' WHERE `idAdmin`='$idAdmin'";
 
      $result = mysql_query($query, $conn);
 

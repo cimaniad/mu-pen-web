@@ -2,6 +2,43 @@
 
 require_once dirname(__FILE__) . '/../db/DbConn.php';
 
+function saveBlock($params){
+    $healthProfessional = $params['idHealthProfessional'];
+    $name = $params['name'];
+    $description = $params['description'];
+    
+    $connection = dbConnect();
+    $response = array();
+    
+    $query = "Select * From Block Where name='$name' and idHealthProfessional='$healthProfessional'";
+    $resul = mysql_query($query, $connection);
+    
+    if(mysql_num_rows($resul) === 0){
+        $query = "INSERT INTO `Block` (`idHealthProfessional`, `name`, `description`) "
+                . "VALUES ('$healthProfessional', '$name', '$description')";
+    }else {
+            $response['cod'] = 501;
+            $response['error'] = TRUE;
+            $response['msg'] = "Name already exists";
+            mysql_close($connection);
+            return $response;
+   }
+   $result = mysql_query($query, $connection);
+   
+    if ($result) {
+        $response['cod'] = 201;
+        $response['error'] = FALSE;
+        $response['msg'] = "Block saved with success";
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($connection);
+    }
+    mysql_close($connection);
+
+    return $response;
+}
+
 function deleteBlock($params){
     $idBlock = $params['idBlock'];
     

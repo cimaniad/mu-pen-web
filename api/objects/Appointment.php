@@ -4,14 +4,15 @@ require_once dirname(__FILE__) . '/../db/DbConn.php';
 
 function saveEditAppointment($params) {
     $id = $params['idAppointment'];
+    $idHealth = $params['idHealthProfessional'];
+    $idPatient = $params['idPatient'];
     $date = $params['date'];
     $hour = $params['hour'];
     $local = $params['local'];
     $patientApproval = $params['patientApproval'];
     $healthProfessionalApproval = $params['healthProfessionalApproval'];
     $description = $params['description'];
-    $idHealth = $params['idHealthProfessional'];
-    $idPatient = $params['idPatient'];
+
     $connection = dbConnect();
     $response = array();
     if ($id !== "0") {
@@ -28,7 +29,7 @@ function saveEditAppointment($params) {
     if ($result) {
         $response['cod'] = 201;
         $response['error'] = FALSE;
-        $response['msg'] = mysql_error($connection);
+        $response['msg'] = 'appointement created with success';
     } else {
         $response['cod'] = 500;
         $response['error'] = TRUE;
@@ -40,7 +41,7 @@ function saveEditAppointment($params) {
     return $response;
 }
 
-function getAllAppointments($params) {
+function getHPAppointments($params) {
     $idHealth = $params['idHealthProfessional'];
     $connection = dbConnect();
     $query = "Select * From Appointment Where idHealthProfessional='$idHealth'";
@@ -78,7 +79,7 @@ function getAppointmentById($params) {
     return $response;
 }
 
-function getAppointmentByIdDate($params) {
+function getAppointmentByIdHPDate($params) {
     $idHealth = $params['idHealthProfessional'];
     $date = $params['dateAppointment'];
     $connection = dbConnect();
@@ -99,7 +100,7 @@ function getAppointmentByIdDate($params) {
     return $response;
 }
 
-function getAllAppointmentsByPatient($params) {
+function getAppointmentsByPatient($params) {
     $patient = $params['idPatient'];
     $connection = dbConnect();
     $query = "Select * From Appointment Where idPatient='$patient'";

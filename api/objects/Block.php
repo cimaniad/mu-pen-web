@@ -65,24 +65,3 @@ function getAllBlocksByHealthProfessional($params){
     mysql_close($connection);
     return $response;
 }
-
-function getAllBlocks($params){
-    
-    $connection = dbConnect();
-    $query = "Select * From Block ";
-    $result = mysql_query($query, $connection);
-    $response = array();
-    if ($result) {
-        while ($appointments = mysql_fetch_array($result)) {
-            $response[] = $appointments;
-        }
-        $response['cod'] = 200;
-    } else {
-        $response['msg'] = "No Blocks to show";
-        $response['error'] = TRUE;
-        $response['cod'] = 404;
-    }
-    mysql_close($connection);
-    return $response;
-}
-

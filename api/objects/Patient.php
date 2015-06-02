@@ -40,10 +40,27 @@ function getPatientsByHealthProfessional($params) {
     return $response;
 }
 
-function getPatientByName($parms) {
-    $name = $params['name'];
+function searchPatient($params) {
+    $idHealthProfessional = $params['idHealthProfessional'];
+
+    if (isset($params['name'])) {
+      $name = $params['name'];
+      $splitedName=explode(" ", $name);
+
+      if(count($splitedName)===1){
+        $query = "SELECT * FROM Patient where name like '%$name%' or lastName like '%$name%'";
+      }else{
+        $firstName=$splitedName[0];
+        $lastName=$splitedName[1];
+        $query = "SELECT * FROM Patient where name like '%$firstName%' or lastName like '%$lastName%'";
+      }
+
+    }else{
+      $numTel=$params['numTel'];
+      $query="SELECT * FROM Patient where numTel=$numTel";
+    }
+
     $conn = dbConnect();
-    $query = "SELECT * FROM Patient where name like '%$name%' or lastName like '%$name%'";
     $result = mysql_query($query, $conn);
     $response = array();
 
@@ -61,9 +78,9 @@ function getPatientByName($parms) {
     return $response;
 }
 
-function getPatientsByHPDate($parms) {
-    $idHelthProfessional = $parms['idHealthProfessional'];
-    $appointmDate = $parms['appointmentDate'];
+function getPatientsByHPDate($params) {
+    $idHelthProfessional = $params['idHealthProfessional'];
+    $appointmDate = $params['appointmentDate'];
     $response = array();
     $conn = dbConnect();
     $query = "select * FROM Patient WHERE idHealthProfessional=$idHelthProfessional AND idPatient"
@@ -88,7 +105,7 @@ function saveEditPatient($params) {
     $idHealthProfessional = $params['idHealthProfessional'];
     $name = $params['name'];
     $lastName = $params['lastName'];
-    $numCc = $params['numCC'];
+    $numCC = $params['numCC'];
     $adress = $params['adress'];
     $numTel = $params['numTel'];
     $nif = $params['nif'];
@@ -109,8 +126,8 @@ function saveEditPatient($params) {
 
     if ($params['picture'] != "profile") {
         $picture = $params['picture'];
-        $pictureName = $numCc . ".jpg";
-        $filePath = dirname(__FILE__) . "/../../imagens/Patients/" . $pictureName;
+        $pictureName = $numCC . ".jpg";
+        $filePath = dirname(__FILE__) . "/../images/Patients/" . $pictureName;
         if (file_exists($filePath)) {
             unlink($filePath);
         }
@@ -123,15 +140,15 @@ function saveEditPatient($params) {
     $response = array();
     if ($idPatient !== "0") {
         $query = "UPDATE `dainamic_db`.`Patient` "
-                . "SET `name`='$name', `lastName`='$lastName', `numCc`='$numCc', `adress`='$adress', `numTel`='$numTel', "
+                . "SET `name`='$name', `lastName`='$lastName', `numCC`='$numCC', `adress`='$adress', `numTel`='$numTel', "
                 . " `nif`='$nif', `email`='$email', `maritalStatus`='$maritalStatus', `birthDate`='$birthDate', `bloodGroup`='$bloodGroup',"
                 . " `nationality`='$nationality', `gender`='$gender', `password`='$password', `pathology`='$pathology',"
                 . " `description`='$description', `picture`='$pictureName' WHERE `idPatient`='$idPatient'";
     } else {
-        $query = "INSERT INTO `Patient` (`name`, `lastName`, `numCc`, `adress`, `numTel`, `nif`, `email`, "
+        $query = "INSERT INTO `Patient` (`name`, `lastName`, `numCC`, `adress`, `numTel`, `nif`, `email`, "
                 . "`maritalStatus`, `birthDate`, `bloodGroup`, `nationality`, `gender`, `password`, `pathology`, `description`,"
                 . " `picture`, `idHealthProfessional`) "
-                . "VALUES ('$name', '$lastName', '$numCc', '$adress', '$numTel', '$nif', '$email', '$maritalStatus', '$birthDate', "
+                . "VALUES ('$name', '$lastName', '$numCC', '$adress', '$numTel', '$nif', '$email', '$maritalStatus', '$birthDate', "
                 . "'$bloodGroup', '$nationality', '$gender', '$password', '$pathology', '$description', '$pictureName', '$idHealthProfessional');";
     }
     $result = mysql_query($query, $connection);
@@ -139,7 +156,7 @@ function saveEditPatient($params) {
     if ($result) {
         $response['cod'] = 201;
         $response['error'] = FALSE;
-        $response['msg'] = mysql_error($connection);
+        $response['msg'] = "Pacient saved with success";
     } else {
         $response['cod'] = 500;
         $response['error'] = TRUE;
@@ -153,12 +170,12 @@ function saveEditPatient($params) {
 
 function deletePatient($params){
     $idPatient = $params['idPatient'];
-    
+
     $conn = dbConnect();
     $query = "DELETE FROM Patient WHERE idPatient=$idPatient";
     $result = mysql_query($query, $conn);
     $response = array();
-    
+
     if ($result) {
         $response['cod'] = 200;
         $response['error'] = FALSE;
@@ -171,4 +188,3 @@ function deletePatient($params){
 
     return $response;
 }
-

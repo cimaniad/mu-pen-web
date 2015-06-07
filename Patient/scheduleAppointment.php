@@ -7,7 +7,7 @@ confirmPatient();
 <link rel="stylesheet" href="../css/timepicker.css">
 
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <script src="../js/libs/timepicker/timepicker.js"></script>
+  <script src="../js/extra/timepicker/timepicker.js"></script>
   <script>
   $(function() {
     $( "#datepicker" ).datepicker({ dateFormat: "yy-mm-dd"});
@@ -21,7 +21,17 @@ confirmPatient();
                                     });
   });
   </script>
- 
+ <?php 
+ if(isset($_GET['id'])){
+     ?>
+        <input type="hidden" value="<?=$_GET['id']?>" id="idAppointmentCreating">
+  <?php
+ }else {
+     ?>
+          <input type="hidden" value="0" id="idAppointmentCreating">
+ <?php
+ }
+ ?>
   <h1 class="help"><b> Marcar Consulta</b></h1>
 </br>
     </br>
@@ -40,7 +50,7 @@ confirmPatient();
             <input type="hidden" id="healthProfessionalPatient" value="<?=$_SESSION['healthProfessional']?>">
         </br>
         </br>
-        <input type="hidden" id="idPatientSchedule" value="<?=$_SESSION['idPatient']?>"/>
+            <input type="hidden" id="idPatientSchedule" value="<?=$_SESSION['idPatient']?>"/>
         <b>Descrição:</b>
         <label><div class="mens_cont">    
         <textarea class="contact textarea" rows="7" id="scheduleDescription" cols="35" required></textarea> </label></div>

@@ -23,7 +23,8 @@ $(document).ready(function () {
                              idPatient: jsonData.idPatient,
                              healthProfessional: jsonData.healthProfessional,
                              idHealthProfessional: jsonData.idHealthProfessional,
-                             name:jsonData.name                           
+                             name:jsonData.name,
+                             developmentProfessional: jsonData.developmentProfessional
                     },
                     function(){
                        window.location.href = 'redirectUser.php';

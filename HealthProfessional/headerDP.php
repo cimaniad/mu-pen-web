@@ -14,6 +14,10 @@ confirmHealthProfessional();
   <script src='../js/libs/jquery/jquery.js' type='text/javascript'></script>
   <script src='../js/objectCallers/loginCaller.js' type='text/javascript'></script>
   <script src='../js/objectCallers/domainCaller.js' type='text/javascript'></script>
+  <script src='../js/objectCallers/exerciseCaller.js' type='text/javascript'></script>
+  <script src='../js/exercises/orderExercise.js' type='text/javascript'></script>
+  <script src='../js/objectCallers/standardExerciseCaller.js' type='text/javascript'></script>
+  <script src='../js/objectCallers/multimediaCaller.js' type='text/javascript'></script>
   <script src='../js/functions/functions.js' type='text/javascript'></script>
 </head>
 
@@ -30,7 +34,7 @@ confirmHealthProfessional();
         </div>
       </div>
       <div class="orange1">
-        <ul id="menu">
+        <ul id="menu_dp">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li><a href="headerDP.php">Home</a></li>
           <li><a href="#">Perfil Pessoal</a>
@@ -41,12 +45,12 @@ confirmHealthProfessional();
               </li>
               <li><a href="#">Exercícios</a>
               <ul>
-              <li><a href="#">Criar Exercício</a></li>
-              <li><a href="addEditDomain.php?id=1">Adicionar Domínio</a></li>
-              <li><a href="addEditDomain.php?id=2">Editar Domínio</a></li>
-              <li><a href="addEditSubDomain.php?id=1">Adicionar Sub-Dominio</a></li>
-              <li><a href="addEditSubDomain.php?id=2">Editar Sub-Dominio</a></li>
-          </ul>
+                <li><a href="createExercise.php">Criar Exercício</a></li>
+                <li><a href="addEditDomain.php?id=1">Adicionar Domínio</a></li>
+                <li><a href="addEditDomain.php?id=2">Editar Domínio</a></li>
+                <li><a href="addEditSubDomain.php?id=1">Adicionar Sub-Dominio</a></li>
+                <li><a href="addEditSubDomain.php?id=2">Editar Sub-Dominio</a></li>
+              </ul>
               </li>
            <li><a href="#">Informação</a>
           <ul>
@@ -62,6 +66,13 @@ confirmHealthProfessional();
                <li><a href="#">Anónimo</a></li>
               
           </ul>
+              <li><a href="#">Multimedia</a>
+                  <ul>
+                      <li><a href="addDirectory.php">Adicionar Diretoria</a></li>
+                      <li><a href="">Adicionar Multimédia</a></li>
+                  </ul>
+              </li>
+                    
            <li><a href="../login.php?logout=1" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
         </ul>
       </div>

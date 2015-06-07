@@ -1,7 +1,6 @@
 <?php
 require_once 'index_teste.php';
-require_once 'session.php';
-confirm_admin();
+
 ?>
 
 <?php

@@ -21,6 +21,7 @@ function saveResult($params){
     $result = mysql_query($query, $connection);
     
      if ($result) {
+        $response['idAnswer'] = mysql_insert_id();
         $response['cod'] = 201;
         $response['error'] = FALSE;
         $response['msg'] = 'Answer created with success';

@@ -3,11 +3,11 @@ require_once 'headerPatient2.php';
 confirmPatient();
 ?>
 
-<link rel='stylesheet' href='../js/fullcalendar-2.3.1/fullcalendar.css' />
-<script src='../js/fullcalendar-2.3.1/lib/jquery.min.js'></script>
-<script src='../js/fullcalendar-2.3.1/lib/moment.min.js'></script>
-<script src='../js/fullcalendar-2.3.1/fullcalendar.js'></script>
-<script src='../js/fullcalendar-2.3.1/lang/pt.js'></script>
+<link rel='stylesheet' href='../js/extra/fullcalendar-2.3.1/fullcalendar.css' />
+<script src='../js/extra/fullcalendar-2.3.1/lib/jquery.min.js'></script>
+<script src='../js/extra/fullcalendar-2.3.1/lib/moment.min.js'></script>
+<script src='../js/extra/fullcalendar-2.3.1/fullcalendar.js'></script>
+<script src='../js/extra/fullcalendar-2.3.1/lang/pt.js'></script>
 
 
 

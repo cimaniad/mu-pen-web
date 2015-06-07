@@ -6,8 +6,9 @@ confirmHealthProfessional();
 </br>
 </br>
 <script>getDomains();
+        getStructures();
     </script>
-<form method="get">
+
 <div id="dom">
     <label>
         Escolher Dominio: 
@@ -27,25 +28,23 @@ confirmHealthProfessional();
     </br>
 <div class="nome_exerc">
     <label>
-         Nome: <input type="text" name="name" class="caixa_exerc"/>
-    </label>
+         Nome:  </label>
+    <input type="text" name="name" class="caixa_exerc" id="nameExercise"/>
+   
 </div>
     </br>
   
 <div class="descricao">
     <label class="lab">
-        Descrição:    </label>
-            <textarea type="text" name="description" rows="5" cols="21" class="area_exer"></textarea>
+        Tarefa:</label>
+            <textarea type="text" name="description" rows="5" cols="21" class="area_exer" id="questionExercise"></textarea>
       
 </div>    
 </br>
 <div class="estrut">
     <label>
         Escolher Estrutura:
-        <select class="box_exerc" name="structure">
-             <option>Escolha Múltipla</option>
-             <option>Sequenciação</option>
-             <option>Queda de Objetos</option>
+        <select class="box_exerc" name="structure" id="structureCreateExercise">
         </select>
     </label>
 </div>
@@ -53,7 +52,7 @@ confirmHealthProfessional();
 <div class="nivel_exer">
     <label>
         Nível de Dificuldade:
-        <select class="boxExerc" name="level">
+        <select class="boxExerc" name="level" id="levelExercise">
              <option value="1">1 - Nível de Dificuldade Baixo</option>
              <option value="2">2 - Nível de Dificuldade Médio-Baixo</option>
              <option value="3">3 - Nível de Dificuldade Médio</option>
@@ -65,24 +64,20 @@ confirmHealthProfessional();
 </br>
 <div class="tempo_exer">
     <label>
-        Tempo(hh:mm:ss):
-         <input type="text" name="time" class="box_exerc">
-    </label>
+        Tempo(mm:ss): </label>
+         <input type="text" name="time" class="box_exerc" id="timeCreateExercise">
+    
     </br>
-</div>
-<div class="rad">
-    <input type="radio" name="timeStyle" value="pad"> Tempo Padrão
-    <input type="radio" name="timeStyle" value="lim">  Tempo Limite 
 </div>
 </br>
 
-        <input type="submit" class="submit1" value="Configurar Exercício" formaction="configExercise.php"/>
+        <input type="button" class="submit1" value="Configurar Exercício" id="createExerciseButton"/>
         <input type="submit" class="submit2" value="Cancelar"/>
-    </form>
+
 
   </div>
 </div>
 
 <?php
 require_once '../footer.php';
-?>
+

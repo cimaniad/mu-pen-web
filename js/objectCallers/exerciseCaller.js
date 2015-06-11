@@ -106,7 +106,7 @@ $(document).ready(function(){
                    },
                 statusCode: {
                     201: function(){
-                        alert('Opções adicionadas com sucesso');
+                    
                     },
                     500: function(response){
                         alert('Erro a adicionar as opções');
@@ -115,6 +115,7 @@ $(document).ready(function(){
                 }   
               });
           }
+          alert('Opções adicionadas com sucesso');
       }else if(getUrlParameter('structure') == 5){  //Multiple Choice game
           for(var i=0; i<options;i++){
              if($('#correctConfig'+i+':checked').val()){

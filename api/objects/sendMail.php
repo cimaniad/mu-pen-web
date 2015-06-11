@@ -20,7 +20,7 @@ function sendMail($params){
                 $mail->Username   = "fifa2018@sapo.pt";   // Utilizador do servidor SMTP
                 $mail->Password   = "soufifa2018";         // Password do utilizador do SMTP
                 
-                $mail->SetFrom('fifa2018@sapo.pt', 'Fifa 2018');          // Email e nome de envio
+                $mail->SetFrom('fifa2018@sapo.pt', 'Dainamic');          // Email e nome de envio
 
                 $mail->AddAddress($email, $name);   // Email e nome do destinatário
                 

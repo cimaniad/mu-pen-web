@@ -10,9 +10,10 @@ confirmHealthProfessional();
   <title>NEP-UM</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="../css/nep.css" title="style"/>
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src='../js/libs/jquery/jquery.js' type='text/javascript'></script>
-  <script src='../js/objectCallers/loginCaller.js' type='text/javascript'></script>
+  <script type="text/javascript" src="../js/extra/imageSelector/jquery.ddslick.js"></script> 
+ <script src='../js/objectCallers/loginCaller.js' type='text/javascript'></script>
   <script src='../js/objectCallers/domainCaller.js' type='text/javascript'></script>
   <script src='../js/objectCallers/exerciseCaller.js' type='text/javascript'></script>
   <script src='../js/exercises/orderExercise.js' type='text/javascript'></script>

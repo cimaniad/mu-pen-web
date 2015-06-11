@@ -90,3 +90,43 @@ function validateLogin($params) {
     mysql_close($conn);
     return $response;
 }
+
+function getPassword($params){
+    $email = $params['email'];
+    $numCc = $params['numCc'];
+    
+    $connection = dbConnect();
+    $response = array();
+    
+    $query1 = "Select password From Admin Where email = '$email' and numCc = '$numCc'";
+    $result1 = mysql_query($query1, $connection) or die(mysql_error());
+    $query2 = "Select password From HealthProfessional Where email = '$email' and numCc = '$numCc'";
+    $result2 = mysql_query($query2, $connection) or die(mysql_error());
+    $query3 = "Select password From Patient Where email = '$email' and numCc = '$numCc'";
+    $result3 = mysql_query($query3, $connection) or die(mysql_error());
+    
+    if(mysql_num_rows($result1) === 1){
+       $fetch = mysql_fetch_array($result1);
+       $response['password'] = $fetch['password'];
+       $response['error'] = FALSE;
+       $response['cod'] = 200;
+
+     } else if(mysql_num_rows ($result2) === 1){
+       $fetch = mysql_fetch_array($result2);
+       $response['password'] = $fetch['password'];
+       $response['error'] = FALSE; 
+       $response['cod'] = 200;
+    }else if(mysql_num_rows($result3) === 1){
+       $fetch = mysql_fetch_array($result3);
+       $response['password'] = $fetch['password'];
+       $response['error'] = FALSE; 
+       $response['cod'] = 200; 
+    }else {
+       $response['error'] = TRUE;
+       $response['msg'] = mysql_error($connection);
+       $response['cod'] = 404;
+    }
+    
+    mysql_close($connection);
+    return $response;
+}

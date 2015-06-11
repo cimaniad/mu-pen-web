@@ -47,6 +47,8 @@ numerando, na segunda caixa de texto, pela ordem correta.</p>
 <?php
 }else if($_GET['structure'] == 5) {
     ?>
+        
+        <script>getDirectory();</script>
       <p class='config_p'>Selecione o número de opções que pretende, depois disso preencha as opções com as hipóteses
       clicando no circulo que corresponder à opção correta. Também pode selecionar uma imagem se assim o pretender</p>
           <div class="optionNumber">
@@ -70,12 +72,23 @@ numerando, na segunda caixa de texto, pela ordem correta.</p>
      <div class="config_exercicio">
     </div>
      </br> </br>
-    <div class="imagem_config">
+     <div>
+         <select id="allDirectory">
+             <option></option>
+         </select>
+        
+     </div>
+      </br>
+     <div>
+         <select id="MultimediaByDirectory"></select>
+     </div>     
+<!--    <div class="imagem_config">
         <label>     
         Imagem:
         <input type="file" name="imagem"/> </label>  </br></br> </br>
-    </div>
-        </br> 
+    </div>-->
+        </br>
+        
  <?php   
 }else if($_GET['structure'] == 6){
     ?>

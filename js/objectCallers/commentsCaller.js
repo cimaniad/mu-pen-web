@@ -53,7 +53,7 @@
             async: false,
             data: {
               object: 'Comment',
-              function: 'addComment',
+              function: 'saveComment',
               idAnswer: $('#commentAnswerId').val(),
               comment: $('#commentText').val()
             },
@@ -76,8 +76,8 @@
       width: 350,
       modal: true,
       buttons: {
-        "Adicionar Comentário": addComment,
-        Cancelar: function() {
+        "Comentar": addComment,
+        Continuar: function() {
           dialog.dialog( "close" );
         }
       },

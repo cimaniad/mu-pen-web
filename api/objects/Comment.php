@@ -2,7 +2,7 @@
 
 require_once dirname(__FILE__) . '/../db/DbConn.php';
 
-function addComment($params){
+function saveComment($params){
     $idAnswer = $params['idAnswer'];
     $comment = $params['comment'];
     

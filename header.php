@@ -5,13 +5,18 @@
   <title>NEP-UM</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/nep.css" title="style" />
+
   <script src='js/libs/jquery/jquery.js' type='text/javascript'></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js" type="text/javascript"></script>
   <script src='js/objectCallers/loginCaller.js' type='text/javascript'></script>
   <script src='js/objectCallers/domainCaller.js' type='text/javascript'></script>
   <script src="js/functions/functions.js" type="text/javascript"></script>
   <script src="js/objectCallers/exerciseCaller.js" type="text/javascript"></script>
-
+  <script src="js/objectCallers/standardExerciseCaller.js" type="text/javascript"></script>
+  <script src="js/exercises/orderExercise.js" type="text/javascript"></script>
+  <script src="js/objectCallers/mailCaller.js" type="text/javascript"></script>
+  <script src="js/objectCallers/commentsCaller.js" type="text/javascript"></script>
+   <script type="text/javascript" src="js/exercises/Pairs.js"></script>
 
 </head>
 

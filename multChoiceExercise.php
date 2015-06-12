@@ -2,24 +2,10 @@
 require_once 'header.php';
 ?>
  <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
- <link rel="stylesheet" type="text/css" href="js/iCheck-1.x/skins/flat/orange.css" title="style" />
- <script type="text/javascript" src="js/iCheck-1.x/icheck.js"></script>
+ <link rel="stylesheet" type="text/css" href="js/extra/iCheck-1.x/skins/flat/orange.css" title="style" />
+ <script type="text/javascript" src="js/extra/iCheck-1.x/icheck.js"></script>
 <script>
-$(document).ready(function(){
-  $('input').iCheck({
-    checkboxClass: 'icheckbox_flat',
-    radioClass: 'iradio_flat',
-    increaseArea: '20%' // optional
-  });
-});
 
-$(document).ready(function(){
-  $('input').iCheck({
-    checkboxClass: 'icheckbox_flat-orange',
-    radioClass: 'iradio_flat-orange',
-    increaseArea: '20%' // optional
-  });
-});
 
 </script>
 <form method='get'>

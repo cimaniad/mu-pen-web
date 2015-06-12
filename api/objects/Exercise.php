@@ -316,3 +316,32 @@ function getOptionById($params){
     mysql_close($connection);
     return $response;
 }
+
+
+function editPairsExercise($params){
+    $idExercise = $params['idExercise'];
+    $numMatriz = $params['numMatriz'];
+    $appearTime = $params['appearTime'];
+    $initialTime = $params['initialTime'];
+
+    $connection = dbConnect();
+    $query = "UPDATE `Exercise` SET `numMatriz`='$numMatriz', `appearTime`='$appearTime', "
+            . "`inicialTime`='$initialTime' WHERE `idExercise`='$idExercise'";
+
+    $response = array();
+    $result = mysql_query($query, $connection);
+
+    if ($result) {
+        $response['cod'] = 200;
+        $response['error'] = FALSE;
+        $response['msg'] = 'Exercise changed with success';
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($connection);
+    }
+
+    mysql_close($connection);
+
+    return $response;
+}

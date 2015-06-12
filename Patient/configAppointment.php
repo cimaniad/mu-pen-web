@@ -34,7 +34,7 @@ if(!isset($_GET['id'])){
  if($_GET['status'] == 'false'){
  ?>
     <input class="submit1" type="button" value="Aprovar Consulta" id='approveSchedule'>
-    <input class="submit2" type="submit" value="Cancelar"/>
+    <input class="submit2" type="button" value="Cancelar Consulta" id="cancelAppointment"/>
 <?php    
  }
 ?>

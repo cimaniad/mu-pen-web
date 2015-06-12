@@ -44,7 +44,7 @@ $(document).ready(function(){
                     url: "http://localhost/nep-um-web/api/",
                     dataType: 'json',
                     data: { 
-                    object:'Domain',
+                    object:'SubDomain',
                     function: 'addEditSubDomain',
                     idSubDomain: '0',
                     idDomain: $("#allDomains").val(),
@@ -138,7 +138,7 @@ $(document).ready(function(){
                     url: "http://localhost/nep-um-web/api/",
                     dataType: 'json',
                     data: { 
-                    object:'Domain',
+                    object:'SubDomain',
                     function: 'getSubDomainById',
                     idSubDomain: $('#allSubDomains').val()
                     },
@@ -203,7 +203,7 @@ $(document).ready(function(){
                  url: "http://localhost/nep-um-web/api/",
                  dataType: 'json',
                  data: {
-                 object: 'Domain',
+                 object: 'SubDomain',
                  function: 'addEditSubDomain',
                  idSubDomain: $("#allSubDomains").val(),
                  name: $('#nameEditSubDomain').val(),
@@ -258,7 +258,7 @@ $(document).ready(function(){
                  url: "http://localhost/nep-um-web/api/",
                  dataType: 'json',
                  data: {
-                 object: 'Domain',
+                 object: 'SubDomain',
                  function: 'deleteSubDomain',
                  idSubDomain: $('#allSubDomains').val()
                  },
@@ -284,7 +284,7 @@ function getAllSubDomains(){
                  url: "http://localhost/nep-um-web/api/",
                  dataType: 'json',
                  data: {
-                 object: 'Domain',
+                 object: 'SubDomain',
                  function: 'getSubDomains'
                  },
                     statusCode: {
@@ -312,8 +312,8 @@ function getAllSubDomains(){
                  url: "http://localhost/nep-um-web/api/",
                  dataType: 'json',
                  data: {
-                 object: 'Domain',
-                 function: 'getSubDomainsByDomain',
+                 object: 'SubDomain',
+                 function: 'getSubDomainByDomain',
                  idDomain: $('#allDomains').val()
                  },
                     statusCode: {

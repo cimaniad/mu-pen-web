@@ -13,7 +13,7 @@ $(document).ready(function(){
                  data: {
                  object: 'Appointment',
                  function: 'saveEditAppointment',
-                 idAppointment: '0',
+                 idAppointment: $('#idAppointmentCreating').val(),
                  date: $('#datepicker').val(),
                  hour: $('#scheduleHour').val(),
                  local: '',
@@ -71,7 +71,7 @@ function appointmentsPatient(){
                  dataType: 'json',
                  data: {
                  object: 'Appointment',
-                 function: 'getAllAppointmentsByPatient',
+                 function: 'getAppointmentsByPatient',
                  idPatient: $('#agendaIdPatient').val()
                  },
                     statusCode: {
@@ -173,3 +173,10 @@ $(document).ready(function(){
                 });
     });
 });  
+
+$(document).ready(function(){
+        $("#cancelAppointment").click(function () { 
+            var id = getUrlParameter('id');
+             window.location.href = 'scheduleAppointment.php?id='+id;
+        });
+});

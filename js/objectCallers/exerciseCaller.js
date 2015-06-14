@@ -215,7 +215,8 @@ function saveResult(correctAnswer) {
             data: {
                 object: 'Answer',
                 function: 'saveResult',
-                idPatient: $('#idpatientExercises').val(),
+                idPatient: '23',
+//                idPatient: $('#idpatientExercises').val(),
                 idExercise: getUrlParameter('gameChoosen'),
                 resolutionTime: '0',
                 attempts: '1',

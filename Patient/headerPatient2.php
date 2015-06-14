@@ -15,6 +15,7 @@ confirmPatient();
   <script src='../js/functions/functions.js' type='text/javascript'></script>
   <script src='../js/objectCallers/loginCaller.js' type='text/javascript'></script>
   <script src='../js/objectCallers/appointmentsCaller.js' type='text/javascript'></script>
+  <script src="../js/objectCallers/commentsCaller.js" type="text/javascript"></script>
 
 </head>
    <body>

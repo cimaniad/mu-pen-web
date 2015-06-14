@@ -199,5 +199,8 @@ if (isset($_GET['structure']) && (($_GET['structure'] == 4) || ($_GET['structure
 </div>
 <input type="hidden" value="<?=$_SESSION['idPatient']?>" id="idpatientExercises"> 
 <?php
-require_once '../Patient/comment.php';
+
 require_once '../footer.php';
+if(isset($_GET['structure'])){
+require_once '../Patient/comment.php';
+}

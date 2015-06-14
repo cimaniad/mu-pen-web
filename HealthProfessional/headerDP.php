@@ -20,6 +20,7 @@ confirmHealthProfessional();
   <script src='../js/objectCallers/standardExerciseCaller.js' type='text/javascript'></script>
   <script src='../js/objectCallers/multimediaCaller.js' type='text/javascript'></script>
   <script src='../js/functions/functions.js' type='text/javascript'></script>
+
 </head>
 
     <body>

@@ -43,7 +43,7 @@ function saveEditHealthProfessional($params) {
     }
     $developmentProfessional = $params['developmentProfessional'];
 
-    if ($params['picture'] != "profile") {
+    if (strlen($params['picture']) >= 100) {
         $picture = $params['picture'];
         $pictureName = $numCC . ".jpg";
         $filePath = dirname(__FILE__) . "/../images/HealthProfessionals/" . $pictureName;

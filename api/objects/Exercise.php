@@ -4,24 +4,26 @@ require_once dirname(__FILE__) . '/../db/DbConn.php';
 
 function getExerciseBySubDomain($params){
     $idSubDomain = $params['idSubDomain'];
-    
+
     $conn = dbConnect();
-    $query = "SELECT * FROM Exercise WHERE idSubDomain='$idSubDomain'";
+    $query = "SELECT e.idExercise, e.name, e.level, e.description, e.time, se.picture, d.name as domain, sd.name as subDomain
+      from Exercise e, StandardExercise se, Domain d, subDomain sd
+      where e.idSubDomain = $idSubDomain and e.idStandardExercise = se.idStandardExercise and e.idSubDomain = sd.idSubDomain and sd.idDomain = d.idDomain";
     $result = mysql_query($query, $conn);
     $response = array();
-    
+
     if(mysql_num_rows($result) !== 0){
       while($exercises = mysql_fetch_array($result)){
            $response[] = $exercises;
         }
        $response['cod'] = 200;
-      
+
         }else {
            $response['cod'] = 404;
            $response['error'] = TRUE;
            $response['msg'] = 'No Exercises with that subDomain';
         }
-           
+
     mysql_close($conn);
     return $response;
 }
@@ -29,7 +31,7 @@ function getExerciseBySubDomain($params){
 function saveAssignExercise($params){
     $idBlock = $params['idBlock'];
     $idExercise = $params['idExercise'];
-    
+
     $connection = dbConnect();
     $response = array();
     $query = "INSERT INTO `AssignExercise` (`idBlock`, `idExercise`) VALUES ('$idBlock', '$idExercise')";
@@ -47,8 +49,8 @@ function saveAssignExercise($params){
 
     mysql_close($connection);
 
-    return $response;       
-    
+    return $response;
+
 }
 
 function saveEditExercise($params){
@@ -62,13 +64,13 @@ function saveEditExercise($params){
     $numMatriz = $params['numMatriz'];
     $appearTime = $params['appearTime'];
     $initialTime = $params['initialTime'];
-    
+
     $connection = dbConnect();
     $response = array();
-    
+
     $query = "Select * From Exercise Where name='$name'";
     $resul = mysql_query($query, $connection);
-    
+
    if(mysql_num_rows($resul) === 0){
         if($idExercise !== "0"){
             $query = "UPDATE `Exercise` SET "
@@ -90,7 +92,7 @@ function saveEditExercise($params){
         return $response;
    }
     $result = mysql_query($query, $connection);
-    
+
      if ($result) {
         $response['idExercise'] = mysql_insert_id();
         $response['cod'] = 201;
@@ -107,16 +109,41 @@ function saveEditExercise($params){
     return $response;
 }
 
+function getExercisesByBlock($params){
+  $idBlock=$params['idBlock'];
+
+  $connection = dbConnect();
+  $response = array();
+  $query = "SELECT e.idExercise, e.name, e.description, e.level, e.time, se.picture, d.name
+                                                  AS domain, sd.name AS subDomain
+            FROM Exercise e, StandardExercise se, AssignExercise ae, Domain d, subDomain sd
+            WHERE ae.idBlock = $idBlock AND ae.idExercise=e.idExercise AND e.idStandardExercise = se.idStandardExercise
+                                              AND e.idSubDomain = sd.idSubDomain AND sd.idDomain = d.idDomain ;";
+  $result = mysql_query($query, $connection);
+  if($result){
+  while($exercises = mysql_fetch_array($result)){
+    $response[] = $exercises;
+    }
+    $response['cod'] = 200;
+  } else {
+    $response['msg'] =  mysql_error($connection);
+    $response['error'] = TRUE;
+    $response['cod'] = 404;
+  }
+  mysql_close($connection);
+  return $response;
+}
+
 function saveEditOption($params){
     $idOption = $params['idOption'];
     $idExercise = $params['idExercise'];
     $description = $params['description'];
     $correctOption = $params['correctOpt'];
     $position = $params['position'];
-    
+
     $connection = dbConnect();
     $response = array();
-    
+
     if($idOption !== "0"){
         $query = "UPDATE `Option` SET `idExercise`='$idExercise', `description`='$description', `correctOpt`='$correctOption', "
                 . "`position`='$position' WHERE `idOption`='$idOption'";
@@ -129,8 +156,8 @@ function saveEditOption($params){
           $response['cod'] = 201;
           $response['error'] = FALSE;
           $response['msg'] = 'Exercise created/changed with success';
-       
-       
+
+
     } else {
         $response['cod'] = 500;
         $response['error'] = TRUE;
@@ -210,15 +237,15 @@ function correctOrderExercise($params){
     $idExercise = $params['idExercise'];
     $connection = dbConnect();
     $response = array();
-    
+
     $query = "Select * From `Option` Where idExercise='$idExercise' order by position";
     $result = mysql_query($query, $connection);
-    
+
     if($result){
         while($option = mysql_fetch_array($result)){
          $response[] = $option['idOption'];
         }
-         $response['cod'] = 200; 
+         $response['cod'] = 200;
     }
      else {
         $response['msg'] =  mysql_error($connection);
@@ -233,13 +260,13 @@ function countOptions($params){
     $idExercise = $params['idExercise'];
     $connection = dbConnect();
     $response = array();
-    
+
     $query = "Select count(*) as options From `Option` Where idExercise='$idExercise'";
     $result = mysql_query($query, $connection);
-    
+
     if($result){
          $response = mysql_fetch_array($result);
-         $response['cod'] = 200; 
+         $response['cod'] = 200;
     }
      else {
         $response['msg'] =  mysql_error($connection);
@@ -256,10 +283,10 @@ function countCorrectOptions($params){
    $response = array();
    $query = "Select count(idOption) as answers From `Option` Where idExercise='$idExercise' and correctOpt=1";
    $result = mysql_query($query, $connection);
-    
+
     if($result){
          $response = mysql_fetch_array($result);
-         $response['cod'] = 200; 
+         $response['cod'] = 200;
     }
      else {
         $response['msg'] =  mysql_error($connection);
@@ -290,19 +317,24 @@ function getOptionById($params){
     return $response;
 }
 
+
 function editPairsExercise($params){
     $idExercise = $params['idExercise'];
     $numMatriz = $params['numMatriz'];
     $appearTime = $params['appearTime'];
     $initialTime = $params['initialTime'];
-    
+    $question = $params['question'];
+    $time = $params['time'];
+    $level = $params['level'];
+
     $connection = dbConnect();
     $query = "UPDATE `Exercise` SET `numMatriz`='$numMatriz', `appearTime`='$appearTime', "
-            . "`inicialTime`='$initialTime' WHERE `idExercise`='$idExercise'";
-   
+            . "`inicialTime`='$initialTime', `question`='$question', `time`='$time', `level`='$level' "
+            . "WHERE `idExercise`='$idExercise'";
+
     $response = array();
     $result = mysql_query($query, $connection);
-    
+
     if ($result) {
         $response['cod'] = 200;
         $response['error'] = FALSE;

@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,28 +7,31 @@
 
 var numColunas = getUrlParameter("col");
 var numLinhas = getUrlParameter("col");
-var lado = 75;
+var time = getUrlParameter("time");
+var appearTime = getUrlParameter("appearTime")*1000;
+var lado = 45;
 var jogar = false;
 var numMaxQuadrados = 0;
-
+var gameTime = 0;
 $(document).ready(function() {
 
     desenhar(numColunas, numLinhas);
+    gameTime = setInterval(decrementarSegundos, 1000);
 
 });
 
 /*
- * esta função recebe como parametros o numero de linhas e de colunas da matriz e desenha a em 
+ * esta função recebe como parametros o numero de linhas e de colunas da matriz e desenha a em
  * função desses parametros, invocando a função criarQuadrados().
- * Apresenta 
+ * Apresenta
  */
 
 function desenhar(numColunas, numLinhas) {
-    $(".quadro").fadeOut(1000, function() {
+    $(".quadro").fadeOut(500, function() {
 
         $(".quadro").empty();   //limpa o quadro para o proximo jogo
 
-        $("#janela").animate({height: ((lado + 10) * numLinhas)
+        $("#janela").animate({height: ((lado + 11) * numLinhas)
                     + "px", width: ((lado + 8) * numColunas) + "px"}, 1000, function() {//faz a janla crescer conforme o jogo vai evoluindo
 
             for (var i = 0; i < (numColunas * numLinhas); i++) {
@@ -50,7 +53,7 @@ function desenhar(numColunas, numLinhas) {
 function criarQuadrados(lado) {
     return $("<div>").addClass("quadrado").height(lado + "px").width(lado + "px").click(function() {
 
-        if (jogar) {
+        if (jogar && time !== 0) {
             if ($(this).attr("escolhido") === "escolhido") {
                 $(this).addClass("escolhido");
                 $(this).attr("clicado", "clicado");
@@ -60,7 +63,7 @@ function criarQuadrados(lado) {
             }
 
             var numSelecionados = $("div[clicado='clicado']").length;
-            var nCorretos = Math.floor((numColunas * numLinhas) / 3);
+            var nCorretos = parseInt((numColunas * numLinhas) / 3);
 
             if (numSelecionados === nCorretos) {
                 jogar = false;
@@ -99,15 +102,15 @@ function sortearQuadrados() {
     var contador;
     var numQuadrados = $(".quadrado").length;
 
-    for (contador = 0; contador < Math.floor(numQuadrados / 3); ) {
-        var numAleatorio = Math.floor(Math.random() * numQuadrados);
+    for (contador = 0; contador < parseInt(numQuadrados / 3); ) {
+        var numAleatorio = parseInt(Math.random() * numQuadrados);
         if (!$(".quadrado").eq(numAleatorio).hasClass("escolhido")) {
             $(".quadrado").eq(numAleatorio).addClass("escolhido").attr("escolhido", "escolhido");
             contador++;
         }
 
     }
-    setTimeout(esconder, 1200);
+    setTimeout(esconder, appearTime);
 }
 
 function esconder() {
@@ -115,16 +118,14 @@ function esconder() {
     jogar = true;
 }
 
-function getUrlParameter(sParam)
-{
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) 
-    {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) 
-        {
-            return sParameterName[1];
-        }
+function decrementarSegundos() {
+    --time;
+    if(time === 0){
+      clearInterval(gameTime);
+      $("#gameTime").html(0 + " segundos");
+      jogar = false;
+    }else{
+      $("#gameTime").html((time + 2 ) + " segundos");
     }
-}  
+
+}

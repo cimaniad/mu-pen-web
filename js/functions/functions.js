@@ -26,3 +26,8 @@ function getUrlParameter(sParam)
     }
 }
 
+$(document).ready(function(){
+   $('#cancelThings').click(function(){
+      window.location.href = '../redirectUser.php'; 
+   });
+});

@@ -20,22 +20,22 @@
 
 </head>
 
-<body>
+    <body>
   <div id="main">
-    <div id="header">
+         <div id="header">
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <a href="#"><img src="imagens/nep_logo.jpg" alt="Erro"></a> 
-          <img src="imagens/terapeutas.jpg" alt="Erro" class="derp">
+          <a href="#"><img src="imagens/NEP-UM.png" alt="Erro" id=""></a> 
+<!--          <img src="imagens/terapeutas.jpg" alt="Erro" class="derp">-->
              </div>
           
         </div>
-      </div>
+      </div> 
       <div class="orange1">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li><a href="index.php">Home</a></li>
+          <div id="test"><li><a href="index.php">Home</a></li></div>
           <li><a href="#">Programa</a>
           <ul>
               <li><a href="#">Quem Somos</a></li>
@@ -52,7 +52,6 @@
     </div>
     <div id="site_content">
       <div class="sidebar">
-        <!-- insert your sidebar items here -->
         <h3><strong>Procurar:</strong></h3>
         <form method="post" action="#" id="search_form">
             <p>

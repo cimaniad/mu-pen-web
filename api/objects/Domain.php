@@ -67,6 +67,7 @@ function getDomains($params){
     return $response;
 }
 
+
 function getDomainById($params){
     $idDomain = $params['idDomain'];
 

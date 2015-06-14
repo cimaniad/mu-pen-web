@@ -13,16 +13,16 @@ var tempoInicial = getUrlParameter('appearTime')*1000;
 
 
 var imagensAnimais = [
-    "./imagens/animais/cao.png",
-    "./imagens/animais/elefante.png",
-    "./imagens/animais/galinha.png",
-    "./imagens/animais/galinhaBranca.png",
-    "./imagens/animais/leao.png",
-    "./imagens/animais/mocho.png",
-    "./imagens/animais/pantera.png",
-    "./imagens/animais/pingu.png",
-    "./imagens/animais/tigre.png",
-    "./imagens/animais/zebra.png"
+    "../imagens/animais/cao.png",
+    "../imagens/animais/elefante.png",
+    "../imagens/animais/galinha.png",
+    "../imagens/animais/galinhaBranca.png",
+    "../imagens/animais/leao.png",
+    "../imagens/animais/mocho.png",
+    "../imagens/animais/pantera.png",
+    "../imagens/animais/pingu.png",
+    "../imagens/animais/tigre.png",
+    "../imagens/animais/zebra.png"
 ];
 
 
@@ -31,12 +31,12 @@ $(document).ready(function() {
         imagensAnimais.pop();
     }
     if (tamanho == 3) {
-        $("#janela").css("width", "380px");
-        $("#janela").css("height", "250px");
+        $("#janela").css("width", "325px");
+        $("#janela").css("height", "210px");
     } else if (tamanho == 6) {
-        $("#janela").css("width", "504px");
-        $("#janela").css("height", "375px");
-    }
+        $("#janela").css("width", "400px");
+        $("#janela").css("height", "310px");
+    } 
     desenhar(imagensAnimais);
 });
 
@@ -147,22 +147,9 @@ function abrirCarta() {
 
 
 }
-
 function incrementarSegundos() {
     ++segundos;
     $("#tempoJogo").html(segundos + " segundos");
 }
 
-function getUrlParameter(sParam)
-{
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) 
-    {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) 
-        {
-            return sParameterName[1];
-        }
-    }
-}  
+ 

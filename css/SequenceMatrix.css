@@ -1,35 +1,30 @@
 body{
     background-color: whitesmoke;
 }
+
 #janela{
     padding:4px;
     display:inline-block;
     background-color:#fff;
-    width:30em;
-    height: 10em;
+    width:200px;
+    height:200px;
     border:1px black solid;
     border: 1px solid rgb(204, 204, 204);
-    border-radius: 12px;
-    border-width: 2px;
-    border-color: whitesmoke;
+    border-radius: 3px 3px 3px 3px;
     box-shadow: 0px 1px 3px rgb(167, 167, 167);
-    margin: 0.1em 0.1em 0.1em 0.1em;    
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);  
-    
 }
-
 .quadrado{
     border:2px #fff solid;
+    box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.75);
     background: rgb(240, 240, 240);
-    box-shadow: 2px 2px 2px rgb(136, 136, 136); 
+    box-shadow: 2px 2px 2px rgb(136, 136, 136);
+    cursor: pointer;
     padding:0px;
     display:inline-block;
     margin:2px;
 }
 #nMaxQuadrados{
-    color: blue;
-    font-weight: bold;
-    margin: 0px 0px 0px 90em;
+    color: white;
 }
 
 .quadro{
@@ -45,7 +40,6 @@ body{
     background-image: -webkit-linear-gradient(top, #4eff30, #128212);
     background-image: linear-gradient(top, #4eff30, #128212);
 }
-
 .errado{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ff260f', endColorstr = '#630e07');
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ff260f', endColorstr = '#630e07')";
@@ -55,19 +49,4 @@ body{
     background-image: -webkit-gradient(linear, center top, center bottom, from(#ff260f), to(#630e07));
     background-image: -webkit-linear-gradient(top, #ff260f, #630e07);
     background-image: linear-gradient(top, #ff260f, #630e07);
-}
-
-
-
-
-.button2{
-  font: 100% arial; 
-  border: 1px solid; 
-  width: 10em; 
-  margin: 2em 0em 0 64em; 
-  height: 33px;
-  padding: 2px 0 3px 0;
-  cursor: pointer; 
-  background: #F05A00; 
-  color: #FFF;
 }

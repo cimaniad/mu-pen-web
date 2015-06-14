@@ -177,15 +177,18 @@ function getConfigs(){ //get matriz size and appear time for pairs exercise
             statusCode: {
                 200: function(response){
                   jsonData = response;
-                 var select = $('#support');
-                 select.append('<h2 class="help">'+jsonData.name+'</h2>');
-                 select.append('<h4 class="help">'+jsonData.question+'</h2>');
+                 var select = $('#questionResolve');
+                 var input = $('<p>'+jsonData.question+'</p>');
+                 select.append(input);
                  if(getUrlParameter('structure') == 6){
                        window.location.replace("exercisesPage.php?structure="+getUrlParameter('structure')+"&gameChoosen="+getUrlParameter('gameChoosen')+
                        "&numMatriz="+jsonData.numMatriz+"&appearTime="+jsonData.appearTime+'#');
-                }else if(getUrlParameter('structure') == 3){
+                }else if((getUrlParameter('structure')) == 3 || (getUrlParameter('structure')) == 7){
                        window.location.replace("exercisesPage.php?structure="+getUrlParameter('structure')+"&gameChoosen="+getUrlParameter('gameChoosen')+
-                       "&col="+jsonData.numMatriz+'#');   
+                       "&col="+jsonData.numMatriz+'&appearTime='+jsonData.appearTime+'&time='+jsonData.time+'#');   
+                }else if(getUrlParameter('structure') == 2){
+                       window.location.replace("exercisesPage.php?structure="+getUrlParameter('structure')+"&gameChoosen="+getUrlParameter('gameChoosen')+
+                        "&time="+jsonData.time+'#');
                 }
              }
         }

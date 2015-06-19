@@ -12,34 +12,11 @@ confirmPatient();
 </br>
 <div id="supportThings"></div>
 <div>
-  <table id="dg" title="Sessões" style="width:600px;height:250px">
-<!--            data-options="
-                singleSelect:true,
-                collapsible:true,
-                rownumbers:true,
-                fitColumns:true,
-                data:data,
-                view:groupview,
-                groupField:'session',
-                groupFormatter:function(value,rows){
-                    return value + ' - ' + rows.length + ' Item(s)';
-                }
-            ">-->
-<!--        <thead>
-            <tr>
-                <th data-options="field:'session',width:80, hidden:true">Sessão</th>
-                <th data-options="field:'name',width:100">Nome Exercício</th>
-                <th data-options="field:'structure',width:80,align:'right'">Estrutura</th>
-                <th data-options="field:'image',width:80,align:'right'">Imagem</th>
-            </tr>
-        </thead>-->
+  <table id="dg" style="width:600px;height:250px">
+
     </table>
 </div>	
-<!--<p>O paciente possui uma sessão por realizar, siga as hiperligações para realizar os exercícios que lhe foram propostos pelo
-    seu terapeuta.</p></br>
-<p><a href="#">Treino de Memória(2)</a></p> 
-<p><a href="#">Treino de Linguagem</a></p>
-<p><a href="#">Treino de Atenção(3)</a></p> -->
+
   </div>
 </div>
 

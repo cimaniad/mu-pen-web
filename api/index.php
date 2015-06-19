@@ -38,7 +38,7 @@ try {
     }
 
     $response = $function($params);  //passa o que a função chamada retornar para a variavel resultado
-    // passa para o formato JSon o que a função pedida retorna 
+    // passa para o formato JSon o que a função pedida retorna
     $httpCod = $response['cod'];
     http_response_code($httpCod);
     unset($response['cod']);
@@ -52,5 +52,3 @@ try {
 
     echo json_encode($response);
 }
-
-

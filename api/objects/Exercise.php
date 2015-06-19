@@ -318,15 +318,21 @@ function getOptionById($params){
 }
 
 
+
 function editPairsExercise($params){
     $idExercise = $params['idExercise'];
     $numMatriz = $params['numMatriz'];
     $appearTime = $params['appearTime'];
     $initialTime = $params['initialTime'];
 
+    $question = $params['question'];
+    $time = $params['time'];
+    $level = $params['level'];
+
     $connection = dbConnect();
     $query = "UPDATE `Exercise` SET `numMatriz`='$numMatriz', `appearTime`='$appearTime', "
-            . "`inicialTime`='$initialTime' WHERE `idExercise`='$idExercise'";
+            . "`inicialTime`='$initialTime', `question`='$question', `time`='$time', `level`='$level' "
+            . "WHERE `idExercise`='$idExercise'";
 
     $response = array();
     $result = mysql_query($query, $connection);
@@ -344,4 +350,5 @@ function editPairsExercise($params){
     mysql_close($connection);
 
     return $response;
+
 }

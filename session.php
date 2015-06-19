@@ -35,6 +35,11 @@ if (isset($_GET['idAdmin'])) {
        }  
 }
 
+function confirmPatientOrDP(){
+    if((!isset($_SESSION['idPatient'])) && (!isset($_SESSION['idHealthProfessional']))){
+        redirect('../redirectUser.php');
+    }
+}
 
 function confirm_admin() {
     if (!isset($_SESSION['idAdmin'])) {

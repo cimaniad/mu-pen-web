@@ -16,7 +16,7 @@ include 'session.php';
             </br>
             <label> Palavra Passe: <input type="password" id="password" name="password" class="txt" required/> </label>
             <input type="button" value="Submeter" id="login" class="orange"/>
-            <p> <a href="#">Esqueceu-se da password?</p>
+            <p> <a href="recoverPassword.php">Esqueceu-se da password?</p>
         </form>     
     </div>
 </div>

@@ -1,5 +1,5 @@
 <?php
-
+      require_once 'sendMail.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -110,17 +110,31 @@ function getPassword($params){
        $response['password'] = $fetch['password'];
        $response['error'] = FALSE;
        $response['cod'] = 200;
-
-     } else if(mysql_num_rows ($result2) === 1){
+       $mail = $email;
+       $name = '';
+       $subject = 'Recuperar Password';
+       $message = 'A sua Password é '.$response['password'];
+       sendMail($params);
+   } else if(mysql_num_rows ($result2) === 1){
        $fetch = mysql_fetch_array($result2);
        $response['password'] = $fetch['password'];
        $response['error'] = FALSE; 
        $response['cod'] = 200;
+       $mail = $email;
+       $name = '';
+       $subject = 'Recuperar Password';
+       $message = 'A sua Password é '.$response['password'];
+       sendMail($params);       
     }else if(mysql_num_rows($result3) === 1){
        $fetch = mysql_fetch_array($result3);
        $response['password'] = $fetch['password'];
        $response['error'] = FALSE; 
-       $response['cod'] = 200; 
+       $response['cod'] = 200;
+       $mail = $email;
+       $name = '';
+       $subject = 'Recuperar Password';
+       $message = 'A sua Password é '.$response['password'];
+       sendMail($params);       
     }else {
        $response['error'] = TRUE;
        $response['msg'] = mysql_error($connection);

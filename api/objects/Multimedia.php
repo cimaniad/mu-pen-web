@@ -47,7 +47,7 @@ function addMultimedia($params) {
     $query = "Select * From Multimedia Where name='$name' and idDirectory='$idDirectory'";
     $resul = mysql_query($query, $connection);
 
-    if (mysql_num_rows($resull) === 0) {
+    if (mysql_num_rows($resul) === 0) {
         $query = "INSERT INTO `Multimedia` (`name`, `url`, `idDirectory`) VALUES ('$name', '$url', '$idDirectory')";
     } else {
         $response['cod'] = 501;
@@ -164,4 +164,46 @@ function getMultimediaByExercise($params){
 
     mysql_close($connection);
     return $response;
+}
+
+function deleteDirectory($params){
+    $idDirectory = $params['idDirectory'];
+    
+    $conn = dbConnect();
+    $query = "DELETE FROM Directory WHERE idDirectory='$idDirectory'";
+    $result = mysql_query($query, $conn);
+    $response = array();
+
+    if ($result) {
+        $response['cod'] = 200;
+        $response['error'] = FALSE;
+        $response['msg'] = "Directory successfully deleted";
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($conn);
+    }
+
+    return $response;
+}
+
+function deleteMultimedia($params){
+    $idMultimedia = $params['idMultimedia'];
+    $conn = dbConnect();
+    $query = "DELETE FROM Multimedia WHERE idMultimedia='$idMultimedia'";
+    $result = mysql_query($query, $conn);
+    $response = array();
+
+    if ($result) {
+        $response['cod'] = 200;
+        $response['error'] = FALSE;
+        $response['msg'] = "Directory successfully deleted";
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($conn);
+    }
+
+    return $response;    
+    
 }

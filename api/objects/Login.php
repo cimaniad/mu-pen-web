@@ -110,31 +110,28 @@ function getPassword($params){
        $response['password'] = $fetch['password'];
        $response['error'] = FALSE;
        $response['cod'] = 200;
-       $mail = $email;
        $name = '';
        $subject = 'Recuperar Password';
        $message = 'A sua Password é '.$response['password'];
-       sendMail($params);
+       sendMail($email, $name, $subject, $message);
    } else if(mysql_num_rows ($result2) === 1){
        $fetch = mysql_fetch_array($result2);
        $response['password'] = $fetch['password'];
        $response['error'] = FALSE; 
        $response['cod'] = 200;
-       $mail = $email;
        $name = '';
        $subject = 'Recuperar Password';
        $message = 'A sua Password é '.$response['password'];
-       sendMail($params);       
+       sendMail($email, $name, $subject, $message);       
     }else if(mysql_num_rows($result3) === 1){
        $fetch = mysql_fetch_array($result3);
        $response['password'] = $fetch['password'];
        $response['error'] = FALSE; 
        $response['cod'] = 200;
-       $mail = $email;
        $name = '';
        $subject = 'Recuperar Password';
        $message = 'A sua Password é '.$response['password'];
-       sendMail($params);       
+       sendMail($email, $name, $subject, $message);       
     }else {
        $response['error'] = TRUE;
        $response['msg'] = mysql_error($connection);

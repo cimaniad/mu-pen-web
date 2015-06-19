@@ -35,3 +35,20 @@ function saveResult($params){
 
     return $response;
 }
+
+function teste($params){
+    $connection = dbConnect();
+    $query = "Select * From Answer Where idAnswer='6'";
+    $result = mysql_query($query, $connection);
+    $response = array();
+    if (mysql_num_rows($result) === 1) {
+        $response = mysql_fetch_array($result);
+        $response['cod'] = 200;
+    } else {
+        $response['msg'] = "Error";
+        $response['error'] = TRUE;
+        $response['cod'] = 404;
+    }
+    mysql_close($connection);
+    return $response;
+}

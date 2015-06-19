@@ -118,3 +118,4 @@ function getLastBlock(){
   mysql_close($connection);
   return $response[0];
 }
+

@@ -10,7 +10,7 @@ if($_GET['id'] == 1){
 ?>
 <script>getPatientProfile()</script>
 <h1 style="color: #A30000;"><b> Perfil Pessoal</b></h1>
-<p><span id='normal'>Nome do Cliente:</span> <span id='nameProfile'></p><img src="../imagens/perfil.jpeg" alt="Erro" class="merp" width="125px" height="100px">
+<p><span id='normal'>Nome:</span> <span id='nameProfile'></p><img src="../imagens/perfil.jpeg" alt="Erro" class="merp" width="125px" height="100px">
 <p><span id='normal'>Data de Nascimento: </span> <span id='dataProfile'></span></p>
 <p><span id='normal'>Sexo: </span>  <span id='genderProfile'></span> </p>
 <p><span id='normal'>NIF: </span>  <span id='nifProfile'></span></p>

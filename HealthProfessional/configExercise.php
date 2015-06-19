@@ -4,11 +4,11 @@ confirmHealthProfessional();
 
 if (!isset($_GET['structure'])) {
     redirect('createExercise.php');
-}
+
 ?>
 <h1 class="help">Configurar Exercício</h1>
 <?php
-if ($_GET['structure'] == 2) {
+} else if ($_GET['structure'] == 2) {
     ?>
     <p class="config_p">Insira o tempo limite que pretende atribuir a este exercício</p>
 
@@ -148,7 +148,10 @@ if ($_GET['structure'] == 2) {
             </br>
             <?php
         }
-        if (($_GET['structure'] != 4) && ($_GET['structure'] != 5)) {
+        
+ if (!isset($_GET['structure'])) {
+    redirect('createExercise.php');
+ }else if (($_GET['structure'] != 4) && ($_GET['structure'] != 5)) {
             ?>
             <h4 class="help">Escolher Nível</h4>
             <select class="boxExerc" name="level" id="levelExercise">

@@ -42,12 +42,6 @@ function getOptions() {
                             shuffleArray(options);
                             for(var i=0; i<options.length; i++)
                             select.append(options[i]);
-                        $('input').iCheck({
-                            checkboxClass: 'icheckbox_flat',
-                            radioClass: 'iradio_flat',
-                            increaseArea: '50%' // optional
-                        });
-
 
                         $('input').iCheck({
                             checkboxClass: 'icheckbox_flat-orange',
@@ -128,6 +122,7 @@ function getOptionById() {
                 200: function (response) {
                     jsonData = response;
                     if (jsonData.correctOpt == 1) {  //checks if the choice is right, if so then send a right answer to DB 
+                        
                         saveResult(1);
                     } else {                 //else send a wrong answer to the DB
                         saveResult(0);
@@ -199,6 +194,7 @@ function getConfigs() { //get matriz size and appear time for pairs exercise
                 } else if (getUrlParameter('structure') == 2) {
                     window.location.replace("exercisesPage.php?structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') +
                             "&time=" + jsonData.time + '#');
+                    
                 }
             }
         }

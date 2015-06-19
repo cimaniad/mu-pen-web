@@ -164,10 +164,15 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
 
     <?php
 } else if ($_GET['structure'] == 2) {  // Back-N game
+    ?>
+      
+    <?php
     require_once 'exercisesHeader.php';
     ?>
     <link rel="stylesheet" href="../css/Back-N.css">
+
      <script type="text/javascript" src="../js/exercises/Back-N.js"></script>
+   <div id="dialogExercise">
     <script>getConfigs();</script>
     <div class="instructions1">
         <p class="help1"><strong>Instruções sobre o jogo!</strong></p>
@@ -183,6 +188,7 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
         <div id="panel">
             <img id="img" src="">
         </div>
+    </div>
     </div>
     </div>
 

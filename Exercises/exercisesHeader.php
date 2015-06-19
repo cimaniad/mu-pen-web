@@ -10,7 +10,6 @@ confirmPatientOrDP();
   <title>NEP-UM</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="../css/nep.css" title="style" />
-
   <script src='../js/libs/jquery/jquery.js' type='text/javascript'></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js" type="text/javascript"></script>
   <script src='../js/objectCallers/loginCaller.js' type='text/javascript'></script>
@@ -32,7 +31,7 @@ confirmPatientOrDP();
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <a href="#"><img src="../imagens/barram.png" alt="Erro" style: width=125px height=115px></a> 
+             <a href="#"><img src="../imagens/barram.png" alt="Erro" style: width=105px height=91px></a> 
 <!--          <img src="imagens/terapeutas.jpg" alt="Erro" class="derp">-->
              </div>
           

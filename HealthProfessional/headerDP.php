@@ -19,6 +19,7 @@ confirmHealthProfessional();
   <script src='../js/exercises/orderExercise.js' type='text/javascript'></script>
   <script src='../js/objectCallers/standardExerciseCaller.js' type='text/javascript'></script>
   <script src='../js/objectCallers/multimediaCaller.js' type='text/javascript'></script>
+  <script src='../js/objectCallers/dpCaller.js' type='text/javascript'></script>  
   <script src='../js/functions/functions.js' type='text/javascript'></script>
 
 </head>
@@ -29,7 +30,7 @@ confirmHealthProfessional();
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-        <a href="#"><img src="../imagens/barram.png" alt="Erro" style: width=125px height=115px></a>         
+             <a href="#"><img src="../imagens/barram.png" alt="Erro" style: width=105px height=91px></a>        
 <!--          <img src="imagens/terapeutas.jpg" alt="Erro" class="derp">-->
              </div>
           
@@ -41,7 +42,7 @@ confirmHealthProfessional();
           <div id="test"><li><a href="../HealthProfessional/headerDP.php">Home</a></li></div>
           <li><a href="#">Perfil Pessoal</a>
           <ul>
-              <li><a href="#">Consultar</a></li>
+              <li><a href="../HealthProfessional/profileDP.php">Consultar</a></li>
                <li><a href="#">Editar</a></li>
           </ul>
               </li>
@@ -55,6 +56,12 @@ confirmHealthProfessional();
                 <li><a href="../HealthProfessional/addEditSubDomain.php?id=2">Editar Sub-Dominio</a></li>
               </ul>
               </li>
+                         <li><a href="#">Relatórios</a>
+          <ul>
+              <li><a href="#">Paciente </a></li>
+               <li><a href="#">Anónimo</a></li>
+              
+          </ul>   
            <li><a href="#">Informação</a>
           <ul>
               <li><a href="#">Inserir Informação</a></li>
@@ -63,12 +70,7 @@ confirmHealthProfessional();
                <li><a href="#">Adicionar Artigo</a></li>
                <li><a href="#">Consultar Artigos</a></li>
           </ul>
-              <li><a href="#">Relatórios</a>
-          <ul>
-              <li><a href="#">Paciente </a></li>
-               <li><a href="#">Anónimo</a></li>
-              
-          </ul>
+
               <li><a href="#">Multimedia</a>
                   <ul>
                       <li><a href="../HealthProfessional/addDirectory.php">Adicionar Diretoria</a></li>

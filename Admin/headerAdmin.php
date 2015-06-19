@@ -21,7 +21,7 @@ confirm_admin();
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-            <a href="#"><img src="../imagens/barram.png" alt="Erro" style: width=125px height=115px></a> 
+             <a href="#"><img src="../imagens/barram.png" alt="Erro" style: width=105px height=91px></a> 
 <!--          <img src="imagens/terapeutas.jpg" alt="Erro" class="derp">-->
              </div>
           

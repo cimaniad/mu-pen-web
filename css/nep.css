@@ -93,7 +93,7 @@ ol li
 { }
 
 #header
-{ background: #FFFFFF;
+{
   height: 50px;}
 
 #logo
@@ -112,7 +112,7 @@ ol li
 
 #logo #logo_text 
 { position: absolute; 
-  top: 1.5em;
+  top: 2.5em;
   left: 7em;
   z-index: 1;
   
@@ -365,11 +365,11 @@ ul#menu_dp li a:hover, ul#menu_dp li.selected a, ul#menu_dp li.selected a:hover
   border-bottom: 1px solid #FFF;
   margin: 0 0 20px 0;}
   
-table
+/*table
 { margin: 10px 0 30px 0;}
 
 table tr th, table tr td
-{ background: #3B3B3B;
+{ background: #f47c20;
   color: #FFF;
   padding: 7px 4px;
   text-align: left;}
@@ -377,7 +377,7 @@ table tr th, table tr td
 table tr td
 { background: #F0EFE2;
   color: #47433F;
-  border-top: 1px solid #FFF;}
+  border-top: 1px solid #FFF;}*/
 
 
 #menu li ul {
@@ -721,6 +721,11 @@ table tr td
    font-weight: bold;
 }
 
+.notSession{
+    color: #000;
+    font-weight: bold;
+}
+
 .centro{
    text-align: center;
 }
@@ -1059,16 +1064,15 @@ a {
 
 #optionsMulti{
     border-style: solid;
+    border-color: #BBB;
     border-width: 0.3em;
     width: 12.5em;
     text-align: center;
+    box-shadow: 2px 2px 2px rgb(136, 136, 136);    
 }
 
-#radioMulti{
-   text-align: right;
-   
+#optionsMulti input[type=radio]:checked{
 }
-
 
 #dialog-form label{
    display:block;
@@ -1195,3 +1199,5 @@ fieldset {
     border-radius: 3px 3px 3px 3px;
     box-shadow: 0px 1px 3px rgb(167, 167, 167);
 }
+
+

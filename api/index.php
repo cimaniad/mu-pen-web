@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $params = $_POST;
+    $params = $_REQUEST;
 
     $object = $params['object'];
 

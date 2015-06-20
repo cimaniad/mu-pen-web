@@ -160,8 +160,7 @@ function saveResultBack(){
             data: {
                 object: 'Answer',
                 function: 'saveResult',
-//                idPatient: $('#idpatientExercises').val(),
-                idPatient: '23',
+                idPatient: $('#idpatientExercises').val(),
                 idExercise: getUrlParameter('gameChoosen'),
                 resolutionTime: getUrlParameter('time'),
                 attempts: game.succededHits + game.failedHits,

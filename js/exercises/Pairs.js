@@ -164,8 +164,7 @@ function saveResultPairs() {
             data: {
                 object: 'Answer',
                 function: 'saveResult',
-//                idPatient: $('#idpatientExercises').val(),
-                idPatient: '23',
+                idPatient: $('#idpatientExercises').val(),
                 idExercise: getUrlParameter('gameChoosen'),
                 resolutionTime: segundos,
                 attempts: rightHits + wrongHits,

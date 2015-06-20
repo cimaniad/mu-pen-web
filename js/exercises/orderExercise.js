@@ -197,6 +197,9 @@ function getConfigs() { //get matriz size and appear time for pairs exercise
                     window.location.replace("exercisesPage.php?structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') +
                             "&time=" + jsonData.time + '#');
                     
+                }else if(getUrlParameter('structure') == 1){
+                    window.location.replace("exercisesPage.php?structure="+getUrlParameter('structure')+'&gameChoosen='+getUrlParameter('gameChoosen')+
+                            '&time='+jsonData.time+'&limitNumber='+jsonData.numMatriz+'#');
                 }
             }
         }

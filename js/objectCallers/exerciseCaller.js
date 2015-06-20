@@ -149,8 +149,10 @@ $(document).ready(function () {
             matrixMemoryConfig();
         } else if (getUrlParameter('structure') == 2) { //Back-N Game
             backNConfig();
+        } else if(getUrlParameter('structure') == 1) {
+            mathConfig();
         }
-
+ 
     });
 });
 var seconds = 0;
@@ -219,8 +221,7 @@ function saveResult(correctAnswer) {
             data: {
                 object: 'Answer',
                 function: 'saveResult',
-//                idPatient: $('#idpatientExercises').val(),
-                idPatient: '23',
+                idPatient: $('#idpatientExercises').val(),
                 idExercise: getUrlParameter('gameChoosen'),
                 resolutionTime: seconds,
                 attempts: '0',
@@ -372,4 +373,37 @@ function backNConfig() {
             }
         }
     });
+}
+
+function mathConfig(){
+    if(($('#timeCreateExercise').val() == '') || ($('#limitNumber').val() == '') 
+            || ($('#timeCreateExercise').val() <= 0) || ($('#limitNumber').val() <= 0)){
+        alert('Campos não pode ser nulos ou vazios');
+        }else{
+        $.ajax({
+        type: "POST",
+        url: "http://localhost/nep-um-web/api/",
+        dataType: 'json',
+        data: {
+            object: 'Exercise',
+            function: 'editPairsExercise',
+            idExercise: getUrlParameter('idEx'),
+            numMatriz: $('#limitNumber').val(),
+            appearTime: '0',
+            initialTime: '0',
+            time: $('#timeCreateExercise').val(),
+            question: '',
+            level: $('#levelExercise').val()
+        },
+        statusCode: {
+            200: function () {
+                alert('Exercício configurado com sucesso');
+            },
+            500: function (response) {
+                console.log(response.msg);
+                alert('Erro a configurar Exercício')
+            }
+        }
+    });
+    }
 }

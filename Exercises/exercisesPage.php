@@ -56,10 +56,10 @@ if ($_GET['structure'] == 4) { //Sequence Exercises
     </div>
 
     <?php
-    
 } else
 if ($_GET['structure'] == 5) { //Multiple Choice Exercises
-    require_once 'exercisesHeader.php';    ?>
+    require_once 'exercisesHeader.php';
+    ?>
 
     <link rel="stylesheet" type="text/css" href="../js/extra/iCheck-1.x/skins/flat/orange.css" title="style" />
     <script type="text/javascript" src="../js/extra/iCheck-1.x/icheck.js"></script>
@@ -67,13 +67,13 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
         getCorrectOptionsNumber();
         getExerciseById();
     </script>
-    
+
     <div id="support"></div>
     <br/>
     <div class="instructions1">
         <p class="help1"><strong>Instruções sobre o jogo!</strong></p>
         <div id="questionResolve"></div>
-         <div id="gameTime"></div>
+        <div id="gameTime"></div>
     </div>
     <div id="gameDiv">
         <div id="imageMultExercise"></div>
@@ -114,8 +114,8 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
     require_once 'exercisesHeader.php';
     ?>
     <link rel="stylesheet" href="../css/jogo_memoria.css">
-     <script type="text/javascript" src="../js/exercises/Matriz.js"></script>
-        <script>
+    <script type="text/javascript" src="../js/exercises/Matriz.js"></script>
+    <script>
         getConfigs();
     </script>    
 
@@ -136,12 +136,12 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
         <!--              <h2 id="nMaxQuadrados">O maximo de quadrados acertados é : 0</h2>-->
     </div>
     <!--              <h2 id="nMaxQuadrados">O maximo de quadrados acertados é : 0</h2>     -->
-     <?php
-    } else if ($_GET['structure'] == 7){
-        require_once 'exercisesHeader.php';
-         ?>
-     <link rel="stylesheet" href="../css/SequenceMatrix.css">
-      <script type="text/javascript" src="../js/exercises/SequenceMatrix.js"></script>
+    <?php
+} else if ($_GET['structure'] == 7) {
+    require_once 'exercisesHeader.php';
+    ?>
+    <link rel="stylesheet" href="../css/SequenceMatrix.css">
+    <script type="text/javascript" src="../js/exercises/SequenceMatrix.js"></script>
     <script>
         getConfigs();
     </script>    
@@ -166,48 +166,73 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
     <?php
 } else if ($_GET['structure'] == 2) {  // Back-N game
     ?>
-      
+
     <?php
     require_once 'exercisesHeader.php';
     ?>
     <link rel="stylesheet" href="../css/Back-N.css">
 
-     <script type="text/javascript" src="../js/exercises/Back-N.js"></script>
-   <div id="dialogExercise">
+    <script type="text/javascript" src="../js/exercises/Back-N.js"></script>
+    <div id="dialogExercise">
+        <script>getConfigs();</script>
+        <div class="instructions1">
+            <p class="help1"><strong>Instruções sobre o jogo!</strong></p>
+            <div id="questionResolve"></div>
+        </div>
+        <div id="gameDiv">
+            <div id="window">
+                <p id="gameTime2">0 segundos</p>
+                <div id="score">
+                    <p id="succededHits"></p>
+                    <p id="failedHits"></p>
+                </div>
+                <div id="panel">
+                    <img id="img" src="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+} else if ($_GET['structure'] == 1) {
+    require_once 'exercisesHeader.php';
+    ?>
+    <link rel="stylesheet" href="../css/Math.css">
+    <script type="text/javascript" src="../js/exercises/Math.js"></script>
     <script>getConfigs();</script>
     <div class="instructions1">
         <p class="help1"><strong>Instruções sobre o jogo!</strong></p>
         <div id="questionResolve"></div>
     </div>
     <div id="gameDiv">
-    <div id="window">
-        <p id="gameTime2">0 segundos</p>
-        <div id="score">
-            <p id="succededHits"></p>
-            <p id="failedHits"></p>
-        </div>
-        <div id="panel">
-            <img id="img" src="">
-        </div>
+    <div class="container">
+    <div class="game">
+      <h1 id="time"> 30 segundos para o fim </h1>
+      <div id="question">
+        <p></p>
+        <input id="answer" placeholder="resposta">
+      </div>
+      <div id="score">
+        <h1 id="wrights"></h1>
+        <h1 id="wrongs"></h1>
+      </div>
     </div>
+  </div>
     </div>
-    </div>
-
     <?php
 }
 
 if (isset($_GET['structure']) && (($_GET['structure'] == 4) || ($_GET['structure'] == 5))) {
     ?>
-   
+
     <input type="button" value="Enviar Resposta" id="orderExerciseSubmit">
     <?php
 }
 ?>
 </div>
-<input type="hidden" value="<?=$_SESSION['idPatient']?>" id="idpatientExercises"> 
+<input type="hidden" value="<?= $_SESSION['idPatient'] ?>" id="idpatientExercises"> 
 <?php
-
 require_once '../footer.php';
-if(isset($_GET['structure'])){
-require_once '../Patient/comment.php';
+if (isset($_GET['structure'])) {
+    require_once '../Patient/comment.php';
 }

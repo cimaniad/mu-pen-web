@@ -128,7 +128,7 @@ function decrementarSegundos() {
       clearInterval(gameTime);
       $("#gameTime2").html(0 + " segundos");
       jogar = false;
-    //  saveResultMatrix();
+      saveResultMatrix();
     }else{
       $("#gameTime2").html((time + 2 ) + " segundos");
     }
@@ -145,8 +145,7 @@ function saveResultMatrix(){
             data: {
                 object: 'Answer',
                 function: 'saveResult',
-//                idPatient: $('#idpatientExercises').val(),
-                idPatient: '23',
+                idPatient: $('#idpatientExercises').val(),
                 idExercise: getUrlParameter('gameChoosen'),
                 resolutionTime: getUrlParameter('time'),
                 attempts: rightHits + wrongHits,

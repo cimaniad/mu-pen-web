@@ -6,12 +6,30 @@ if (!isset($_GET['structure'])) {
     redirect('createExercise.php');
 
 ?>
-<h1 class="help">Configurar Exercício</h1>
+
 <?php
+
+}
+?>
+    <h1 class="help">Configurar Exercício</h1>
+    <?php
+    if($_GET['structure'] == 1){
+    ?>
+    <p class="config_p">Insira o tempo de jogo e até que número os cálculos podem chegar, 
+        exemplo se inserir 10 a soma ou subtração dos cálculos só poderá chegar a esse valor.</p>
+    <h4 class="help">Tempo Limite</h4>
+    <input type="number" name="time" class="caixa_exerc" id="timeCreateExercise" placeholder="Insira tempo(segundos)">
+    </br>
+    </br>    
+    <h4 class="help">Número Limite</h4>
+    <input type="number" class="caixa_exerc" id="limitNumber" placeholder="Insira um Número">
+    </br>
+    </br>    
+    
+ <?php
 } else if ($_GET['structure'] == 2) {
     ?>
     <p class="config_p">Insira o tempo limite que pretende atribuir a este exercício</p>
-
 
     </br>
     <h4 class="help">Tempo Limite</h4>

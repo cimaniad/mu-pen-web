@@ -96,6 +96,7 @@ $(document).ready(function () {
             } else {                        //else save the result has a wrong answer
                 saveResult(0);
             }
+              clearInterval(tempoJogo);
         } else if (getUrlParameter('structure') == 5) { //if we have a multiple choice structure
             getOptionById();            //function to get the results of m.c. structure
         } else if (getUrlParameter('structure') == 6) {
@@ -127,6 +128,7 @@ function getOptionById() {
                     } else {                 //else send a wrong answer to the DB
                         saveResult(0);
                     }
+                    clearInterval(tempoJogo);
                 }
             }
         });

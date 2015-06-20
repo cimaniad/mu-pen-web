@@ -133,11 +133,12 @@ var game = {
     --this.time;
     if (this.time === 0) {
       clearInterval(this.gameTime);
-      $("#gameTime").html(0 + " segundos");
+      $("#gameTime2").html(0 + " segundos");
       this.playing = false;
+      saveResultBack();
 	  this.gameOver();
     } else {
-      $("#gameTime").html(this.time + " segundos");
+      $("#gameTime2").html(this.time + " segundos");
     }
   }
 };
@@ -148,3 +149,36 @@ $(document).ready(function() {
   game.play();
 
 });
+
+function saveResultBack(){
+       $(document).ready(function () {
+        var jsonData;
+        $.ajax({
+            type: "Post",
+            url: "http://localhost/nep-um-web/api/",
+            dataType: 'json',
+            data: {
+                object: 'Answer',
+                function: 'saveResult',
+//                idPatient: $('#idpatientExercises').val(),
+                idPatient: '23',
+                idExercise: getUrlParameter('gameChoosen'),
+                resolutionTime: getUrlParameter('time'),
+                attempts: game.succededHits + game.failedHits,
+                wrongHits: game.succededHits,
+                rightHits: game.failedHits,
+                correctAnswer: '0'
+            },
+            statusCode: {
+                201: function (response) {
+                    jsonData = response;
+                    var select = $('#dialogChange');
+                    var input = $('<input type="hidden" id="commentAnswerId" value="' + jsonData.idAnswer + '"/>');
+                    select.append(input);
+                    alert('Resultados Gravados');
+                    $('#dialog-form').dialog('open');
+                }
+            }
+        });
+    });
+}

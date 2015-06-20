@@ -58,8 +58,6 @@ if (!isset($_GET['structure'])) {
     <div class="config_exercicio">
     </div>
     <div id="chooseTime4">
-        <h4 class="help">Tempo Limite</h4> 
-        <input type="number" name="time" class="caixa_exerc" id="timeCreateExercise" placeholder="Insira tempo limite">
         </br>
         </br>
         <h4 class="help">Escolher Nível</h4>
@@ -103,8 +101,6 @@ if (!isset($_GET['structure'])) {
     </div>
     </br> </br> 
     <div id="chooseDirectory">
-        <h4 class="help">Tempo Limite</h4>
-        <input type="number" name="time" class="caixa_exerc" id="timeCreateExercise" placeholder="Inserir Tempo(segundos)">
         </br>
         </br>
         <h4 class="help">Escolher Nível</h4>

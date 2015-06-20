@@ -2,11 +2,7 @@
 
 require_once dirname(__FILE__). '/../../PHPMailer/PHPMailerAutoload.php';
 
-function sendMail($params){
-        $name = $params['name'];
-        $email = $params['email'];
-        $message = $params['message'];
-        $subject = $params['subject'];
+function sendMail($email, $name, $subject, $message){
         $image = "<center><img src='imagens/Mail.jpg' alt='some_text'></center><br />";  //logotipo
         $mail = new PHPMailer(true);   // true - Retorna excepcões
         $message = utf8_decode($message);  // para aparecer acentos

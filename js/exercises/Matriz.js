@@ -13,6 +13,8 @@ var lado = 45;
 var jogar = false;
 var numMaxQuadrados = 0;
 var gameTime = 0;
+var rightHits = 0;
+var wrongHits = 0;
 $(document).ready(function() {
 
     desenhar(numColunas, numLinhas);
@@ -57,9 +59,11 @@ function criarQuadrados(lado) {
             if ($(this).attr("escolhido") === "escolhido") {
                 $(this).addClass("escolhido");
                 $(this).attr("clicado", "clicado");
+                rightHits++;
             } else {
                 $(this).addClass("errado");
                 $(this).attr("clicado", "clicado");
+                wrongHits++;
             }
 
             var numSelecionados = $("div[clicado='clicado']").length;
@@ -74,9 +78,9 @@ function criarQuadrados(lado) {
                         numMaxQuadrados = nCorretos;
                         $("#nMaxQuadrados").text("Maior número de quadrados acertados : " + numMaxQuadrados);
                     }
-                    if (numColunas === numLinhas) {
+                    if (numColunas == numLinhas) {
                         ++numColunas;
-                    } else {
+                    } else if (numLinhas<numColunas){
                         ++numLinhas;
                     }
 
@@ -122,10 +126,45 @@ function decrementarSegundos() {
     --time;
     if(time === 0){
       clearInterval(gameTime);
-      $("#gameTime").html(0 + " segundos");
+      $("#gameTime2").html(0 + " segundos");
       jogar = false;
+    //  saveResultMatrix();
     }else{
-      $("#gameTime").html((time + 2 ) + " segundos");
+      $("#gameTime2").html((time + 2 ) + " segundos");
     }
 
+}
+
+function saveResultMatrix(){
+       $(document).ready(function () {
+        var jsonData;
+        $.ajax({
+            type: "Post",
+            url: "http://localhost/nep-um-web/api/",
+            dataType: 'json',
+            data: {
+                object: 'Answer',
+                function: 'saveResult',
+//                idPatient: $('#idpatientExercises').val(),
+                idPatient: '23',
+                idExercise: getUrlParameter('gameChoosen'),
+                resolutionTime: getUrlParameter('time'),
+                attempts: rightHits + wrongHits,
+                wrongHits: wrongHits,
+                rightHits: rightHits,
+                correctAnswer: '0',
+                numQuadrados: numMaxQuadrados
+            },
+            statusCode: {
+                201: function (response) {
+                    jsonData = response;
+                    var select = $('#dialogChange');
+                    var input = $('<input type="hidden" id="commentAnswerId" value="' + jsonData.idAnswer + '"/>');
+                    select.append(input);
+                    alert('Resultados Gravados');
+                    $('#dialog-form').dialog('open');
+                }
+            }
+        });
+    });
 }

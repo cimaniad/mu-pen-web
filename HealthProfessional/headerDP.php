@@ -74,7 +74,9 @@ confirmHealthProfessional();
               <li><a href="#">Multimedia</a>
                   <ul>
                       <li><a href="../HealthProfessional/addDirectory.php">Adicionar Diretoria</a></li>
-                      <li><a href="">Adicionar Multimédia</a></li>
+                      <li><a href="../HealthProfessional/addMultimedia.php">Adicionar Multimédia</a></li>
+                      <li><a href="../HealthProfessional/deleteDirectory.php">Eliminar Diretoria</a></li> 
+                      <li><a href="../HealthProfessional/deleteMultimedia.php">Eliminar Multimédia</a></li>                      
                   </ul>
               </li>
                     
@@ -88,7 +90,7 @@ confirmHealthProfessional();
         <form method="post" action="#" id="search_form">
             <p>
             <input class="search" type="text" name="search_field" placeholder='Pesquisar...' />
-            <input name="search" type="image" style="width: 90px; height: 10;border: 0; margin: 0 0 -9px 0px; margin-top: 5px" src="imagens/search.jpg" alt="Search" title="Search" />
+            <input name="search" type="image" style="width: 90px; height: 10;border: 0; margin: 0 0 -9px 0px; margin-top: 5px" src="../imagens/search.jpg" alt="Search" title="Search" />
           </p>
         </form>
         <br>

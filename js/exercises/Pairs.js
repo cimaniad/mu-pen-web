@@ -9,7 +9,9 @@ var cartaVirada = "";
 var imagemVirada = "";
 var segundos = 0;
 var tamanho = getUrlParameter('numMatriz');
-var tempoInicial = getUrlParameter('appearTime')*1000;
+var tempoInicial = getUrlParameter('appearTime') * 1000;
+var rightHits = 0;
+var wrongHits = 0;
 
 
 var imagensAnimais = [
@@ -26,7 +28,7 @@ var imagensAnimais = [
 ];
 
 
-$(document).ready(function() {
+$(document).ready(function () {
     while (imagensAnimais.length > tamanho) {
         imagensAnimais.pop();
     }
@@ -36,7 +38,7 @@ $(document).ready(function() {
     } else if (tamanho == 6) {
         $("#janela").css("width", "400px");
         $("#janela").css("height", "310px");
-    } 
+    }
     desenhar(imagensAnimais);
 });
 
@@ -45,7 +47,7 @@ $(document).ready(function() {
  * 
  * @returns {Array.prototype.misturarArray|Array.prototype.misturarArray.input}
  */
-Array.prototype.misturarArray = function() {
+Array.prototype.misturarArray = function () {
     var input = this;
     for (var i = input.length - 1; i > 0; i--) {
         var randomIndex = Math.floor(Math.random() * (i + 1));
@@ -63,7 +65,7 @@ function desenhar(arr) {
     for (var x = 0; x < 2; x++) {
 
         arr.misturarArray();
-        $.each(arr, function(i, val) {
+        $.each(arr, function (i, val) {
             if (i + 1 <= tamanho) {
                 $("#quadro").append("<div id=card" + x + i + "><img src=" + val + " />");
             }
@@ -71,7 +73,7 @@ function desenhar(arr) {
     }
 
     $("#quadro div img").fadeIn(500);
-    setTimeout(function() {
+    setTimeout(function () {
         $("#quadro div img").fadeOut(1000);
     }, tempoInicial);
 
@@ -102,7 +104,7 @@ function abrirCarta() {
 
             cartaVirada = id;
             imagemVirada = $(this).children().attr("src");
-            setTimeout(function() {
+            setTimeout(function () {
                 $("#quadro div").bind("click", abrirCarta);
 
             }, 300);
@@ -111,8 +113,8 @@ function abrirCarta() {
             var imagemAtual = $(this).children().attr("src");
 
             if (imagemAtual !== imagemVirada) {
-
-                setTimeout(function() {
+                wrongHits++;
+                setTimeout(function () {
 
                     $("#" + id + " img").fadeOut("fast");
                     $("#" + cartaVirada + " img").fadeOut("fast");
@@ -123,7 +125,7 @@ function abrirCarta() {
 
 
             } else {
-
+                rightHits++;
                 ++paresEncontrados;
                 imagemVirada = "";
                 cartaVirada = "";
@@ -131,20 +133,20 @@ function abrirCarta() {
 
             }
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $("#quadro div").bind("click", abrirCarta);
 
             }, 500);
 
         }
         if (tamanho == paresEncontrados) {
+             saveResultPairs();
             clearInterval(tempoJogo);
-            $("#fimJogo").html("Fim do jogo, os seus resultados são:");
+
+//            $("#fimJogo").html("Fim do jogo, os seus resultados são:");
         }
 
     }
-
-
 
 }
 function incrementarSegundos() {
@@ -152,4 +154,36 @@ function incrementarSegundos() {
     $("#tempoJogo").html(segundos + " segundos");
 }
 
+function saveResultPairs() {
+    $(document).ready(function () {
+        var jsonData;
+        $.ajax({
+            type: "Post",
+            url: "http://localhost/nep-um-web/api/",
+            dataType: 'json',
+            data: {
+                object: 'Answer',
+                function: 'saveResult',
+//                idPatient: $('#idpatientExercises').val(),
+                idPatient: '23',
+                idExercise: getUrlParameter('gameChoosen'),
+                resolutionTime: segundos,
+                attempts: rightHits + wrongHits,
+                wrongHits: wrongHits,
+                rightHits: rightHits,
+                correctAnswer: '0'
+            },
+            statusCode: {
+                201: function (response) {
+                    jsonData = response;
+                    var select = $('#dialogChange');
+                    var input = $('<input type="hidden" id="commentAnswerId" value="' + jsonData.idAnswer + '"/>');
+                    select.append(input);
+                    alert('Resultados Gravados');
+                    $('#dialog-form').dialog('open');
+                }
+            }
+        });
+    });
+}
  

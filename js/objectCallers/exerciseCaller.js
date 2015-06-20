@@ -153,7 +153,7 @@ $(document).ready(function () {
 
     });
 });
-
+var seconds = 0;
 //get an exercise by ID
 function getExerciseById() {
     $(document).ready(function () {
@@ -174,6 +174,10 @@ function getExerciseById() {
                     getMultimediaByExercise();
                     var select = $('#questionResolve');
                     select.append('<p>' + jsonData.question + '</p>');
+                    tempoJogo = setInterval(function(){
+                            ++seconds;
+                            $("#gameTime").html(seconds + " segundos");
+                    }, 1000);
                 }
             }
         });
@@ -215,11 +219,11 @@ function saveResult(correctAnswer) {
             data: {
                 object: 'Answer',
                 function: 'saveResult',
-                idPatient: '23',
 //                idPatient: $('#idpatientExercises').val(),
+                idPatient: '23',
                 idExercise: getUrlParameter('gameChoosen'),
-                resolutionTime: '0',
-                attempts: '1',
+                resolutionTime: seconds,
+                attempts: '0',
                 wrongHits: '0',
                 rightHits: '0',
                 correctAnswer: correctAnswer
@@ -275,7 +279,7 @@ function pairsExercise() {
             numMatriz: $('#pairsImages').val(),
             appearTime: $('#pairsInitialTime').val(),
             initialTime: '0',
-            time: $('#timeCreateExercise').val(),
+            time: '0',
             question: '',
             level: $('#levelExercise').val()
         },
@@ -329,7 +333,7 @@ function multipleChoiceConfig() {
             numMatriz: '0',
             appearTime: '0',
             initialTime: '0',
-            time: $('#timeCreateExercise').val(),
+            time: '0',
             question: $('#questionExercise').val(),
             level: $('#levelExercise').val()
         },

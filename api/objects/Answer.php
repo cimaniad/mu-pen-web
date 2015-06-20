@@ -10,13 +10,14 @@ function saveResult($params){
     $wrongHits = $params['wrongHits'];
     $rightHits = $params['rightHits'];
     $correctAnswer = $params['correctAnswer'];
-    
+    $numQuadrados = $params['numQuadrados'];
+     
     $connection = dbConnect();
     $response = array();
     
     $query = "INSERT INTO `Answer` "
-            . "(`idPatient`, `idExercise`, `resolutionTime`, `attempts`, `wrongHits`, `rightHits`, `correctAnswer`) "
-            . "VALUES ('$idPatient', '$idExercise', '$resolutionTime', '$attempts', '$wrongHits', '$rightHits', '$correctAnswer')";
+            . "(`idPatient`, `idExercise`, `resolutionTime`, `attempts`, `wrongHits`, `rightHits`, `correctAnswer`, `numQuadrados`) "
+            . "VALUES ('$idPatient', '$idExercise', '$resolutionTime', '$attempts', '$wrongHits', '$rightHits', '$correctAnswer', '$numQuadrados')";
     
     $result = mysql_query($query, $connection);
     

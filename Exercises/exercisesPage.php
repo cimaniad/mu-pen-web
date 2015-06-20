@@ -52,14 +52,14 @@ if ($_GET['structure'] == 4) { //Sequence Exercises
             <ul id="teste-list">
             </ul>
         </div>
+        <div id="gameTime"></div>
     </div>
 
     <?php
     
 } else
 if ($_GET['structure'] == 5) { //Multiple Choice Exercises
-    require_once 'exercisesHeader.php';
-    ?>
+    require_once 'exercisesHeader.php';    ?>
 
     <link rel="stylesheet" type="text/css" href="../js/extra/iCheck-1.x/skins/flat/orange.css" title="style" />
     <script type="text/javascript" src="../js/extra/iCheck-1.x/icheck.js"></script>
@@ -73,12 +73,13 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
     <div class="instructions1">
         <p class="help1"><strong>Instruções sobre o jogo!</strong></p>
         <div id="questionResolve"></div>
+         <div id="gameTime"></div>
     </div>
     <div id="gameDiv">
         <div id="imageMultExercise"></div>
         <div class='estrutura_em'></div>
+        <div id="gameTime"></div>
     </div>
-
     <?php
 } else if ($_GET['structure'] == 6) {  //Pairs Exercises
     require_once 'exercisesHeader.php';
@@ -131,7 +132,7 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
         <div id="janela">
             <div class="quadro"></div>
         </div>
-        <p id="gameTime">0 segundos</p>
+        <p id="gameTime2">0 segundos</p>
         <!--              <h2 id="nMaxQuadrados">O maximo de quadrados acertados é : 0</h2>-->
     </div>
     <!--              <h2 id="nMaxQuadrados">O maximo de quadrados acertados é : 0</h2>     -->
@@ -180,7 +181,7 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
     </div>
     <div id="gameDiv">
     <div id="window">
-        <p id="gameTime">0 segundos</p>
+        <p id="gameTime2">0 segundos</p>
         <div id="score">
             <p id="succededHits"></p>
             <p id="failedHits"></p>

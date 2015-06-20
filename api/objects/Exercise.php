@@ -352,3 +352,26 @@ function editPairsExercise($params){
     return $response;
 
 }
+
+function getExerciseImages($params){
+    $idExercise = $params['idExercise'];
+
+    $connection = dbConnect();
+
+    $query = "Select * From Multimedia Where idMultimedia in "
+            . "(Select idMultimedia From ExerciseMultimedia Where idExercise='$idExercise')";
+    $result = mysql_query($query, $connection);
+    $response = array();
+
+    if(mysql_num_rows($result) === 1){
+        $response = mysql_fetch_array($result);
+        $response['cod'] = 200;
+        }else {
+           $response['cod'] = 404;
+           $response['error'] = TRUE;
+           $response['msg'] = mysql_error($connection);;
+        }
+
+    mysql_close($connection);
+    return $response;
+}

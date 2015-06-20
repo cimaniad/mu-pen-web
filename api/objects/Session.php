@@ -31,7 +31,7 @@ function saveSession($params){
 function getSessionPatient($params){
   $idPatient = $params['idPatient'];
   $connection = dbConnect();
-  $query = "SELECT b.name, s.idSession, s.deadline FROM Block b, Session s "
+  $query = "SELECT b.name, s.idSession, s.deadLine FROM Block b, Session s "
           . "WHERE s.idPatient='$idPatient' and s.idBlock = b.idBlock;";
   $result = mysql_query($query, $connection);
   if ($result) {

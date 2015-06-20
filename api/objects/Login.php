@@ -1,5 +1,5 @@
 <?php
-
+  //    require_once 'sendMail.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -71,7 +71,7 @@ function validateLogin($params) {
             $response['idHealthProfessional'] = $idHealthProfessional;
             $response['name'] = $name;
             $response['email'] = $email;
-            $response['developmentProfessional'] = $developmentProfessional;  
+            $response['developmentProfessional'] = $developmentProfessional;
             $response['cod'] = 200;
         } else {
             $response['msg'] = "validation fail";
@@ -94,39 +94,50 @@ function validateLogin($params) {
 function getPassword($params){
     $email = $params['email'];
     $numCc = $params['numCc'];
-    
+
     $connection = dbConnect();
     $response = array();
-    
+
     $query1 = "Select password From Admin Where email = '$email' and numCc = '$numCc'";
     $result1 = mysql_query($query1, $connection) or die(mysql_error());
     $query2 = "Select password From HealthProfessional Where email = '$email' and numCc = '$numCc'";
     $result2 = mysql_query($query2, $connection) or die(mysql_error());
     $query3 = "Select password From Patient Where email = '$email' and numCc = '$numCc'";
     $result3 = mysql_query($query3, $connection) or die(mysql_error());
-    
+
     if(mysql_num_rows($result1) === 1){
        $fetch = mysql_fetch_array($result1);
        $response['password'] = $fetch['password'];
        $response['error'] = FALSE;
        $response['cod'] = 200;
-
-     } else if(mysql_num_rows ($result2) === 1){
+       $name = '';
+       $subject = 'Recuperar Password';
+       $message = 'A sua Password é '.$response['password'];
+       sendMail($email, $name, $subject, $message);
+   } else if(mysql_num_rows ($result2) === 1){
        $fetch = mysql_fetch_array($result2);
        $response['password'] = $fetch['password'];
-       $response['error'] = FALSE; 
+       $response['error'] = FALSE;
        $response['cod'] = 200;
+       $name = '';
+       $subject = 'Recuperar Password';
+       $message = 'A sua Password é '.$response['password'];
+       sendMail($email, $name, $subject, $message);
     }else if(mysql_num_rows($result3) === 1){
        $fetch = mysql_fetch_array($result3);
        $response['password'] = $fetch['password'];
-       $response['error'] = FALSE; 
-       $response['cod'] = 200; 
+       $response['error'] = FALSE;
+       $response['cod'] = 200;
+       $name = '';
+       $subject = 'Recuperar Password';
+       $message = 'A sua Password é '.$response['password'];
+       sendMail($email, $name, $subject, $message);
     }else {
        $response['error'] = TRUE;
        $response['msg'] = mysql_error($connection);
        $response['cod'] = 404;
     }
-    
+
     mysql_close($connection);
     return $response;
 }

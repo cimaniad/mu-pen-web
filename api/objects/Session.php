@@ -10,13 +10,13 @@ function saveSession($params){
   $deadLine = $params['deadLine'];
 
   $connection = dbConnect();
-  $query = "INSERT INTO Session (idPatient, idHealthProfessional, idBlock, deadLine) VALUES($idPatient, $idHealthProfessional, $idBlock, $deadLine)";
+  $query = "INSERT INTO `Session`(`idPatient`, `idHealthProfessional`, `idBlock`, `deadLine`) VALUES('$idPatient', '$idHealthProfessional', '$idBlock', '$deadLine')";
   $result = mysql_query($query, $connection);
 
    if ($result) {
       $response['cod'] = 201;
       $response['error'] = FALSE;
-      $response['msg'] = 'Session created with success';
+      $response['msg'] = mysql_insert_id();
   } else {
       $response['cod'] = 500;
       $response['error'] = TRUE;

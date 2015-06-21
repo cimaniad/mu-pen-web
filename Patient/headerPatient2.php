@@ -15,7 +15,8 @@ confirmPatient();
   <script src='../js/functions/functions.js' type='text/javascript'></script>
   <script src='../js/objectCallers/loginCaller.js' type='text/javascript'></script>
   <script src='../js/objectCallers/appointmentsCaller.js' type='text/javascript'></script>
-  <script src="../js/objectCallers/commentsCaller.js" type="text/javascript"></script>
+  <script src='../js/objectCallers/notificationCaller.js' type='text/javascript'></script>  
+<!--  <script src="../js/objectCallers/commentsCaller.js" type="text/javascript"></script>-->
 
 </head>
    <body>
@@ -40,28 +41,28 @@ confirmPatient();
                <li><a href="profile.php?id=2">Editar</a></li>
           </ul>
               </li>
-              <li><a href="#">Consultas</a>
+              <li><a href="#">Consultas<span id="consMaybe"></span></a>
               <ul>
                   <li><a href='scheduleAppointment.php'>Marcar Consulta</a></li>
-               <li><a href="agenda.php">Visualizar Consultas</a></li>
+               <li><a href="agenda.php">Visualizar Consultas<span id="helloMaybe"></span></a></li>
           </ul>
               </li>
-         
+              <li><a href="../Patient/sessions.php">Sessões<span id="notMaybe"></span></a></li>   
            <li><a href="#">Informação</a>
           <ul>
               <li><a href="#">Artigos </a></li>
                <li><a href="#">Informação Institucional</a></li>
                  <li><a href="#">Fale Connosco</a></li>
           </ul>
-              
-              <li><a href="#">Notificações</a></li>
+             
           
         
            <li><a href="../login.php?logout=1" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
         </ul>
       </div>
     </div>
-    <div id="site_content">
+    <div id="site_content2">
+    <input type="hidden" value="<?=$_SESSION['idPatient']?>" id="idPatientHeader">          
 <!--      <div class="sidebar">
          insert your sidebar items here 
         <h3><strong>Procurar:</strong></h3>

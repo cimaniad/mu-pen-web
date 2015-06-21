@@ -32,6 +32,8 @@ confirmPatient();
  <?php
  }
  ?>
+  <input type="hidden" id="idPatientName" value="<?=$_SESSION['name']?>">
+  <input type="hidden" id="idPatientLastName" value="<?=$_SESSION['lastName']?>">
   <h1 class="help"><b> Marcar Consulta</b></h1>
 </br>
     </br>

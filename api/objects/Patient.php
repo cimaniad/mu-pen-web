@@ -5,7 +5,7 @@ require_once dirname(__FILE__) . '/../db/DbConn.php';
 function getPatientById($params) {
     $id = $params['idPatient'];
     $connection = dbConnect();
-    $query = "Select * From Patient Where idPatient='$id'";
+    $query = "Select p.idPatient, p.idHealthProfessional, p.email, p.password, p.name, p.lastName, p.numCC ,p.numTel, p.birthDate, p.gender, p.pathology, p.nationality, p.adress, p.nif, p.maritalStatus, p.bloodGroup, p.description, p.picture, hp.name as hpName  From Patient p, HealthProfessional hp Where idPatient=$id and p.idHealthProfessional=hp.idHealthProfessional";
     $result = mysql_query($query, $connection);
     $response = array();
     if (mysql_num_rows($result) === 1) {
@@ -20,9 +20,6 @@ function getPatientById($params) {
     return $response;
 }
 
-function getPatient($params){
-
-}
 
 function getPatientsByHealthProfessional($params) {
     $id = $params['idHealthProfessional'];

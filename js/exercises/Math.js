@@ -177,7 +177,8 @@ function saveResultMath(){
                 attempts: rights + wrongs,
                 wrongHits: wrongs,
                 rightHits: rights,
-                correctAnswer: '0'
+                correctAnswer: '0',
+                idSession: getUrlParameter('id')
             },
             statusCode: {
                 201: function (response) {

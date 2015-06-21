@@ -24,6 +24,7 @@ $(document).ready(function () {
                              healthProfessional: jsonData.healthProfessional,
                              idHealthProfessional: jsonData.idHealthProfessional,
                              name:jsonData.name,
+                             lastName: jsonData.lastName,
                              developmentProfessional: jsonData.developmentProfessional
                     },
                     function(){

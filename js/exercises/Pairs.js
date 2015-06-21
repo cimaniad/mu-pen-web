@@ -170,7 +170,8 @@ function saveResultPairs() {
                 attempts: rightHits + wrongHits,
                 wrongHits: wrongHits,
                 rightHits: rightHits,
-                correctAnswer: '0'
+                correctAnswer: '0',
+                idSession: getUrlParameter('id')
             },
             statusCode: {
                 201: function (response) {

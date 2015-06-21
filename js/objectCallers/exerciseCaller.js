@@ -98,7 +98,7 @@ $(document).ready(function () {
                             url: "http://localhost/nep-um-web/api/",
                             dataType: 'json',
                             data: {
-                                object: 'Exercise',
+                                object: 'Option',
                                 function: 'saveEditOption',
                                 idOption: '0',
                                 idExercise: getUrlParameter('idEx'),
@@ -132,7 +132,7 @@ $(document).ready(function () {
                             url: "http://localhost/nep-um-web/api/",
                             dataType: 'json',
                             data: {
-                                object: 'Exercise',
+                                object: 'Option',
                                 function: 'saveEditOption',
                                 idOption: '0',
                                 idExercise: getUrlParameter('idEx'),
@@ -195,7 +195,7 @@ function getOptionsNumber() {
             url: "http://localhost/nep-um-web/api/",
             dataType: 'json',
             data: {
-                object: 'Exercise',
+                object: 'Option',
                 function: 'countOptions',
                 idExercise: getUrlParameter('gameChoosen')
             },
@@ -227,7 +227,8 @@ function saveResult(correctAnswer) {
                 attempts: '0',
                 wrongHits: '0',
                 rightHits: '0',
-                correctAnswer: correctAnswer
+                correctAnswer: correctAnswer,
+                idSession: getUrlParameter('id')
             },
             statusCode: {
                 201: function (response) {
@@ -251,7 +252,7 @@ function getCorrectOptionsNumber() {
             url: "http://localhost/nep-um-web/api/",
             dataType: 'json',
             data: {
-                object: 'Exercise',
+                object: 'Option',
                 function: 'countCorrectOptions',
                 idExercise: getUrlParameter('gameChoosen')
             },

@@ -9,13 +9,14 @@ function saveComment($params){
     $connection = dbConnect();
     $response = array();
     
-    $query = "INSERT INTO `Comments` (`idAnswer`, `comment`) VALUES ('$idAnswer', '$comment')";
+    $query = "INSERT INTO `Comment` (`idAnswer`, `comment`) VALUES ('$idAnswer', '$comment')";
     $result = mysql_query($query, $connection);
     
     if ($result) {
         $response['cod'] = 201;
         $response['error'] = FALSE;
         $response['msg'] = 'Comment created with success';
+        $response['idComment'] = mysql_insert_id();
     } else {
         $response['cod'] = 500;
         $response['error'] = TRUE;

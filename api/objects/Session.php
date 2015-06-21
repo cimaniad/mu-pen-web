@@ -7,23 +7,19 @@ function saveSession($params){
   $idHealthProfessional = $params['idHealthProfessional'];
   $idBlock = $params['idBlock'];
   $deadLine = $params['deadLine'];
-
   $connection = dbConnect();
-  $query = "INSERT INTO Session (idPatient, idHealthProfessional, idBlock, deadLine) VALUES($idPatient, $idHealthProfessional, $idBlock, $deadLine)";
+  $query = "INSERT INTO `Session`(`idPatient`, `idHealthProfessional`, `idBlock`, `deadLine`) VALUES('$idPatient', '$idHealthProfessional', '$idBlock', '$deadLine')";
   $result = mysql_query($query, $connection);
-
    if ($result) {
       $response['cod'] = 201;
       $response['error'] = FALSE;
-      $response['msg'] = 'Session created with success';
+      $response['msg'] = mysql_insert_id();
   } else {
       $response['cod'] = 500;
       $response['error'] = TRUE;
       $response['msg'] = mysql_error($connection);
   }
-
   mysql_close($connection);
-
   return $response;
 }
 
@@ -51,10 +47,10 @@ function getExercisesBySession($params){
     $idSession = $params['idSession'];
     $connection = dbConnect();
     $query = "Select e.idExercise, e.idStandardExercise, se.name as stdName,
-        e.name as eName, se.picture From Exercise e, StandardExercise se Where e.idStandardExercise=se.idStandardExercise and e.idExercise in 
+        e.name as eName, se.picture, ae.numTimes From Exercise e, StandardExercise se, AssignExercise ae Where e.idStandardExercise=se.idStandardExercise and ae.idExercise=e.idExercise and e.idExercise in 
         (Select idExercise From AssignExercise Where idBlock in 
         (Select idBlock From Block Where idBlock in 
-        (Select idBlock From Session Where idSession ='$idSession')))";
+        (Select idBlock From Session Where idSession ='$idSession'))) group by e.idExercise;";
     $result = mysql_query($query, $connection);
       if ($result) {
       while ($exercises = mysql_fetch_array($result)) {

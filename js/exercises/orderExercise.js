@@ -7,7 +7,7 @@ function getOptions() {
             url: "http://localhost/nep-um-web/api/",
             dataType: 'json',
             data: {
-                object: 'Exercise',
+                object: 'Option',
                 function: 'getOptionsbyExercise',
                 idExercise: getUrlParameter('gameChoosen')
             },
@@ -75,7 +75,7 @@ $(document).ready(function () {
                     dataType: 'json',
                     async: false,
                     data: {
-                        object: 'Exercise',
+                        object: 'Option',
                         function: 'correctOrderExercise',
                         idExercise: getUrlParameter('gameChoosen')
                     },
@@ -115,7 +115,7 @@ function getOptionById() {
             url: "http://localhost/nep-um-web/api/",
             dataType: 'json',
             data: {
-                object: 'Exercise',
+                object: 'Option',
                 function: 'getOptionById',
                 idOption: $('#optionsMulti input[name=choose]:checked').val()
             },
@@ -188,17 +188,17 @@ function getConfigs() { //get matriz size and appear time for pairs exercise
                 var input = $('<p>' + jsonData.question + '</p>');
                 select.append(input);
                 if (getUrlParameter('structure') == 6) {
-                    window.location.replace("exercisesPage.php?structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') +
+                    window.location.replace("exercisesPage.php?id="+getUrlParameter('id')+"&structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') +
                             "&numMatriz=" + jsonData.numMatriz + "&appearTime=" + jsonData.appearTime + '#');
                 } else if ((getUrlParameter('structure')) == 3 || (getUrlParameter('structure')) == 7) {
-                    window.location.replace("exercisesPage.php?structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') +
+                    window.location.replace("exercisesPage.php?id="+getUrlParameter('id')+"&structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') +
                             "&col=" + jsonData.numMatriz + '&appearTime=' + jsonData.appearTime + '&time=' + jsonData.time + '#');
                 } else if (getUrlParameter('structure') == 2) {
-                    window.location.replace("exercisesPage.php?structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') +
+                    window.location.replace("exercisesPage.php?id="+getUrlParameter('id')+"&structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') +
                             "&time=" + jsonData.time + '#');
                     
                 }else if(getUrlParameter('structure') == 1){
-                    window.location.replace("exercisesPage.php?structure="+getUrlParameter('structure')+'&gameChoosen='+getUrlParameter('gameChoosen')+
+                    window.location.replace("exercisesPage.php?id="+getUrlParameter('id')+"&structure="+getUrlParameter('structure')+'&gameChoosen='+getUrlParameter('gameChoosen')+
                             '&time='+jsonData.time+'&limitNumber='+jsonData.numMatriz+'#');
                 }
             }

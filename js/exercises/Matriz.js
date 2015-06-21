@@ -152,7 +152,8 @@ function saveResultMatrix(){
                 wrongHits: wrongHits,
                 rightHits: rightHits,
                 correctAnswer: '0',
-                numQuadrados: numMaxQuadrados
+                numQuadrados: numMaxQuadrados,
+                idSession: getUrlParameter('id')
             },
             statusCode: {
                 201: function (response) {

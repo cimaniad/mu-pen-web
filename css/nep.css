@@ -226,6 +226,15 @@ ul#menu_dp li a:hover, ul#menu_dp li.selected a, ul#menu_dp li.selected a:hover
   padding: 20px 24px 20px 37px;
   background: #FFF }
 
+#site_content2{
+  width: 837px;
+  height: 40em;
+  overflow: hidden;
+  margin: 0 auto 0 auto;
+  padding: 20px 24px 20px 37px;
+  background: #FFF  
+}
+
 .sidebar
 { float: right;
   width: 190px;
@@ -1201,4 +1210,20 @@ fieldset {
     box-shadow: 0px 1px 3px rgb(167, 167, 167);
 }
 
+#notMaybe{
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+}
 
+#consMaybe{
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#helloMaybe{
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+}

@@ -51,7 +51,7 @@
       </div>
     </div>
     <div id="site_content">
-      <div class="sidebar">
+<!--      <div class="sidebar">
         <h3><strong>Procurar:</strong></h3>
         <form method="post" action="#" id="search_form">
             <p>
@@ -73,7 +73,7 @@
         <img style="margin-top: 20px; width: 200px; height: 70px" src="imagens/qren.jpg">
         <img style="margin-top: 25px; width: 225px; height: 50px" src="imagens/fct.png">
         <img style="margin-top: 25px; width: 150px; height: 80px" src="imagens/compete.png">
-      </div>
+      </div>-->
         
         
     

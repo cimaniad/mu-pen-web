@@ -16,6 +16,8 @@ if(!isset($_GET['id'])){
         <input type="hidden" id="idAppointmentConfig" value="<?=$_GET['id']?>">
         <input type="hidden" id="idPatientConfig">
         <input type="hidden" id="healthProfessionalApprovalConfig">
+        <input type="hidden" id="idPatientName" value="<?=$_SESSION['name']?>">
+        <input type="hidden" id="idPatientLastName" value="<?=$_SESSION['lastName']?>">        
         <b>Data: </b><span id="dateConfig"></span></br>
         </br>
         <b class="hora">Hora: </b><span id='hourConfig'></span>

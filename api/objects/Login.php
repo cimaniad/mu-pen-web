@@ -24,6 +24,7 @@ function validateLogin($params) {
         $dbPass = $fetch['password'];
         $idAdmin = $fetch['idAdmin'];
         $name = $fetch['name'];
+        $lastName = $fetch['lastName'];
         $email = $fetch['email'];
         if ($dbPass == $pass) {
             $response['msg'] = "validation success";
@@ -31,6 +32,7 @@ function validateLogin($params) {
             $response['idAdmin'] = $idAdmin;
             $response['name'] = $name;
             $response['email'] = $email;
+            $response['lastName'] = $lastName;            
             $response['cod'] = 200;
         } else {
             $response['msg'] = "validation fail";
@@ -42,6 +44,7 @@ function validateLogin($params) {
          $dbPass = $fetch['password'];
          $idPatient = $fetch['idPatient'];
          $name = $fetch['name'];
+         $lastName = $fetch['lastName'];
          $email = $fetch['email'];
          $healthProfessional = $fetch['idHealthProfessional'];
          if ($dbPass == $pass) {
@@ -50,6 +53,7 @@ function validateLogin($params) {
             $response['idPatient'] = $idPatient;
             $response['name'] = $name;
             $response['email'] = $email;
+            $response['lastName'] = $lastName;            
             $response['healthProfessional'] = $healthProfessional;
             $response['cod'] = 200;
         } else {
@@ -64,6 +68,7 @@ function validateLogin($params) {
        $idHealthProfessional = $fetch['idHealthProfessional'];
        $name = $fetch['name'];
        $email = $fetch['email'];
+       $lastName = $fetch['lastName'];       
       $developmentProfessional = $fetch['developmentProfessional'];
          if ($dbPass == $pass) {
             $response['msg'] = "validation success";
@@ -71,6 +76,7 @@ function validateLogin($params) {
             $response['idHealthProfessional'] = $idHealthProfessional;
             $response['name'] = $name;
             $response['email'] = $email;
+            $response['lastName'] = $lastName;
             $response['developmentProfessional'] = $developmentProfessional;  
             $response['cod'] = 200;
         } else {

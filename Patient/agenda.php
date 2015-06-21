@@ -8,8 +8,8 @@ confirmPatient();
 <script src='../js/extra/fullcalendar-2.3.1/lib/moment.min.js'></script>
 <script src='../js/extra/fullcalendar-2.3.1/fullcalendar.js'></script>
 <script src='../js/extra/fullcalendar-2.3.1/lang/pt.js'></script>
-
-
+<script>getNotification();</script>
+<input type="hidden" id="idPatientNot" value="<?= $_SESSION['idPatient'] ?>">
 
 <script>appointmentsPatient();</script>
 <h1 class="help">Agenda</h1>
@@ -20,7 +20,7 @@ confirmPatient();
 <input type="hidden" id="agendaIdPatient" value="<?=$_SESSION['idPatient']?>"/>
 <div id='calendar'></div>
 </div>
-</div>
+
 <?php
 include '../footer.php';
 ?>

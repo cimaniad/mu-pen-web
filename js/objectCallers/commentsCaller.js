@@ -46,6 +46,7 @@
       valid = valid && checkRegexp( comment, /^[a-z]([0-9a-z_\s])+$/i, "Comentário deve conter de a-z, 0-9, underscores, espaços e precisa de começar com uma letra" );
  
       if ( valid ) {
+          var jsonData;
           $.ajax({
             type: "POST",
             url: "http://localhost/nep-um-web/api/",
@@ -58,8 +59,14 @@
               comment: $('#commentText').val()
             },
             statusCode: {
-                201: function(){
+                201: function(response){
+                    jsonData = response;
                     alert('Comentário adicionado com sucesso');
+                    var idPatient = $('#idPatientComment').val(); 
+                    var hp = $('#hpPatientComment').val();
+                    var name = $('#idPatientName').val();
+                    var lastName = $('#idPatientLastName').val();
+                    addNotificationComment(jsonData.idComment,idPatient, hp, name, lastName);
                 },
                 500: function(){
                     alert('Erro a adicionar o comentário');

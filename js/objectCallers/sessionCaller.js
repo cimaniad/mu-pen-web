@@ -1,4 +1,4 @@
-
+ var data = [];  
 $(document).ready(function () {
     var jsonData;
     $.ajax({
@@ -17,6 +17,8 @@ $(document).ready(function () {
                  $.each(jsonData, function (index, o) {
                  getExercisesBySession(o.idSession, o.name, o.deadline);
              });
+           
+              tabela();
             },
             500: function () {
                 console.error('BD Error');
@@ -32,6 +34,7 @@ function getExercisesBySession(Session, name, deadline){
         type: "POST",
         url: "http://localhost/nep-um-web/api/",
         dataType: 'json',
+        async:false,
         data: {
             object: 'Session',
             function: 'getExercisesBySession',
@@ -40,7 +43,11 @@ function getExercisesBySession(Session, name, deadline){
         statusCode: {
             200: function (response) {
                  jsonData = response;
-                 tabela(jsonData, name, deadline);
+                 $.each(jsonData, function(index,o){
+                 countAnswers(Session, o, name, deadline);
+               
+                });
+               
             },
             404: function () {
                 console.error('BD Error');
@@ -49,39 +56,13 @@ function getExercisesBySession(Session, name, deadline){
     });   
  }
  
-//function getBlockBySession(session){
-//     var jsonData;
-//     $.ajax({
-//        type: "POST",
-//        url: "http://localhost/nep-um-web/api/",
-//        dataType: 'json',
-//        data: {
-//            object: 'Block',
-//            function: 'getBlockBySession',
-//            idSession: session
-//        },
-//        statusCode: {
-//            200: function (response) {
-//                 jsonData = response;
-//                 var select = $('#supportThings');
-//                 var input = $('<input type="hidden" value="'+jsonData.name+'" id="nameBlock"/>');
-//                 select.append(input);
-//            },
-//            404: function () {
-//                console.error('BD Error');
-//            }
-//        }
-//    });    
-// }
- 
-   var data = [];  
-   function tabela(data2, name, deadline){
-   $.each(data2, function(index,o){
-         data.push({'session':name, 'name':'<a href="../Exercises/exercisesPage.php?gameChoosen='+o.idExercise+'&structure='+o.idStandardExercise+'">'+o.eName+'</a>', 
-             'structure': o.stdName, 'image':'<img src="'+o.picture+'" style: width=100px height=75px></img>', 'deadline': deadline});    
-            });
+
+   function tabela(){
+//   $.each(data2, function(index,o){
+//         data.push({'session':name, 'name':'<a href="../Exercises/exercisesPage.php?id='+Session+'&gameChoosen='+o.idExercise+'&structure='+o.idStandardExercise+'">'+o.eName+'</a>', 
+//             'structure': o.stdName, 'image':'<img src="'+o.picture+'" style: width=100px height=75px></img>', 'deadline': deadline});    
+//            });
            $('#dg').datagrid({
-                
                 columns:[[
                 {field:'session',width:80, hidden:true},
                 {field:'name', title:'Nome Exercício',width:60},
@@ -101,4 +82,33 @@ function getExercisesBySession(Session, name, deadline){
                 }
             
            });
-       }
+}
+
+function countAnswers(session, o, name, deadline){
+    var jsonData2;
+     $.ajax({
+        async:false,
+        type: "POST",
+        url: "http://localhost/nep-um-web/api/",
+        dataType: 'json',
+        data: {
+            object: 'Answer',
+            function: 'countAnswers',
+            idSession: session,
+            idExercise: o.idExercise
+        },
+        statusCode: {
+            200: function (response) {
+                 jsonData2 = response;
+                 if(jsonData2.num < o.numTimes){
+                 data.push({'session':name, 'name':'<a href="../Exercises/exercisesPage.php?id='+session+'&gameChoosen='+o.idExercise+'&structure='+o.idStandardExercise+'">'+o.eName+'</a>', 
+                'structure': o.stdName, 'image':'<img src="'+o.picture+'" style: width=100px height=75px></img>', 'deadline': deadline});     
+                 }
+                 
+            },
+            404: function () {
+                console.error('BD Error');
+            }
+        }
+    });
+}

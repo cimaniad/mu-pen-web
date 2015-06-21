@@ -1,6 +1,7 @@
 //
 
 $(document).ready(function(){
+    var jsonData;
     $("#scheduleAppointment").click(function () { 
         if (($('#datepicker').val() === '') || ($('#scheduleHour').val() === '') || (!$.trim($('#scheduleDescription').val()))){
             alert('Tem de preencher todos os campos');
@@ -24,9 +25,14 @@ $(document).ready(function(){
                  idPatient: $('#idPatientSchedule').val()
                  },
                     statusCode: {
-                        201: function(){
+                        201: function(response){
+                         jsonData = response;
+                         var name = $('#idPatientName').val();
+                         var lastName = $('#idPatientLastName').val();
+                         addNotificationAppointment(jsonData.msg, $('#idPatientSchedule').val(), 
+                         $('#healthProfessionalPatient').val() , name, lastName);
                          alert('Consulta marcada, mas à espera de aprovação');
-                          window.location.href = 'agenda.php';
+                         window.location.href = 'agenda.php';
                         },
                         500: function(){
                          alert('Erro na marcação da consulta');
@@ -163,6 +169,11 @@ $(document).ready(function(){
                  },
                     statusCode: {
                         201: function(){
+                         var app = $('#idAppointmentConfig').val();
+                         var name = $('#idPatientName').val();
+                         var lastName = $('#idPatientLastName').val();                         
+                         addNotificationApproveAppointment(app, $('#idPatientConfig').text(), 
+                         $('#healthProfessionalPatient').val(), name, lastName);   
                          alert('Consulta aprovada com sucesso');
                          window.location.href = 'agenda.php';
                         },
@@ -177,6 +188,11 @@ $(document).ready(function(){
 $(document).ready(function(){
         $("#cancelAppointment").click(function () { 
             var id = getUrlParameter('id');
-             window.location.href = 'scheduleAppointment.php?id='+id;
+            var idPatient = $('#idPatientConfig').text();
+            var idHP = $('#healthProfessionalPatient').val();
+            var name = $('#idPatientName').val();
+            var lastName = $('#idPatientLastName').val();
+            addNotificationCancelAppointment(id, idPatient, idHP, name, lastName);
+       //      window.location.href = 'scheduleAppointment.php?id='+id;
         });
 });

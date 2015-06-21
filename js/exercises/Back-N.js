@@ -166,7 +166,9 @@ function saveResultBack(){
                 attempts: game.succededHits + game.failedHits,
                 wrongHits: game.succededHits,
                 rightHits: game.failedHits,
-                correctAnswer: '0'
+                numQuadrados: '0',
+                correctAnswer: '0',
+                idSession: getUrlParameter('id')
             },
             statusCode: {
                 201: function (response) {

@@ -12,7 +12,6 @@ function saveEditAppointment($params) {
     $patientApproval = $params['patientApproval'];
     $healthProfessionalApproval = $params['healthProfessionalApproval'];
     $description = $params['description'];
-
     $connection = dbConnect();
     $response = array();
     if ($id !== "0") {
@@ -25,19 +24,16 @@ function saveEditAppointment($params) {
                 . "VALUES ('$date', '$hour', '$local',$patientApproval,$healthProfessionalApproval, '$description', '$idHealth', '$idPatient')";
     }
     $result = mysql_query($query, $connection);
-
     if ($result) {
         $response['cod'] = 201;
         $response['error'] = FALSE;
-        $response['msg'] = 'appointement created with success';
+        $response['msg'] = mysql_insert_id();
     } else {
         $response['cod'] = 500;
         $response['error'] = TRUE;
         $response['msg'] = mysql_error($connection);
     }
-
     mysql_close($connection);
-
     return $response;
 }
 

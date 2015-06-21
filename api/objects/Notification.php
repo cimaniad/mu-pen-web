@@ -6,25 +6,48 @@ function createEditNotification($params) {
     $id = $params['idNotification'];
     $idHealth = $params['idHealthProfessional'];
     $idPatient = $params['idPatient'];
-    $isPationN = $params['isPationN'];
-    $idAppointment = $params['idAppointment'];
-    $idSession = $params['idSession'];
-    $idComment = $params['idComment'];
+    $isPationN = $params['isPatientN'];
     $saw = $params['saw'];
     $description = $params['description'];
     $connection = dbConnect();
     $response = array();
-    if ($id !== "0") {
-        $query = "UPDATE `dainamic_db`.`Notification` SET `idAppointment`='$idAppointment',"
-                . " `idSession`='$idSession', `saw`='$saw', `description`='$description',"
-                . " `isPatientN`='$isPationN', `idPatient`='$idPatient', "
-                . "`idHealthProfessional`='$idHealth', `idComment`='$idComment' WHERE `idNotification`='$id'";
-    } else {
-        $query = "INSERT INTO `dainamic_db`.`Notification`(`idAppointment`, `idSession`,"
-                . " `saw`, `description`, `isPatientN`, `idPatient`, `idHealthProfessional`,"
-                . " `idComment`) VALUES ('$idAppointment', '$idSession', '$saw', '$description', '$isPationN',"
-                . " '$idPatient', '$idHealth', '$idComment')";
+
+    if ($params['idAppointment'] != 0) {
+        $idAppointment = $params['idAppointment'];
+        if ($id !== "0") {
+            $query = "UPDATE `dainamic_db`.`Notification` SET `idAppointment`=$idAppointment,"
+                    . "  `saw`='$saw', `description`='$description',"
+                    . " `isPatientN`='$isPationN', `idPatient`='$idPatient', "
+                    . "`idHealthProfessional`='$idHealth' WHERE `idNotification`='$id'";
+        } else {
+            $query = "INSERT INTO `dainamic_db`.`Notification`(`idAppointment`,"
+                    . " `saw`, `description`, `isPatientN`, `idPatient`, `idHealthProfessional`) VALUES ('$idAppointment', '$saw', '$description', '$isPationN',"
+                    . " '$idPatient', '$idHealth')";
+        }
+    }else if($params['idSession'] != 0){
+      if ($id !== "0") {
+          $query = "UPDATE `dainamic_db`.`Notification` SET "
+                  . " `idSession`=$idSession, `saw`='$saw', `description`='$description',"
+                  . " `isPatientN`='$isPationN', `idPatient`='$idPatient', "
+                  . "`idHealthProfessional`='$idHealth' WHERE `idNotification`='$id'";
+      } else {
+          $query = "INSERT INTO `dainamic_db`.`Notification`( `idSession`,"
+                  . " `saw`, `description`, `isPatientN`, `idPatient`, `idHealthProfessional`) VALUES ('$idSession', '$saw', '$description', '$isPationN',"
+                  . " '$idPatient', '$idHealth')";
+      }
+    }else if($params['idComment'] != 0){
+      if ($id !== "0") {
+          $query = "UPDATE `dainamic_db`.`Notification` SET "
+                  . "  `saw`='$saw', `description`='$description',"
+                  . " `isPatientN`='$isPationN', `idPatient`='$idPatient', "
+                  . "`idHealthProfessional`='$idHealth', `idComment`=$idComment WHERE `idNotification`='$id'";
+      } else {
+          $query = "INSERT INTO `dainamic_db`.`Notification`(`saw`, `description`, `isPatientN`, `idPatient`, `idHealthProfessional`,"
+                  . " `idComment`) VALUES ('$saw', '$description', '$isPationN',"
+                  . " '$idPatient', '$idHealth', '$idComment')";
+      }
     }
+  
     $result = mysql_query($query, $connection);
     if ($result) {
         $response['cod'] = 201;

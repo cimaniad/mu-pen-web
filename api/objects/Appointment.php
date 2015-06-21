@@ -29,7 +29,7 @@ function saveEditAppointment($params) {
     if ($result) {
         $response['cod'] = 201;
         $response['error'] = FALSE;
-        $response['msg'] = 'appointement created with success';
+        $response['msg'] = mysql_insert_id();
     } else {
         $response['cod'] = 500;
         $response['error'] = TRUE;

@@ -50,7 +50,7 @@ function getExercisesBySession($params){
         e.name as eName, se.picture, ae.numTimes From Exercise e, StandardExercise se, AssignExercise ae Where e.idStandardExercise=se.idStandardExercise and ae.idExercise=e.idExercise and e.idExercise in 
         (Select idExercise From AssignExercise Where idBlock in 
         (Select idBlock From Block Where idBlock in 
-        (Select idBlock From Session Where idSession ='$idSession'))) group by e.idExercise;";
+        (Select idBlock From Session Where idSession ='$idSession' and ae.idBlock=idBlock))) group by e.idExercise;";
     $result = mysql_query($query, $connection);
       if ($result) {
       while ($exercises = mysql_fetch_array($result)) {

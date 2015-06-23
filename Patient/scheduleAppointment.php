@@ -56,8 +56,9 @@ confirmPatient();
         <b>Descrição:</b>
         <label><div class="mens_cont">    
         <textarea class="contact textarea" rows="7" id="scheduleDescription" cols="35" required></textarea> </label></div>
-        <input class="submit1" type="button" value="Marcar Consulta" id="scheduleAppointment">
-        <input class="submit2" type="submit" value="Cancelar"/> 
+        <input class="submit1" type="submit" value="Cancelar"/>        
+        <input class="submit2" type="button" value="Marcar Consulta" id="scheduleAppointment">
+
     
 </div>
     </form>

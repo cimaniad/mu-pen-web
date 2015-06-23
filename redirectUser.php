@@ -8,5 +8,5 @@ if(isset($_SESSION['idAdmin'])){
 }elseif (isset($_SESSION['idHealthProfessional'])){
     redirect('HealthProfessional/headerDP.php');
 }else {
-    redirect('login.php');
+    redirect('anon/login.php');
 }

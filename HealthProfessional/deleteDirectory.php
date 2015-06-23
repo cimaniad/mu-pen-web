@@ -18,7 +18,7 @@ if(isset($_POST['directory'])){
 
 <h1 class="help">Eliminar Diretoria</h1>
 <script>
-    getDirectory2();
+    getDirectory();
     </script>
     <form method="post">
 <div>
@@ -29,5 +29,6 @@ if(isset($_POST['directory'])){
        <div id="directory"></div>
 
 </div>
-    <input type="submit" id="deleteDirectory" value="Eliminar" class="submit1">
+        <input type="submit" value="Cancelar" class="submit1" formaction="headerDP.php">
+    <input type="submit" id="deleteDirectory" value="Eliminar" class="submit2">
     </form>

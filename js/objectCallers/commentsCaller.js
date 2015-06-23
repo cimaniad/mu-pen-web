@@ -83,10 +83,12 @@
       width: 350,
       modal: true,
       buttons: {
-        "Comentar": addComment,
         Continuar: function() {
           dialog.dialog( "close" );
-        }
+          window.location.href = "../Patient/sessions.php";
+        },
+        "Comentar": addComment
+
       },
       close: function() {
         form[ 0 ].reset();

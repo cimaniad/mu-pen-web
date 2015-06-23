@@ -21,6 +21,7 @@ confirmHealthProfessional();
   <script src='../js/objectCallers/multimediaCaller.js' type='text/javascript'></script>
   <script src='../js/objectCallers/dpCaller.js' type='text/javascript'></script>  
   <script src='../js/functions/functions.js' type='text/javascript'></script>
+  <script src="../js/objectCallers/InformationCaller.js" type="text/javascript"></script>
 
 </head>
 
@@ -58,17 +59,15 @@ confirmHealthProfessional();
               </li>
                          <li><a href="#">Relatórios</a>
           <ul>
-              <li><a href="#">Paciente </a></li>
+              <li><a href="#">Paciente</a></li>
                <li><a href="#">Anónimo</a></li>
-              
           </ul>   
            <li><a href="#">Informação</a>
           <ul>
-              <li><a href="#">Inserir Informação</a></li>
-               <li><a href="#">Editar Informação</a></li>
-               <li><a href="#">Consultar Informação</a></li>
-               <li><a href="#">Adicionar Artigo</a></li>
-               <li><a href="#">Consultar Artigos</a></li>
+              <li><a href="../articles/consultInformation.php">Consultar Informação</a></li>
+              <li><a href="../articles/addarticles.php">Adicionar Artigo</a></li>
+              <li><a href="../articles/consultArticles.php">Consultar Artigos</a></li>
+              <li><a href="../articles/downloadInstitution.php">Download</a></li>
           </ul>
 
               <li><a href="#">Multimedia</a>
@@ -80,7 +79,7 @@ confirmHealthProfessional();
                   </ul>
               </li>
                     
-           <li><a href="../login.php?logout=1" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
+           <li><a href="../anon/login.php?logout=1" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
         </ul>
       </div>
     </div>

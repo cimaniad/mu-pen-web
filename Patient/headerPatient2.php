@@ -9,23 +9,30 @@ confirmPatient();
   <title>NEP-UM</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="../css/nep.css" title="style" />
+
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" />
   <script src='../js/libs/jquery/jquery.js' type='text/javascript'></script>
-  <script src='../js/objectCallers/patientCaller.js' type='text/javascript'></script>
+ <script src='../js/objectCallers/patientCaller.js' type='text/javascript'></script>
   <script src='../js/functions/functions.js' type='text/javascript'></script>
   <script src='../js/objectCallers/loginCaller.js' type='text/javascript'></script>
   <script src='../js/objectCallers/appointmentsCaller.js' type='text/javascript'></script>
-  <script src='../js/objectCallers/notificationCaller.js' type='text/javascript'></script>  
-<!--  <script src="../js/objectCallers/commentsCaller.js" type="text/javascript"></script>-->
+  <script src='../js/exercises/orderExercise.js' type='text/javascript'></script>
+  <script src='../js/objectCallers/notificationCaller.js' type='text/javascript'></script>
+  <script src="../js/extra/datagrid/jquery.easyui.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-groupview.js"></script>
+  <script src="../js/objectCallers/InformationCaller.js"></script>
+
 
 </head>
-   <body>
+
+<body>
   <div id="main">
          <div id="header">
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-             <a href="#"><img src="../imagens/barram.png" alt="Erro" style: width=105px height=91px></a>
+             <a href="#"><img src="../imagens/barram88.png" alt="Erro" style: width=105px height=91px id="image"></a>     
 <!--          <img src="imagens/terapeutas.jpg" alt="Erro" class="derp">-->
              </div>
           
@@ -43,26 +50,23 @@ confirmPatient();
               </li>
               <li><a href="#">Consultas<span id="consMaybe"></span></a>
               <ul>
-                  <li><a href='scheduleAppointment.php'>Marcar Consulta</a></li>
+               <li><a href='scheduleAppointment.php'>Marcar Consulta</a></li>
                <li><a href="agenda.php">Visualizar Consultas<span id="helloMaybe"></span></a></li>
           </ul>
               </li>
-              <li><a href="../Patient/sessions.php">Sessões<span id="notMaybe"></span></a></li>   
+              <li><a href="../Patient/sessions.php">Sessões<span id="notMaybe"></span></a></li>
            <li><a href="#">Informação</a>
           <ul>
-              <li><a href="#">Artigos </a></li>
-               <li><a href="#">Informação Institucional</a></li>
-                 <li><a href="#">Fale Connosco</a></li>
-          </ul>
-             
-          
-        
-           <li><a href="../login.php?logout=1" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
+              <li><a href="../articles/consultArticles.php">Artigos </a></li>
+              <li><a href="../articles/consultInformation.php">Informação Institucional</a></li>
+              <li><a href="../anon/contacts.php">Fale Connosco</a></li>
+          </ul>        
+           <li><a href="../anon/login.php?logout=1" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
         </ul>
       </div>
     </div>
-    <div id="site_content2">
-    <input type="hidden" value="<?=$_SESSION['idPatient']?>" id="idPatientHeader">          
+    <div id="site_content">
+            <input type="hidden" value="<?=$_SESSION['idPatient']?>" id="idPatientHeader">        
 <!--      <div class="sidebar">
          insert your sidebar items here 
         <h3><strong>Procurar:</strong></h3>

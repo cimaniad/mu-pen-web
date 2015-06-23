@@ -123,12 +123,11 @@ function addNotificationComment(comment, idPatient, idHP, name, lastName){
             idAppointment: '0',
             idSession: '0',
             idComment: comment,
-            saw: '0',
             description: 'Comentário adicionado:' +name+' '+lastName
             },
          statusCode: {
              201: function(){
-               
+             window.location.href = "../Patient/sessions.php";
              },
              500: function(response){
                  console.log(response.msg);
@@ -152,7 +151,6 @@ function addNotificationAppointment(appointment, idPatient, idHP, name, lastName
             idAppointment: appointment,
             idSession: '0',
             idComment: '0',
-            saw: '0',
             description: 'Consulta adicionada:' +name+' '+lastName
             },
          statusCode: {
@@ -181,7 +179,6 @@ function addNotificationSession(session, idPatient, idHP, name, lastName){
             idAppointment: '0',
             idSession: session,
             idComment: '0',
-            saw: '0',
             description: 'Sessão finalizada:' +name+' '+lastName
             },
          statusCode: {
@@ -210,7 +207,6 @@ function addNotificationApproveAppointment(appointment, idPatient, idHP, name, l
             idAppointment: appointment,
             idSession: '0',
             idComment: '0',
-            saw: '0',
             description: 'Consulta aprovada:' +name+' '+lastName
             },
          statusCode: {
@@ -239,12 +235,11 @@ function addNotificationCancelAppointment(appointment, idPatient, idHP, name, la
             idAppointment: appointment,
             idSession: '0',
             idComment: '0',
-            saw: '0',
             description: 'Consulta Cancelada:' +name+' '+lastName
             },
          statusCode: {
              201: function(){
-               
+              window.location.href = 'scheduleAppointment.php?id='+appointment; 
              },
              500: function(response){
                  console.log(response.msg);

@@ -15,7 +15,7 @@ $(document).ready(function () {
             200: function (response) {
                  jsonData = response;
                  $.each(jsonData, function (index, o) {
-                 getExercisesBySession(o.idSession, o.name, o.deadline);
+                 getExercisesBySession(o);
              });
            
               tabela();
@@ -28,7 +28,7 @@ $(document).ready(function () {
 });
 
 
-function getExercisesBySession(Session, name, deadline){
+function getExercisesBySession(lista){
     var jsonData;
      $.ajax({
         type: "POST",
@@ -38,13 +38,13 @@ function getExercisesBySession(Session, name, deadline){
         data: {
             object: 'Session',
             function: 'getExercisesBySession',
-            idSession: Session
+            idSession: lista.idSession
         },
         statusCode: {
             200: function (response) {
                  jsonData = response;
                  $.each(jsonData, function(index,o){
-                 countAnswers(Session, o, name, deadline);
+                 countAnswers(lista.idSession, o, lista.name, lista.deadline);
                
                 });
                

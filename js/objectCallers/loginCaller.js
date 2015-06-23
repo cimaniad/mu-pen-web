@@ -28,7 +28,7 @@ $(document).ready(function () {
                              developmentProfessional: jsonData.developmentProfessional
                     },
                     function(){
-                       window.location.href = 'redirectUser.php';
+                       window.location.href = '../redirectUser.php';
                     });
                     
                 },

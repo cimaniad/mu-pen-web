@@ -1227,3 +1227,11 @@ fieldset {
     font-size: 15px;
     font-weight: bold;
 }
+
+#emailConfig{
+    padding: 0 0 0 2.8em;
+}
+
+#numbTelephoneEdit{
+    padding: 0 0 0 0.5em;
+}

@@ -37,8 +37,9 @@ if($_GET['id'] == 1){
         </select>
     </label>
 </div>
-    <input type="button" class="submit1" id="addSubDomain" value="Guardar"/>
-    <input type="submit" class="submit2" value="Cancelar"/>
+    <input type="submit" class="submit1" value="Cancelar"/>    
+    <input type="button" class="submit2" id="addSubDomain" value="Guardar"/>
+
  </form>
 
 <?php
@@ -81,9 +82,9 @@ if($_GET['id'] == 1){
         </select>
     </label>
 </div>
-    <input type="button" class="submit3" id="editSubDomain" value="Guardar"/>
+     <input type="submit" class="submit3" value="Cancelar"/>    
     <input type="button" class="submit2" id="deleteSubDomain" value="Eliminar"/>
-     <input type="submit" class="submit2" value="Cancelar"/>
+    <input type="button" class="submit2" id="editSubDomain" value="Guardar"/>
  </form>
 <?php
 }

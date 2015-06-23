@@ -28,8 +28,9 @@ if($_GET['id'] == 1){
     
         <textarea cols="22" rows="6" id='descriptionDomain' required> </textarea>
 </div>
-<input class="submit1" type="button" value="Guardar" id="addDomain"/>
-<input class="submit2" type="submit" value="Cancelar"/>
+<input class="submit1" type="submit" value="Cancelar"/>
+<input class="submit2" type="button" value="Guardar" id="addDomain"/>
+
 </form>
 <?php
 }else if($_GET['id'] ==2){
@@ -63,9 +64,10 @@ if($_GET['id'] == 1){
     
         <textarea cols="22" rows="6" id='descriptionEditDomain'> </textarea>
 </div>
-<input class="submit3" type="button" value="Guardar" id="editDomain"/>
+<input class="submit3" type="submit" value="Cancelar"/>
 <input class="submit2" type="button" value="Eliminar" id="deleteDomain"/>
-<input class="submit2" type="submit" value="Cancelar"/>
+<input class="submit2" type="button" value="Guardar" id="editDomain"/>
+
 </form>
 <?php
 }

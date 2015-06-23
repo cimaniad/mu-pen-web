@@ -55,7 +55,8 @@ if (isset($_POST['name'])) {
         </label>
 
     </div>
-    <input class="submit3" type="submit" value="Guardar" id="addMultimediaBD"/>
+    <input class="submit1" type="submit" value="Cancelar"/>    
+    <input class="submit2" type="submit" value="Guardar" id="addMultimediaBD"/>
 
-    <input class="submit2" type="submit" value="Cancelar"/>
+
 </form>

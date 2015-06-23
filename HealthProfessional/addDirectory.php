@@ -20,8 +20,8 @@ if(isset($_POST['nameDirectory'])) {
   
         <label>Nome: </label>
          <input type="text" name="nameDirectory"></br></br>
-
-    <input type="submit" name="submit" class="submit1"/>
+         <input type="submit" value="Cancelar" formaction="headerDP.php" class="submit1">    
+         <input type="submit" name="submit" class="submit2"/>
 </form>
         </div>
         </div>

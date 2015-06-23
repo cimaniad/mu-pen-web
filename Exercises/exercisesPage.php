@@ -207,7 +207,7 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
     <div id="gameDiv">
     <div class="container">
     <div class="game">
-      <h1 id="time"> 30 segundos para o fim </h1>
+      <h1 id="time"></h1>
       <div id="question">
         <p></p>
         <input id="answer" placeholder="resposta">

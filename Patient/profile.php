@@ -26,7 +26,20 @@ if($_GET['id'] == 1){
 <?php
 }else if($_GET['id'] == 2){
     ?>
-
+<h1 class="help">Editar Perfil</h1>
+<script>getInfoPatient()</script>
+<p class="config_p">Modifique um dos campos se surgirem alterações</p>
+<div id="emailConfig">
+<label>Email: </label> <input type="text" id="emailProf"></br> </br>
+</div>
+<div id="numbTelephoneEdit">
+<label>NºTelefone: </label> <input type="text" id="numbTelephone"></br></br>
+</div>
+<div>
+<label>Estado Civil: </label> <input type="text" id="civilState"> </br>
+</div>
+<input type="button" value="Editar Perfil" id="editProfile" class="submit1">
+<input type="hidden" id='idPatientProfile' value="<?=$_SESSION['idPatient']?>"/>
 <?php
 }
 ?>

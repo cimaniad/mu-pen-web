@@ -13,6 +13,8 @@ confirm_admin();
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src='../js/libs/jquery/jquery.js' type='text/javascript'></script>
   <script src='../js/objectCallers/loginCaller.js' type='text/javascript'></script>
+  <script src='../js/objectCallers/InformationCaller.js' type='text/javascript'></script>
+  <script src='../js/functions/functions.js' type='text/javascript'></script>
 </head>
 
 <body>
@@ -30,23 +32,23 @@ confirm_admin();
       <div class="orange1">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <div id="test"><li><a href="headerAdmin.php">Home</a></li></div>
+          <div id="test"><li><a href="../Admin/headerAdmin.php">Home</a></li></div>
           <li><a href="#">Artigos</a>
           <ul>
-              <li><a href="#">Publicar </a></li>
-               <li><a href="#">Consultar</a></li>
+              <li><a href="../articles/addarticles.php">Publicar </a></li>
+               <li><a href="../articles/consultArticles.php">Consultar</a></li>
           </ul>
               </li>
-              <li><a href="#">Informação</a>
+              <li><a href="">Informação</a>
           <ul>
-              <li><a href="#">Inserir </a></li>
-               <li><a href="#">Editar</a></li>
-               <li><a href="#">Consultar</a></li>
+              <li><a href="../Admin/addInformation.php?id=1">Inserir </a></li>
+               <li><a href="../Admin/addInformation.php?id=2">Editar</a></li>
+               <li><a href="../articles/consultInformation.php">Consultar</a></li>
+               <li><a href='../articles/downloadInstitution.php'>Download</a></li>
           </ul>
               </li>
          
-          <li><a href="#">Fale Connosco</a></li>
-          <li><a href="../login.php?logout=1" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
+          <li><a href="../anon/login.php?logout=1" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
         </ul>
       </div>
     </div>
@@ -57,7 +59,7 @@ confirm_admin();
         <form method="post" action="#" id="search_form">
             <p>
             <input class="search" type="text" name="search_field" placeholder='Pesquisar...' />
-            <input name="search" type="image" style="width: 90px; height: 10;border: 0; margin: 0 0 -9px 0px; margin-top: 5px" src="imagens/search.jpg" alt="Search" title="Search" />
+            <input name="search" type="image" style="width: 90px; height: 10;border: 0; margin: 0 0 -9px 0px; margin-top: 5px" src="../imagens/search.jpg" alt="Search" title="Search" />
           </p>
         </form>
         <br>
@@ -75,6 +77,3 @@ confirm_admin();
         <img style="margin-top: 25px; width: 225px; height: 50px" src="../imagens/fct.png">
         <img style="margin-top: 25px; width: 150px; height: 80px" src="../imagens/compete.png">
       </div>
-        
-        
-    

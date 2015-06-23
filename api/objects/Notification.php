@@ -8,23 +8,22 @@ function createEditNotification($params) {
     $idHealth = $params['idHealthProfessional'];
     $idPatient = $params['idPatient'];
     $isPationN = $params['isPatientN'];
-    $saw = $params['saw'];
     $description = $params['description'];
     $connection = dbConnect();
     $response = array();
     if ($params['idAppointment'] != 0) {
         $idAppointment = $params['idAppointment'];
-        $query = "INSERT INTO `dainamic_db`.`Notification`(`idAppointment`,`saw`,"
+        $query = "INSERT INTO `dainamic_db`.`Notification`(`idAppointment`, "
                 . " `description`, `isPatientN`, `idPatient`, `idHealthProfessional`)"
-                . " VALUES ('$idAppointment', '$saw', '$description', '$isPationN',"
+                . " VALUES ('$idAppointment', '$description', '$isPationN',"
                 . " '$idPatient', '$idHealth')";
     } else if ($params['idSession'] != 0) {
         $idSession = $params['idSession'];
-        $query = "INSERT INTO `dainamic_db`.`Notification`(`idSession`, `saw`, `description`, `isPatientN`, `idPatient`, `idHealthProfessional`) VALUES ('$idSession', '$saw', '$description', '$isPationN','$idPatient', '$idHealth');";
+        $query = "INSERT INTO `dainamic_db`.`Notification`(`idSession`, `description`, `isPatientN`, `idPatient`, `idHealthProfessional`) VALUES ('$idSession', $description', '$isPationN','$idPatient', '$idHealth');";
     } else if ($params['idComment'] != 0) {
         $idComment = $params['idComment'];
-        $query = "INSERT INTO `dainamic_db`.`Notification`(`saw`, `description`, `isPatientN`, `idPatient`, `idHealthProfessional`,"
-                . " `idComment`) VALUES ('$saw', '$description', '$isPationN',"
+        $query = "INSERT INTO `dainamic_db`.`Notification`(`description`, `isPatientN`, `idPatient`, `idHealthProfessional`,"
+                . " `idComment`) VALUES ('$description', '$isPationN',"
                 . " '$idPatient', '$idHealth', '$idComment')";
     }
 
@@ -46,7 +45,7 @@ function getNotificationByPatient($params){
     $idPatient = $params['idPatient'];
     
     $connection = dbConnect();
-    $query = "Select * From Notification Where idPatient='$idPatient' and saw='0' and isPatientN='0'";
+    $query = "Select * From Notification Where idPatient='$idPatient' and isPatientN='0'";
     $result = mysql_query($query, $connection);
     if ($result) {
       while ($notification = mysql_fetch_array($result)) {

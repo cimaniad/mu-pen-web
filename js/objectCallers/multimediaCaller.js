@@ -12,6 +12,7 @@ function addDirectory() {
             statusCode: {
                 201: function () {
                     alert('Diretoria adicionada com sucesso');
+                    window.location.href = 'addMultimedia.php';                    
                 },
                 500: function () {
                     alert('Erro a criar a Diretoria');
@@ -167,6 +168,7 @@ function addMultimedia() {
                         statusCode: {
                             201: function () {
                                 alert('Multimédia adicionada com sucesso');
+                                window.location.href = 'addMultimedia.php';
                             },
                             500: function () {
                                 alert('Erro ao adicionar Multimédia');
@@ -197,6 +199,7 @@ function deleteDirectory() {
                     statusCode: {
                         200: function () {
                             alert('Diretoria eliminada com sucesso');
+                            window.location.href = 'deleteDirectory.php';
                         },
                         500: function () {
                             alert('Erro: Diretoria tem imagens associadas');
@@ -222,6 +225,7 @@ function deleteMultimedia(){
                     statusCode: {
                         200: function () {
                             alert('Multimedia eliminada com sucesso');
+                            window.location.href = 'deleteMultimedia.php';
                         },
                         500: function () {
                             alert('Erro a eliminar multimédia');

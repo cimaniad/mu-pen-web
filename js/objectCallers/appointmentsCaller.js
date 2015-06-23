@@ -193,6 +193,6 @@ $(document).ready(function(){
             var name = $('#idPatientName').val();
             var lastName = $('#idPatientLastName').val();
             addNotificationCancelAppointment(id, idPatient, idHP, name, lastName);
-       //      window.location.href = 'scheduleAppointment.php?id='+id;
+            
         });
 });

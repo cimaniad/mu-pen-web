@@ -18,7 +18,8 @@ $(document).ready(function(){
                  },
                     statusCode: {
                         201: function(){
-                         alert('Dominio adicionado com sucesso');   
+                         alert('Dominio adicionado com sucesso');  
+                         window.location.href = "addEditDomain.php?id=1";
                         },
                         500: function(){
                             alert('Erro a criar o Domínio');
@@ -54,7 +55,7 @@ $(document).ready(function(){
                     statusCode: {
                         201: function(){
                             alert("Sub-Dominio adicionado com sucesso!");
-                            
+                            window.location.href = "addEditSubDomain.php?id=1";                            
                         },
                         501: function(){
                             alert("Sub-Dominio com esse nome jรก existe");
@@ -180,7 +181,8 @@ $(document).ready(function(){
                  },
                     statusCode: {
                         201: function(){
-                         alert('Dominio editado com sucesso');   
+                         alert('Dominio editado com sucesso');
+                          window.location.href = 'addEditDomain.php?id=2';                          
                         },
                         404: function(){
                            console.log("BD Error");
@@ -213,6 +215,7 @@ $(document).ready(function(){
                     statusCode: {
                         201: function(){
                          alert('Sub-Dominio editado com sucesso');   
+                         window.location.href = "addEditSubDomain.php?id=2";                         
                         },
                         404: function(){
                            console.log("BD Error");

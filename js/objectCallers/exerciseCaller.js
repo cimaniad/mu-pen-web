@@ -107,7 +107,7 @@ $(document).ready(function () {
                             },
                             statusCode: {
                                 201: function () {
-
+                               window.location.href = "../Exercises/exercisesPage.php";
                                 },
                                 500: function (response) {
                                     alert('Erro a adicionar as opções');
@@ -143,6 +143,7 @@ $(document).ready(function () {
                         });
             }
             alert('Exercício configurado com sucesso');
+            window.location.href = "../Exercises/exercisesPage.php";
         } else if (getUrlParameter('structure') == 6) { //Pairs Game
             pairsExercise();
         } else if ((getUrlParameter('structure') == 3) || (getUrlParameter('structure') == 7)) { //Memory Matrix Game
@@ -228,7 +229,8 @@ function saveResult(correctAnswer) {
                 wrongHits: '0',
                 rightHits: '0',
                 correctAnswer: correctAnswer,
-                idSession: getUrlParameter('id')
+                idSession: getUrlParameter('id'),
+                numQuadrados: '0'
             },
             statusCode: {
                 201: function (response) {
@@ -288,6 +290,7 @@ function pairsExercise() {
         statusCode: {
             200: function () {
                 alert('Exercício guardado com sucesso');
+                window.location.href = "../Exercises/exercisesPage.php";
             },
             500: function (response) {
                 console.log(response.msg);
@@ -315,6 +318,7 @@ function matrixMemoryConfig() {
         statusCode: {
             200: function () {
                 alert('Exercício configurado com sucesso');
+                window.location.href = "../Exercises/exercisesPage.php";
             },
             500: function (response) {
                 console.log(response.msg);
@@ -368,6 +372,7 @@ function backNConfig() {
         statusCode: {
             200: function () {
                 alert('Exercício configurado com sucesso');
+                window.location.href = "../Exercises/exercisesPage.php";
             },
             500: function (response) {
                 console.log(response.msg);
@@ -399,10 +404,11 @@ function mathConfig(){
         statusCode: {
             200: function () {
                 alert('Exercício configurado com sucesso');
+                window.location.href = "../Exercises/exercisesPage.php";
             },
             500: function (response) {
                 console.log(response.msg);
-                alert('Erro a configurar Exercício')
+                alert('Erro a configurar Exercício');
             }
         }
     });

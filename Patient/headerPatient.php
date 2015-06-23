@@ -21,6 +21,7 @@ confirmPatient();
   <script src='../js/objectCallers/notificationCaller.js' type='text/javascript'></script>
   <script src="../js/extra/datagrid/jquery.easyui.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-groupview.js"></script>
+  <script src="../js/objectCallers/InformationCaller.js"></script>
 
 
 </head>
@@ -56,15 +57,16 @@ confirmPatient();
               <li><a href="../Patient/sessions.php">Sessões<span id="notMaybe"></span></a></li>
            <li><a href="#">Informação</a>
           <ul>
-              <li><a href="#">Artigos </a></li>
-               <li><a href="#">Informação Institucional</a></li>
-                 <li><a href="#">Fale Connosco</a></li>
+              <li><a href="../articles/consultArticles.php">Artigos </a></li>
+              <li><a href="../articles/consultInformation.php">Informação Institucional</a></li>
+              <li><a href="../anon/contacts.php">Fale Connosco</a></li>
           </ul>        
-           <li><a href="../login.php?logout=1" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
+           <li><a href="../anon/login.php?logout=1" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
         </ul>
       </div>
     </div>
     <div id="site_content">
+            <input type="hidden" value="<?=$_SESSION['idPatient']?>" id="idPatientHeader"> 
       <div class="sidebar"> 
         <h3><strong>Procurar:</strong></h3>
         <form method="post" action="#" id="search_form">

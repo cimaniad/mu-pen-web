@@ -21,7 +21,7 @@ confirmPatient();
   <script src='../js/objectCallers/notificationCaller.js' type='text/javascript'></script>
   <script type="text/javascript" src="../js/extra/moment/moment.js"></script>
   <script src="../js/extra/datagrid/jquery.easyui.min.js" type="text/javascript"></script>
-  <script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-groupview.js"></script>
+  <script type="text/javascript" src="../js/extra/datagrid/plugins/datagrid-groupview.js"></script>
   <script src="../js/objectCallers/InformationCaller.js"></script>
 
 
@@ -42,17 +42,17 @@ confirmPatient();
       <div class="orange1">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <div id="test"><li><a href="headerPatient.php">Home</a></li></div>
+          <div id="test"><li><a href="../redirectUser.php">Home</a></li></div>
           <li><a href="#">Perfil Pessoal</a>
           <ul>
-              <li><a href="profile.php?id=1">Consultar</a></li>
-               <li><a href="profile.php?id=2">Editar</a></li>
+              <li><a href="../Patient/profile.php?id=1">Consultar</a></li>
+               <li><a href="../Patient/profile.php?id=2">Editar</a></li>
           </ul>
               </li>
               <li><a href="#">Consultas<span id="consMaybe"></span></a>
               <ul>
-               <li><a href='scheduleAppointment.php'>Marcar Consulta</a></li>
-               <li><a href="agenda.php">Visualizar Consultas<span id="helloMaybe"></span></a></li>
+               <li><a href='../Patient/scheduleAppointment.php'>Marcar Consulta</a></li>
+               <li><a href="../Patient/agenda.php">Visualizar Consultas<span id="helloMaybe"></span></a></li>
           </ul>
               </li>
               <li><a href="../Patient/sessions.php">Sessões<span id="notMaybe"></span></a></li>

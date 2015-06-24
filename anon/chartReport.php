@@ -1,11 +1,11 @@
 <?php
 require_once 'header.php';
 ?>
- <script src="js/extra/highCharts/js/highcharts.js"></script>
-<script src="js/extra/highCharts/js/modules/data.js"></script>
-<script src="js/extra/highCharts/js/modules/exporting.js"></script>
-<script type="text/javascript" src="js/objectCallers/Report.js"></script>
-<script>getDomainReport(6,23);</script>
+ <script src="../js/extra/highCharts/js/highcharts.js"></script>
+<script src="../js/extra/highCharts/js/modules/data.js"></script>
+<script src="../js/extra/highCharts/js/modules/exporting.js"></script>
+<script type="text/javascript" src="../js/objectCallers/Report.js"></script>
+<script>getSessionReport(1);</script>
 
 
 <!-- Additional files for the Highslide popup effect -->

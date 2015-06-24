@@ -109,7 +109,7 @@ function getAnswersByDomain($params) {
     $idDomain = $params['idDomain'];
 
     $connection = dbConnect();
-    $query = "Select a.*, d.name, d.idDomain, se.idStandardExercise, se.name as nameStandard "
+    $query = "Select a.*, d.name, d.idDomain, se.idStandardExercise, se.name as nameStandard, e.idExercise "
             . "From Answer a, Exercise e, Domain d, subDomain sd, StandardExercise se "
             . "Where a.idPatient='$idPatient' and a.idExercise=e.idExercise and sd.idDomain=d.idDomain and e.idSubDomain in "
             . "(Select idSubDomain From subDomain where idDomain='$idDomain') and se.idStandardExercise in "

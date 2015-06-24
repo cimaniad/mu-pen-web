@@ -1,5 +1,15 @@
 <?php
-include 'header.php';
+require_once '../session.php';
+
+if(isset($_SESSION['idAdmin'])){
+    include '../Admin/headerAdmin.php';
+}else if(isset($_SESSION['idHealthProfessional'])){
+    include '../HealthProfessional/headerDP.php';
+}else if(isset($_SESSION['idPatient'])){
+    include '../Patient/headerPatient.php';
+}else {
+    include '../anon/header.php';
+}
 ?>
 <script type="text/javascript">
 $(document).ready(function() {

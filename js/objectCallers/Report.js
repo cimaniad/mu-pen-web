@@ -1,7 +1,6 @@
-
+var answers = [];
 function getSessionReport(idSession) {
     $(document).ready(function () {
-        var jsonData;
         var jsonData2;
         $.ajax({
             type: "POST",
@@ -16,19 +15,69 @@ function getSessionReport(idSession) {
                 200: function (response) {
                     jsonData2 = response;
                     $.each(jsonData2, function (index, o) {
-
+                        answers = [];
                         $('#chartContent').append('<div id=chart' + index + ' style="min-width: 310px; height: 300px; margin: 0 auto"></div>');
-                        generateChart(o, index);
+               if (o.idStandardExercise == 2 || o.idStandardExercise == 1 || o.idStandardExercise == 6) {
+                        answers.push(
+                            {
+                                name: o.idExercise,
+                                data: [
+                                ['Tentativas', parseInt(o.attempts)],
+                                ['Erros', parseInt(o.wrongHits)],
+                                ['Acertos', parseInt(o.rightHits)],
+                                ['Tempo', parseInt(o.resolutionTime)]
+                            ]
+                            }
+                        
+                            );
+                    } else if (o.idStandardExercise == 7 || o.idStandardExercise == 3) {
+                    
+                        answers.push(
+                                {
+                                name: o.idExercise,        
+                                data: [
+                                ['Tentativas', parseInt(o.attempts)],
+                                ['Erros', parseInt(o.wrongHits)],
+                                ['Acertos', parseInt(o.rightHits)],
+                                ['Tempo', parseInt(o.resolutionTime)],
+                                ['Numero máximo de quadrados', parseInt(o.numQuadrados)]
+                                ]
+                            }
+                        );
+                    } else {
+                        if (o.correctOption == 1) {
+                            answers.push({
+                               name: o.idExercise,
+                               data:[     
+                                ['Tentativas', parseInt(o.resolutionTime)],
+                                ['Certo', 50]
+                               ]
+                            }   
+                            );
+                        }else {
+                            
+                            answers.push({
+                               name: o.idExercise,
+                               data:[     
+                                ['Tentativas', parseInt(o.resolutionTime)],
+                                ['Certo', 0]
+                               ]
+                            }   
+                        
+                               );                            
+                        }
+                    }                        
+                        generateChart(index, o);
                     });
                 },
                 404: function () {
-                    alert('Erro a criar o Domínio');
+                    alert('Erro a carregar gráfico');
                 }
             }
         });
     });
 }
-var answers = [];
+
 function getDomainReport(idDomain, idPatient) {
     $(document).ready(function () {
         var jsonData;
@@ -36,6 +85,7 @@ function getDomainReport(idDomain, idPatient) {
             type: "POST",
             url: "http://localhost/nep-um-web/api/",
             dataType: 'json',
+  
             data: {
                 object: 'Answer',
                 function: 'getAnswersByDomain',
@@ -46,46 +96,62 @@ function getDomainReport(idDomain, idPatient) {
                 200: function (response) {
                     jsonData = response;
                     $.each(jsonData, function (index, o) {
-                        $('#chartContent').append('<div id=chart' + index + ' style="min-width: 310px; height: 300px; margin: 0 auto"></div>');
-                         answers = [];
+                        answers = [];
+                    $('#chartContent').append('<div id=chart' + index + ' style="min-width: 310px; height: 300px; margin: 0 auto"></div>');
+
                     if (o.idStandardExercise == 2 || o.idStandardExercise == 1 || o.idStandardExercise == 6) {
                         answers.push(
+                            {
+                                name: o.idExercise,
+                                data: [
                                 ['Tentativas', parseInt(o.attempts)],
                                 ['Erros', parseInt(o.wrongHits)],
                                 ['Acertos', parseInt(o.rightHits)],
                                 ['Tempo', parseInt(o.resolutionTime)]
-                            
+                            ]
+                            }
+                        
                             );
                     } else if (o.idStandardExercise == 7 || o.idStandardExercise == 3) {
                     
                         answers.push(
-                   
+                                {
+                                name: o.idExercise,        
+                                data: [
                                 ['Tentativas', parseInt(o.attempts)],
                                 ['Erros', parseInt(o.wrongHits)],
                                 ['Acertos', parseInt(o.rightHits)],
                                 ['Tempo', parseInt(o.resolutionTime)],
                                 ['Numero máximo de quadrados', parseInt(o.numQuadrados)]
-                            
+                                ]
+                            }
                         );
                     } else {
                         if (o.correctOption == 1) {
-                            answers.push(
+                            answers.push({
+                               name: o.idExercise,
+                               data:[     
                                 ['Tentativas', parseInt(o.resolutionTime)],
-                                ['Certo', 50]                       
-//                                
+                                ['Certo', 50]
+                               ]
+                            }   
                             );
                         }else {
                             
-                            answers.push(
-                                                           
+                            answers.push({
+                               name: o.idExercise,
+                               data:[     
                                 ['Tentativas', parseInt(o.resolutionTime)],
                                 ['Certo', 0]
+                               ]
+                            }   
                         
                                );                            
                         }
                     }                        
-//                      getAnswersHealthProfessional(idPatient, '2',o, index);
-                        generateChart(index, o);
+//                      getAnswersHealthProfessional(idPatient, '1',o, index);
+//                      answers = [];
+                       generateChart(index, o);
                     });
                 },
                 404: function () {
@@ -96,39 +162,43 @@ function getDomainReport(idDomain, idPatient) {
     });
 }
 
+
 //function getAnswersHealthProfessional(idPatient, idHP, lista, index1) {
 //    var jsonData;
 //    $.ajax({
 //        type: "POST",
 //        url: "http://localhost/nep-um-web/api/",
 //        dataType: 'json',
+//        async:false,
 //        data: {
 //            object: 'Answer',
 //            function: 'getAnswersByDomain',
 //            idHealthProfessional: idHP,
 //            idPatient: idPatient,
-//            idExercise: lista.idExercise,
-//            async:false
+//            idExercise: lista.idExercise
 //        },
 //        statusCode: {
 //            200: function (response) {
 //                jsonData = response;
-//                 answers = [];
-//                $.each(jsonData, function (index, o) {
-//                   
-//                    if (o.idStandardExercise == 2 || o.idStandardExercise == 1 || o.idStandardExercise == 6) {
-//                        answers.push({
-//                            data:[
+//                $.each(jsonData, function (index, o) {                   
+//                    if (lista.idStandardExercise == 2 || lista.idStandardExercise == 1 || lista.idStandardExercise == 6) {
+//                        answers.push(
+//                            {
+//                                name: o.idExercise,
+//                                data: [
 //                                ['Tentativas', parseInt(o.attempts)],
 //                                ['Erros', parseInt(o.wrongHits)],
 //                                ['Acertos', parseInt(o.rightHits)],
 //                                ['Tempo', parseInt(o.resolutionTime)]
-//                        ]
-//                        }
-//                        );
-//                    } else if (o.idStandardExercise == 7 || o.idStandardExercise == 3) {
-//                        answers.push({
-//                                data:[  
+//                            ]
+//                            }
+//                        
+//                            );
+//                    } else if (lista.idStandardExercise == 7 || lista.idStandardExercise == 3) {
+//                        answers.push(
+//                                {
+//                                name: o.idExercise,        
+//                                data: [
 //                                ['Tentativas', parseInt(o.attempts)],
 //                                ['Erros', parseInt(o.wrongHits)],
 //                                ['Acertos', parseInt(o.rightHits)],
@@ -140,25 +210,29 @@ function getDomainReport(idDomain, idPatient) {
 //                    } else {
 //                        if (o.correctOption == 1) {
 //                            answers.push({
-//                                data: [
+//                               name: o.idExercise,
+//                               data:[     
 //                                ['Tentativas', parseInt(o.resolutionTime)],
 //                                ['Certo', 50]
-//                                ],
-//                                
-//                            });
+//                               ]
+//                            }   
+//                            );
 //                        }else {
-//                            answers.push(
-//                                    {
-//                                  data: [
+//                            answers.push({
+//                               name: o.idExercise,
+//                               data:[     
 //                                ['Tentativas', parseInt(o.resolutionTime)],
 //                                ['Certo', 0]
-//                                  ],
-//                                
-//                                    });                            
+//                               ]
+//                            }   
+//                            );                            
 //                        }
 //                    }
+////                     generateChart(index1, lista);
+//                     
 //                });
-//                generateChart(index1, lista);
+//               
+//                
 //            },
 //            404: function () {
 //                alert('Erro a gerar relatório');
@@ -167,8 +241,8 @@ function getDomainReport(idDomain, idPatient) {
 //    });
 //}
 
+//FUNCIONA PARA RELATORIOS POR DOMINIO
 function generateChart(index, lista) {
-    alert(lista.idStandardExercise);
     if (lista.idStandardExercise == 2 || lista.idStandardExercise == 1 || lista.idStandardExercise == 6) {
         $('#chart' + index).highcharts({
             chart: {
@@ -197,10 +271,7 @@ function generateChart(index, lista) {
                     }
                 }
             },
-            series: [{
-                    name: 'Exercícios',
-                    data: answers
-                }]
+            series: answers
         });
     } else if (lista.idStandardExercise == 7 || lista.idStandardExercise == 3) {
         $('#chart' + index).highcharts({
@@ -231,10 +302,7 @@ function generateChart(index, lista) {
                 }
             },
 
-              series: [{
-                    name: 'Exercícios',
-                    data: answers
-                }]
+              series: answers
 
         });
     } else {
@@ -266,10 +334,7 @@ function generateChart(index, lista) {
                         }
                     }
                 },
-            series: [{
-                    name: 'Exercícios',
-                    data: answers
-                }]
+            series: answers
 
             });
         } else {
@@ -300,10 +365,7 @@ function generateChart(index, lista) {
                         }
                     }
                 },
-            series: [{
-                    name: 'Exercícios',
-                    data: answers
-                }]
+            series: answers
 
             });
         }

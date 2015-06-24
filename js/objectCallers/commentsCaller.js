@@ -43,7 +43,7 @@
  
       valid = valid && checkLength( comment, "comentário", 5, 250 );
  
-      valid = valid && checkRegexp( comment, /^[a-z]([^0-9a-z_\s])+$/i, "Comentário deve conter de a-z, 0-9, underscores, espaços e precisa de começar com uma letra" );
+      valid = valid && checkRegexp( comment, /^[a-z]([0-9a-z_\s])+$/i, "Comentário deve conter de a-z, 0-9, underscores, espaços e precisa de começar com uma letra" );
  
       if ( valid ) {
           var jsonData;

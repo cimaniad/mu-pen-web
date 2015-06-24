@@ -193,3 +193,31 @@ function deletePatient($params){
 
     return $response;
 }
+
+function editPatientProfile($params){
+    $idPatient = $params['idPatient'];
+    $email = $params['email'];
+    $num = $params['numTel'];
+    $civilState = $params['civilState'];
+    $address = $params['adress'];
+    
+    $connection = dbConnect();
+    $query = "UPDATE `Patient` SET `email`='$email', `numTel`='$num', `adress`='$address', `maritalStatus`='$civilState' "
+            . "WHERE `idPatient`='$idPatient'";
+    
+    $result = mysql_query($query, $connection);
+
+    if ($result) {
+        $response['cod'] = 201;
+        $response['error'] = FALSE;
+        $response['msg'] = "Pacient edited with success";
+    } else {
+        $response['cod'] = 500;
+        $response['error'] = TRUE;
+        $response['msg'] = mysql_error($connection);
+    }
+
+    mysql_close($connection);
+
+    return $response;
+}

@@ -36,7 +36,10 @@ if($_GET['id'] == 1){
 <label>NºTelefone: </label> <input type="text" id="numbTelephone"></br></br>
 </div>
 <div>
-<label>Estado Civil: </label> <input type="text" id="civilState"> </br>
+<label>Estado Civil: </label> <input type="text" id="civilState"> </br> </br>
+</div>
+<div id="adressEdit">
+<label>Morada: </label> <input type="text" id="adress"></br>
 </div>
 <input type="button" value="Editar Perfil" id="editProfile" class="submit1">
 <input type="hidden" id='idPatientProfile' value="<?=$_SESSION['idPatient']?>"/>

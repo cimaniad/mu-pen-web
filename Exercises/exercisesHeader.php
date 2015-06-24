@@ -40,19 +40,30 @@ confirmPatientOrDP();
 
             <div class="orange1">
         <ul id="menu">
+     <?php
+   if(isset($_SESSION['idHealthProfessional'])){
+   ?>          
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <div id="test"><li><a href="exercisesHeader.php">Home</a></li></div>
-          <li><a href="#">Programa</a>
-          <ul>
-              <li><a href="#">Quem Somos</a></li>
-               <li><a href="#">Missão</a></li>
+          <div id="test"><li><a href="../redirectUser.php">Home</a></li></div>
+
+          <li><a href="exercisesPage.php">Voltar</a>
+              </li>
+           <?php
+   }else if(isset($_SESSION['idPatient'])){
+       ?>
+         <div id="test"><li><a href="#">Home</a></li></div>
+          <li><a href="#">Perfil Pessoal</a>
+              </li>
+              <li><a href="#">Consultas<span id="consMaybe"></span></a>
+              <ul>
           </ul>
               </li>
-              <li><a href="#">Exercícios</a></li>
-          <li><a href="#">Artigos</a> 
-          </li>
-          <li><a href="contacts.php">Fale Connosco</a></li>
-          <li><a href="login.php">Login</a></li>
+              <li><a href="#">Sessões<span id="notMaybe"></span></a></li>
+           <li><a href="#">Informação</a>       
+           <li><a href="#" onClick="return confirm('Tem a certeza que quer sair?');">Logout</a>   </li>
+   <?php
+           }
+           ?>
         </ul>
       </div>
   </div>

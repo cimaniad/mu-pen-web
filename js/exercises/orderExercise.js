@@ -199,7 +199,10 @@ function getConfigs() { //get matriz size and appear time for pairs exercise
                     
                 }else if(getUrlParameter('structure') == 1){
                     window.location.replace("exercisesPage.php?id="+getUrlParameter('id')+"&structure="+getUrlParameter('structure')+'&gameChoosen='+getUrlParameter('gameChoosen')+
-                            '&time='+jsonData.time+'&limitNumber='+jsonData.numMatriz+'#');
+                            '&time='+jsonData.time+'&limitNumber='+jsonData.numMatriz+'#');    
+             $(document).ready(function() {
+            $.getScript("../js/exercises/Math.js");
+            });
                 }
             }
         }

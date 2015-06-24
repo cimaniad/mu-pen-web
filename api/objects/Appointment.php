@@ -115,3 +115,24 @@ function getAppointmentsByPatient($params) {
     mysql_close($connection);
     return $response;
 }
+
+function getAppointmentByIdPatientDate($params) {
+    $idPatient = $params['idPatient'];
+    $date = $params['dateAppointment'];
+    $connection = dbConnect();
+    $query = "Select * From Appointment Where idPatient='$idPatient' and date='$date'";
+    $result = mysql_query($query, $connection);
+    $response = array();
+    if ($result) {
+        while ($appointments = mysql_fetch_array($result)) {
+            $response[] = $appointments;
+        }
+        $response['cod'] = 200;
+    } else {
+        $response['msg'] = "Appointment does not exist";
+        $response['error'] = TRUE;
+        $response['cod'] = 404;
+    }
+    mysql_close($connection);
+    return $response;
+}

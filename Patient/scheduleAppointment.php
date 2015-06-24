@@ -64,7 +64,8 @@ confirmPatient();
     </form>
 </div>
 </div>
-
+<input type="hidden" id="date"/>
+<script>document.getElementById("date").value = new Date().toJSON().slice(0,10)</script>
 <?php
 require_once '../footer.php';
 ?>

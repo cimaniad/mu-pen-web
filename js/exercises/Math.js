@@ -178,7 +178,8 @@ function saveResultMath(){
                 wrongHits: wrongs,
                 rightHits: rights,
                 correctAnswer: '0',
-                idSession: getUrlParameter('id')
+                idSession: getUrlParameter('id'),
+                numQuadrados: '0'
             },
             statusCode: {
                 201: function (response) {

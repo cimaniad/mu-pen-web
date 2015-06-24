@@ -41,9 +41,9 @@
       var valid = true;
       allFields.removeClass( "ui-state-error" );
  
-      valid = valid && checkLength( comment, "comentário", 2, 250 );
+      valid = valid && checkLength( comment, "comentário", 5, 250 );
  
-      valid = valid && checkRegexp( comment, /^[a-z]([0-9a-z_\s])+$/i, "Comentário deve conter de a-z, 0-9, underscores, espaços e precisa de começar com uma letra" );
+      valid = valid && checkRegexp( comment, /^[a-z]([^0-9a-z_\s])+$/i, "Comentário deve conter de a-z, 0-9, underscores, espaços e precisa de começar com uma letra" );
  
       if ( valid ) {
           var jsonData;
@@ -70,6 +70,7 @@
                 },
                 500: function(){
                     alert('Erro a adicionar o comentário');
+                    window.location.href = '../Patient/sessions.php';
                 }
             }
           });

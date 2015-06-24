@@ -139,6 +139,8 @@ function getMultimediaByExercise() {
                     var select = $('#imageMultExercise');
                     var input = $('<img src="' + jsonData.url + '" alt="Imagem Indisponível" style: width=300em height=300em>');
                     select.append(input);
+                    
+                    window.location.href = "";
                 },
                 404: function () {
                     console.error('BD Error');

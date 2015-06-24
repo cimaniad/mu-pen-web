@@ -64,9 +64,10 @@ $(document).ready(function() {
         <div class="slider-container">
     <div class="slider">
         <div class="image_reel">
-            <a href="../articles/consultarInfo.php"><img src="../imagens/exercicios.jpg" width="554" height="369" alt="1" /></a>
-            <a href="../articles/download.php"><img src="../imagens/pdf.png" width="554" height="369" alt="2" /></a>            
-            <a href="../articles/download1.php"><img src="../imagens/winrar.jpg" alt="3" width="554" height="369"/></a>
+              <a href="../articles/downloadInstitution.php"><img src="../imagens/aplicação.png" alt="1" width="554" height="369"/></a>
+            <a href="../articles/consultInformation.php"><img src="../imagens/exercicios.jpg" width="554" height="369" alt="2" /></a>
+            <a href="../articles/consultArticles.php"><img src="../imagens/artigos.png" width="554" height="369" alt="3" /></a>            
+          
             <a href="../anon/contacts.php"><img src="../imagens/fale.png" alt="4" width="554" height="369"/></a>
         </div>
     </div>

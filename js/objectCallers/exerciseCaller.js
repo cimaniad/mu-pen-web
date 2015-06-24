@@ -173,9 +173,10 @@ function getExerciseById() {
             statusCode: {
                 200: function (response) {
                     jsonData = response;
+                    window.location.replace = "../Exercises/exercisesPage?id="+getUrlParameter('id')+"&structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') + "'#'";
                     getOptions();
                     getMultimediaByExercise();
-                    var select = $('#questionResolve');
+                    var select = $('#questionExercise');
                     select.append('<p>' + jsonData.question + '</p>');
                     tempoJogo = setInterval(function(){
                             ++seconds;

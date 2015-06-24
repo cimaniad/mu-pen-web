@@ -1,8 +1,7 @@
 //
 
-$(document).ready(function(){
+function addAppointment(){
     var jsonData;
-    $("#scheduleAppointment").click(function () { 
         if (($('#datepicker').val() === '') || ($('#scheduleHour').val() === '') || (!$.trim($('#scheduleDescription').val()))){
             alert('Tem de preencher todos os campos');
         }else {
@@ -36,12 +35,12 @@ $(document).ready(function(){
                         },
                         500: function(){
                          alert('Erro na marcação da consulta');
+                         console.log();
                         }
                     }
                 });
             }
-    });
-});
+}
 
 function healthProfessionalName(){
     $(document).ready(function(){
@@ -195,4 +194,38 @@ $(document).ready(function(){
             addNotificationCancelAppointment(id, idPatient, idHP, name, lastName);
             
         });
+});
+
+$(document).ready(function(){
+   $('#scheduleAppointment').click(function(){
+       var jsonData;
+           $.ajax({
+                 type: "POST",
+                 url: "http://localhost/nep-um-web/api/",
+                 dataType: 'json',
+                 data: {
+                 object: 'Appointment',
+                 function: 'getAppointmentByIdPatientDate',
+                 idPatient: $('#idPatientSchedule').val(),
+                 dateAppointment: $('#datepicker').val()
+                 },
+                    statusCode: {
+                        200: function(response){
+                            jsonData = response;
+                            if(jsonData.length == 0){
+                                if($("#date").val() < $("#datepicker").val()){
+                                addAppointment();
+                                }else {
+                                    alert('Dia inválido, data atual é superior à inserida');
+                                }
+                            }else{
+                                alert('Já tem uma consulta marcada para esse dia');
+                            }
+                        },
+                        404: function(){
+                            console.error('BD Error');
+                        }
+                    }
+         });   
+   }); 
 });

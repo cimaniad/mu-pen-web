@@ -28,7 +28,7 @@ var imagensAnimais = [
 ];
 
 
-$(document).ready(function () {
+$(document).ready(function() {
     while (imagensAnimais.length > tamanho) {
         imagensAnimais.pop();
     }
@@ -47,7 +47,7 @@ $(document).ready(function () {
  * 
  * @returns {Array.prototype.misturarArray|Array.prototype.misturarArray.input}
  */
-Array.prototype.misturarArray = function () {
+Array.prototype.misturarArray = function() {
     var input = this;
     for (var i = input.length - 1; i > 0; i--) {
         var randomIndex = Math.floor(Math.random() * (i + 1));
@@ -65,7 +65,7 @@ function desenhar(arr) {
     for (var x = 0; x < 2; x++) {
 
         arr.misturarArray();
-        $.each(arr, function (i, val) {
+        $.each(arr, function(i, val) {
             if (i + 1 <= tamanho) {
                 $("#quadro").append("<div id=card" + x + i + "><img src=" + val + " />");
             }
@@ -73,7 +73,7 @@ function desenhar(arr) {
     }
 
     $("#quadro div img").fadeIn(500);
-    setTimeout(function () {
+    setTimeout(function() {
         $("#quadro div img").fadeOut(1000);
     }, tempoInicial);
 
@@ -104,7 +104,7 @@ function abrirCarta() {
 
             cartaVirada = id;
             imagemVirada = $(this).children().attr("src");
-            setTimeout(function () {
+            setTimeout(function() {
                 $("#quadro div").bind("click", abrirCarta);
 
             }, 300);
@@ -114,7 +114,7 @@ function abrirCarta() {
 
             if (imagemAtual !== imagemVirada) {
                 wrongHits++;
-                setTimeout(function () {
+                setTimeout(function() {
 
                     $("#" + id + " img").fadeOut("fast");
                     $("#" + cartaVirada + " img").fadeOut("fast");
@@ -133,14 +133,14 @@ function abrirCarta() {
 
             }
 
-            setTimeout(function () {
+            setTimeout(function() {
                 $("#quadro div").bind("click", abrirCarta);
 
             }, 500);
 
         }
         if (tamanho == paresEncontrados) {
-             saveResultPairs();
+            saveResultPairs();
             clearInterval(tempoJogo);
 
 //            $("#fimJogo").html("Fim do jogo, os seus resultados são:");
@@ -155,7 +155,7 @@ function incrementarSegundos() {
 }
 
 function saveResultPairs() {
-    $(document).ready(function () {
+    $(document).ready(function() {
         var jsonData;
         $.ajax({
             type: "Post",
@@ -171,10 +171,11 @@ function saveResultPairs() {
                 wrongHits: wrongHits,
                 rightHits: rightHits,
                 correctAnswer: '0',
-                idSession: getUrlParameter('id')
+                idSession: getUrlParameter('id'),
+                numQuadrados: '0'
             },
             statusCode: {
-                201: function (response) {
+                201: function(response) {
                     jsonData = response;
                     var select = $('#dialogChange');
                     var input = $('<input type="hidden" id="commentAnswerId" value="' + jsonData.idAnswer + '"/>');

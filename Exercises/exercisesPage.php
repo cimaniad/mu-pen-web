@@ -48,6 +48,7 @@ if ($_GET['structure'] == 4) { //Sequence Exercises
         <div id="questionResolve"></div>
     </div> 
     <div id="gameDiv">
+        <div id="questionExercise"></div>
         <div id="testOrder">
             <ul id="teste-list">
             </ul>
@@ -76,6 +77,7 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
         <div id="gameTime"></div>
     </div>
     <div id="gameDiv">
+        <div id="questionExercise"></div>
         <div id="imageMultExercise"></div>
         <div class='estrutura_em'></div>
         <div id="gameTime"></div>
@@ -171,8 +173,8 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
     require_once 'exercisesHeader.php';
     ?>
     <link rel="stylesheet" href="../css/Back-N.css">
-
     <script type="text/javascript" src="../js/exercises/Back-N.js"></script>
+
     <div id="dialogExercise">
         <script>getConfigs();</script>
         <div class="instructions1">
@@ -197,9 +199,10 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
 } else if ($_GET['structure'] == 1) {
     require_once 'exercisesHeader.php';
     ?>
-    <link rel="stylesheet" href="../css/Math.css">
-    <script type="text/javascript" src="../js/exercises/Math.js"></script>
+        <link rel="stylesheet" href="../css/Math.css">
     <script>getConfigs();</script>
+
+    
     <div class="instructions1">
         <p class="help1"><strong>Instruções sobre o jogo!</strong></p>
         <div id="questionResolve"></div>
@@ -219,6 +222,7 @@ if ($_GET['structure'] == 5) { //Multiple Choice Exercises
     </div>
   </div>
     </div>
+
     <?php
 }
 
@@ -231,6 +235,7 @@ if (isset($_GET['structure']) && (($_GET['structure'] == 4) || ($_GET['structure
 ?>
 </div>
 <input type="hidden" value="<?= $_SESSION['idPatient'] ?>" id="idpatientExercises"> 
+
 <?php
 require_once '../footer.php';
 if (isset($_GET['structure'])) {

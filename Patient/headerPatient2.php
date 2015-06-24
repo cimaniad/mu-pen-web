@@ -19,6 +19,7 @@ confirmPatient();
   <script src='../js/objectCallers/appointmentsCaller.js' type='text/javascript'></script>
   <script src='../js/exercises/orderExercise.js' type='text/javascript'></script>
   <script src='../js/objectCallers/notificationCaller.js' type='text/javascript'></script>
+  <script type="text/javascript" src="../js/extra/moment/moment.js"></script>
   <script src="../js/extra/datagrid/jquery.easyui.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-groupview.js"></script>
   <script src="../js/objectCallers/InformationCaller.js"></script>

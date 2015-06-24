@@ -1,17 +1,24 @@
 <?php
-require_once 'header.php';
+require_once '../session.php';
+if(isset($_SESSION['idHealthProfessional'])){
+    require_once '../HealthProfessional/headerDP.php';
+}else {
+    require_once 'headeranon.php';    
+}
 ?>
  <script src="../js/extra/highCharts/js/highcharts.js"></script>
 <script src="../js/extra/highCharts/js/modules/data.js"></script>
 <script src="../js/extra/highCharts/js/modules/exporting.js"></script>
 <script type="text/javascript" src="../js/objectCallers/Report.js"></script>
-<script>getSessionReport(1);</script>
 
+<?php
+if($_GET['id'] == 1){
+    ?>
 
-<!-- Additional files for the Highslide popup effect -->
-<!--<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide-full.min.js"></script>
-<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide.config.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="http://www.highcharts.com/media/com_demo/highslide.css" />-->
+<script>getStatistics();</script>
+<?php
+}
+?>
 <div id="chartContent" ></div>
 
 	

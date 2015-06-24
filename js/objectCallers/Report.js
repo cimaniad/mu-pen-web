@@ -162,7 +162,72 @@ function getDomainReport(idDomain, idPatient) {
     });
 }
 
+function getStatistics(){
+        $(document).ready(function () {
+        var jsonData;
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/nep-um-web/api/",
+            dataType: 'json',
+  
+            data: {
+                object: 'Report',
+                function: 'getStatistics',
+            },
+            statusCode: {
+                200: function (response) {
+                    jsonData = response;
+                    $('#chartContent').append('<div id=chart' + 0 + ' style="min-width: 310px; height: 300px; margin: 3em 18em 0 0"></div>');                   
+                    generateStatistics(jsonData);
+                },
+                404: function () {
+                    alert('Erro a gerar relatório');
+                }
+            }
+        });
+    });
+}
 
+function generateStatistics(jsonData){
+    $('#chart' + 0).highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Estatisticas'
+            },
+            xAxis: {
+                categories: ['Profissionais de Saúde', 'Profissionais de Desenvolvimento', 'Pacientes']
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                }
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: true,
+                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                        style: {
+                            textShadow: '0 0 3px black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Estatisticas',
+                data: [
+                    
+                    ['Profissionais de Saúde', jsonData.healthProfessionals],
+                    ['Profissionais de Desenvolvimento', jsonData.development],
+                    ['Pacientes', jsonData.patients]
+                ]
+                    }] 
+        });
+
+}
 //function getAnswersHealthProfessional(idPatient, idHP, lista, index1) {
 //    var jsonData;
 //    $.ajax({

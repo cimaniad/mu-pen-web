@@ -57,10 +57,9 @@ confirmHealthProfessional();
                 <li><a href="../HealthProfessional/addEditSubDomain.php?id=2">Editar Sub-Dominio</a></li>
               </ul>
               </li>
-                         <li><a href="#">Relatórios</a>
+              <li><a href="../anon/chartReport.php?id=1">Relatórios</a>
           <ul>
-              <li><a href="#">Paciente</a></li>
-               <li><a href="#">Anónimo</a></li>
+<!--              <li><a href="#">Utilizadores</a></li>-->
           </ul>   
            <li><a href="#">Informação</a>
           <ul>

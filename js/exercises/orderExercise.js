@@ -189,7 +189,7 @@ function getConfigs() { //get matriz size and appear time for pairs exercise
                 select.append(input);
                 if (getUrlParameter('structure') == 6) {
                     window.location.replace("exercisesPage.php?id="+getUrlParameter('id')+"&structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') +
-                            "&numMatriz=" + jsonData.numMatriz + "&appearTime=" + jsonData.appearTime + '#');
+                            "&numMatriz=" + jsonData.numMatriz + "&appearTime=" + jsonData.appearTime + '&time=1#');
                 } else if ((getUrlParameter('structure')) == 3 || (getUrlParameter('structure')) == 7) {
                     window.location.replace("exercisesPage.php?id="+getUrlParameter('id')+"&structure=" + getUrlParameter('structure') + "&gameChoosen=" + getUrlParameter('gameChoosen') +
                             "&col=" + jsonData.numMatriz + '&appearTime=' + jsonData.appearTime + '&time=' + jsonData.time + '#');
@@ -200,9 +200,6 @@ function getConfigs() { //get matriz size and appear time for pairs exercise
                 }else if(getUrlParameter('structure') == 1){
                     window.location.replace("exercisesPage.php?id="+getUrlParameter('id')+"&structure="+getUrlParameter('structure')+'&gameChoosen='+getUrlParameter('gameChoosen')+
                             '&time='+jsonData.time+'&limitNumber='+jsonData.numMatriz+'#');    
-             $(document).ready(function() {
-            $.getScript("../js/exercises/Math.js");
-            });
                 }
             }
         }
